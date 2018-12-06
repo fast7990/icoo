@@ -1,8 +1,11 @@
-# UNI-APP 登录模板
+# UNI-APP 蓝牙电子烟 小程序项目
 
 ## 运行方式
+1，git clone git@github.com:fast7990/icoo.git 项目至本地
+
 将项目拖入[HbuilderX](http://www.dcloud.io/hbuilderx.html),直接运行即可
 
+注意：需要下载小程序开发工具才能调试
 ## 特点
 * 兼容微信小程序和APP
 * 适用于强制登录和非强制登录应用场景
