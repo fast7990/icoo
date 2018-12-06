@@ -1,0 +1,3 @@
+<import src="/pages/components/mpvue-echarts/src/echarts.vue.wxml" />
+<import src="/components/number-box.vue.wxml" />
+<import src="/components/segmented-control.vue.wxml" />

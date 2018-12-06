@@ -1,0 +1,1 @@
+<import src="/pages/template/datachecker/datachecker.vue.wxml" /><template is="4d520517" data="{{ ...$root['0'], $root }}"/>

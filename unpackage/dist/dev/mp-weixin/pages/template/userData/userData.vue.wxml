@@ -1,0 +1,37 @@
+<template name="3a4c2ece">
+  <view class="_view data-v-3d0b6d59 page">
+    <view class="_view data-v-3d0b6d59 page-body uni-column">
+      <view class="_view data-v-3d0b6d59 page-section justify-center align-center" style>
+        <view class="_view data-v-3d0b6d59 portrait">
+          <view class="_view data-v-3d0b6d59">
+            <image src="http://img3.imgtn.bdimg.com/it/u=466871861,443615080&fm=26&gp=0.jpg" mode class="_image data-v-3d0b6d59"></image>
+          </view>
+          <view class="_view data-v-3d0b6d59">
+            <image src="../../../static/img/camera.png" mode class="_image data-v-3d0b6d59"></image>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-3d0b6d59 page-section uni-column">
+        <view class="_view data-v-3d0b6d59 util-list justify-center" hover-class="uni-list-cell-hover" wx:key="idx" key="{{idx}}" bindtap="handleProxy" data-eventid="{{'U83-2-'+idx}}" data-comkey="{{$k}}" wx:for="{{util_list}}" wx:for-index="idx" wx:for-item="item">
+          <view class="_view data-v-3d0b6d59 list uni-row">
+            <view class="_view data-v-3d0b6d59" style="flex: 3;">
+              <text class="_text data-v-3d0b6d59">{{item.name}}</text>
+            </view>
+            <view class="_view data-v-3d0b6d59" style="flex: 7;justify-content: flex-end;">
+              <picker bindchange="handleProxy" value="{{index}}" range="{{array}}" wx:if="{{item.target=='sex'}}" style="width: 100%;text-align: right;" data-eventid="{{'6Du-1-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
+                <text class="_text data-v-3d0b6d59 uni-input">{{array[index]}}</text>
+              </picker>
+              <picker mode="date" bindchange="handleProxy" value="{{date}}" start="{{startDate}}" end="{{endDate}}" wx:elif="{{item.target=='birthday'}}" style="width: 100%;text-align: right;" data-eventid="{{'Z4y-0-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
+                <text class="_text data-v-3d0b6d59 uni-input">{{date}}</text>
+              </picker>
+              <text wx:else class="_text data-v-3d0b6d59">{{item.info}}</text>
+            </view>
+            <view class="_view data-v-3d0b6d59" style="flex: 1;justify-content: flex-end;"> 
+              <image src="../../../static/img/more2.png" mode class="_image data-v-3d0b6d59"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

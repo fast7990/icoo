@@ -1,0 +1,58 @@
+<import src="/components/number-box.vue.wxml" />
+<template name="b23178ae">
+  <view class="_view data-v-8b0288ba page">
+    <view class="_view data-v-8b0288ba page-body uni-column">
+      <view class="_view data-v-8b0288ba page-section">
+        <view class="_view data-v-8b0288ba user-list uni-column">
+          <view class="_view data-v-8b0288ba top">
+            <image src="../../../static/calendar.png" mode class="_image data-v-8b0288ba"></image>
+            <text class="_text data-v-8b0288ba"> 目标完成天数</text>
+          </view>
+          <view class="_view data-v-8b0288ba content" style="justify-content: space-between;">
+            <view class="_view data-v-8b0288ba text {{indexs == target_index ? 'bgactive' : ''}}" wx:key="indexs" key="{{indexs}}" bindtap="handleProxy" data-eventid="{{'vbj-0-'+indexs}}" data-comkey="{{$k}}" wx:for="{{[7,21,30,60]}}" wx:for-index="indexs"
+              wx:for-item="item">
+              <text style="font-size: 30rpx;" class="_text data-v-8b0288ba">{{item}}天</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-8b0288ba page-section">
+        <view class="_view data-v-8b0288ba user-list uni-column">
+          <view class="_view data-v-8b0288ba top">
+            <image src="../../../static/challengetarget.png" mode class="_image data-v-8b0288ba"></image>
+            <text class="_text data-v-8b0288ba"> 设置挑战目标</text>
+          </view>
+          <view class="_view data-v-8b0288ba content">
+            <view style="justify-content: space-between;align-items: center;flex: 1;" class="_view data-v-8b0288ba">
+              <text class="_text data-v-8b0288ba">每天吸烟口数</text>
+              <template bindupdate="handleProxy" min="0" data-eventid="{{'IjC-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'whe-0'],$root}}" is="8086e314"></template>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-8b0288ba page-section">
+        <view class="_view data-v-8b0288ba user-list uni-column">
+          <view class="_view data-v-8b0288ba top">
+            <image src="../../../static/challengetarget.png" mode class="_image data-v-8b0288ba"></image>
+            <text class="_text data-v-8b0288ba"> 挑战开始时间</text>
+          </view>
+          <view class="_view data-v-8b0288ba content">
+            <view style="justify-content: space-between;align-items: center;flex: 1;" class="_view data-v-8b0288ba">
+              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 1 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'0UR-2'}}" data-comkey="{{$k}}">
+                <text class="_text data-v-8b0288ba">今天</text>
+                <text class="_text data-v-8b0288ba">({{time1}})</text>
+              </view>
+              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 2 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'kIy-3'}}" data-comkey="{{$k}}">
+                <text class="_text data-v-8b0288ba">明天</text>
+                <text class="_text data-v-8b0288ba">({{time2}})</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-8b0288ba page-section justify-center align-center" style="margin-top: 80rpx;">
+        <view class="_view data-v-8b0288ba btn" bindtap="handleProxy" data-eventid="{{'nLR-4'}}" data-comkey="{{$k}}">确认</view>
+      </view>
+    </view>
+  </view>
+</template>

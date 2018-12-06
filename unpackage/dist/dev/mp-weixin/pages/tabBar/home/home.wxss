@@ -1,0 +1,54 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-1e6165c6,
+view.data-v-1e6165c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page-body.data-v-1e6165c6 {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.page-section.data-v-1e6165c6 {
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.canvasView.data-v-1e6165c6 {
+  width: 500rpx;
+  height: 480rpx;
+  margin-top: 20rpx;
+}
+.yibiao.data-v-1e6165c6 {
+  height: 500rpx;
+  background: #17393c;
+  position: relative;
+}
+.yibiao-box.data-v-1e6165c6 {
+  position: absolute;
+  width: 470rpx;
+  height: 310rpx;
+  top: 36rpx;
+  overflow: hidden;
+}
+.neiceng.data-v-1e6165c6 {
+  position: relative;
+}
+.yibiao-box .box.data-v-1e6165c6 {
+  position: absolute;
+  width: 470rpx;
+  height: 470rpx;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+.box image.data-v-1e6165c6 {
+  width: 470rpx;
+  height: 310rpx;
+}
+.box-text.data-v-1e6165c6 {
+  color: #FFFFFF;
+}

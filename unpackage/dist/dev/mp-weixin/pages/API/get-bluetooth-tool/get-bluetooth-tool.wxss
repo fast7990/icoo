@@ -1,0 +1,78 @@
+@import "../../../common/vendor.wxss";
+
+.mask.data-v-36b9c0cb {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+}
+.popup.data-v-36b9c0cb {
+  position: absolute;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 0 30rpx rgba(0, 0, 0, .1);
+}
+.popup-middle.data-v-36b9c0cb {
+  width: 400rpx;
+  height: 400rpx;
+  border-radius: 10rpx;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.popup-top.data-v-36b9c0cb {
+  top: 0;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+}
+.popup-top text.data-v-36b9c0cb {
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+}
+.popup-bottom.data-v-36b9c0cb {
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+}
+.popup-bottom text.data-v-36b9c0cb {
+  line-height: 100rpx;
+  font-size: 32rpx;
+}
+.popup .list-view.data-v-36b9c0cb {
+  height: 600rpx;
+}
+.list-view-item.data-v-36b9c0cb {
+  position: relative;
+  padding: 22rpx 30rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+.list-view-item.data-v-36b9c0cb::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 30rpx;
+  height: 2rpx;
+  content: '';
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+  background-color: #c8c7cc;
+}
+.btn-row .btn.data-v-36b9c0cb {
+  margin: 20rpx;
+}
+.desc.data-v-36b9c0cb {
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-top: 150rpx;
+  text-align: center;
+}

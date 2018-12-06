@@ -1,0 +1,54 @@
+<template name="78cf8887">
+  <view class="_view data-v-244819c1 page">
+    <view class="_view data-v-244819c1 page-body uni-column">
+      <view class="_view data-v-244819c1 page-section">
+        <view class="_view data-v-244819c1 user-list panel uni-column">
+          <view class="_view data-v-244819c1 top align-center">
+            <view class="_view data-v-244819c1 left" style>
+              <image src="{{my_data.imgsrc}}" style="width: 100%;height: 100%;" class="_image data-v-244819c1"></image>
+            </view>
+            <view class="_view data-v-244819c1 right uni-column">
+              <text style="font-size: 26rpx;" class="_text data-v-244819c1">{{my_data.name}}</text>
+              <view class="_view data-v-244819c1">
+                <text style="font-size: 34rpx;font-weight: bold;margin-right: 10rpx;" class="_text data-v-244819c1">{{my_data.result?'挑战成功':'挑战失败'}}</text>
+                <image src="../../../static/img/happy.png" style="width: 60rpx;height: 60rpx;" wx:if="{{my_data.result}}" class="_image data-v-244819c1"></image>
+                <image src="../../../static/img/unhappy.png" style="width: 60rpx;height: 60rpx;" wx:else class="_image data-v-244819c1"></image>
+              </view>
+              <text style="font-size: 24rpx;" class="_text data-v-244819c1">--每天吸爱氪电子烟{{my_data.koushu}}口</text>
+            </view>
+          </view>
+          <view class="_view data-v-244819c1 user-card">
+            <view class="_view data-v-244819c1 user-card-list" style="flex: 1;">
+              <view class="_view data-v-244819c1 list">
+                <text class="_text data-v-244819c1">挑战金</text>
+                <text class="_text data-v-244819c1">{{my_data.bonus}}积分</text>
+              </view>
+              <view class="_view data-v-244819c1 list">
+                <text class="_text data-v-244819c1">坚持天数</text>
+                <text class="_text data-v-244819c1">{{my_data.longday}}/7</text>
+              </view>
+              <view class="_view data-v-244819c1 list">
+                <text class="_text data-v-244819c1">围观</text>
+                <text class="_text data-v-244819c1">{{my_data.look}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="_view data-v-244819c1 last">
+            <text class="_text data-v-244819c1">Tips：挑战成功将获得226积分</text>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-244819c1 page-section uni-column">
+        <view class="_view data-v-244819c1 list-msg justify-center" wx:key="index" key="{{index}}" wx:for="{{list_msg}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-244819c1 align-center" style="flex: 9;">
+            <text class="_text data-v-244819c1">{{item.text}}</text>
+          </view>
+          <view class="_view data-v-244819c1 uni-column align-center" style="flex: 1;">
+            <image src="../../../static/img/dianzan.png" mode style="width: 45rpx;height: 45rpx;" class="_image data-v-244819c1"></image>
+            <text style="font-size: 17rpx;color: #5e9196;" class="_text data-v-244819c1">{{item.like}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

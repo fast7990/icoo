@@ -1,0 +1,18 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-c0f0ae5e,
+view.data-v-c0f0ae5e {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page-body.data-v-c0f0ae5e {
+  padding: 10rpx 30rpx;
+}
+.page-body.data-v-c0f0ae5e,
+.page-section.data-v-c0f0ae5e {
+  box-sizing: border-box;
+}
+text.data-v-c0f0ae5e {
+  color: #17393c;
+}

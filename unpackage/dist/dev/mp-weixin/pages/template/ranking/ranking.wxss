@@ -1,0 +1,47 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-a02efd32,
+view.data-v-a02efd32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page-body.data-v-a02efd32 {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.page-section.data-v-a02efd32 {
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.my-info text.data-v-a02efd32 {
+  color: #FFFFFF;
+}
+.touming.data-v-a02efd32 {
+  border-radius: 120rpx;
+}
+.list1.data-v-a02efd32 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  border-bottom: 1rpx solid #bfbfbf;
+  padding-top: 40rpx;
+  padding-bottom: 25rpx;
+}
+.user-list.data-v-a02efd32 {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.crown.data-v-a02efd32 {
+  width: 85rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 22rpx;
+  top: -22rpx;
+}
+.noborder.data-v-a02efd32 {
+  border: none!important;
+}

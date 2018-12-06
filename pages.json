@@ -1,0 +1,168 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页,
+		{
+			"path": "pages/tabBar/home/home",
+			"style": {
+				"navigationBarTitleText": "爱氪电子烟",
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tabBar/community/community",
+			"style": {
+				"navigationBarTitleText": "社区",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tabBar/find/find",
+			"style": {
+				"navigationBarTitleText": "发现",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tabBar/my/my",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarBackgroundColor": "#326e73",
+				"enablePullDownRefresh": true
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#7a7e83",
+		"selectedColor": "#0faeff",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/tabBar/home/home",
+			"text": "首页",
+			"iconPath": "static/img/home.png",
+			"selectedIconPath": "static/img/homeHL.png"
+		}, {
+			"pagePath": "pages/tabBar/community/community",
+			"text": "社区",
+			"iconPath": "static/img/community.png",
+			"selectedIconPath": "static/img/communityHL.png"
+		}, {
+			"pagePath": "pages/tabBar/find/find",
+			"text": "发现",
+			"iconPath": "static/img/find.png",
+			"selectedIconPath": "static/img/findHL.png"
+		}, {
+			"pagePath": "pages/tabBar/my/my",
+			"text": "我的",
+			"iconPath": "static/img/user.png",
+			"selectedIconPath": "static/img/userHL.png"
+		}]
+	},
+	"subPackages": [{
+		"root": "pages/components/",
+		"pages": [{
+			"path": "mpvuePicker/mpvuePicker",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}]
+	}, {
+		"root": "pages/API/",
+		"pages": [{
+			"path": "get-bluetooth-tool/get-bluetooth-tool",
+			"style": {
+				"navigationBarTitleText": "蓝牙"
+			}
+		}]
+	}, {
+		"root": "pages/template/",
+		"pages": [{
+			"path": "main/main",
+			"style": {
+				"navigationBarTitleText": "登录模板"
+			}
+		}, {
+			"path": "login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		}, {
+			"path": "reg/reg",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		}, {
+			"path": "pwd/pwd",
+			"style": {
+				"navigationBarTitleText": "找回密码"
+			}
+		}, {
+			"path": "user/user",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "usageRecord/usageRecord",
+			"style": {
+				"navigationBarTitleText": "统计详情"
+			}
+		}, {
+			"path": "ranking/ranking",
+			"style": {
+				"navigationBarTitleText": "我的社区"
+			}
+		}, {
+			"path": "checkIn/checkIn",
+			"style": {
+				"navigationBarTitleText": "每日签到"
+			}
+		}, {
+			"path": "userData/userData",
+			"style": {
+				"navigationBarTitleText": "个人资料"
+			}
+		}, {
+			"path": "datachecker/datachecker",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}, {
+			"path": "challenge/challenge",
+			"style": {
+				"navigationBarTitleText": "健康挑战"
+			}
+		}, {
+			"path": "challengeTarget/challengeTarget",
+			"style": {
+				"navigationBarTitleText": "目标设置"
+			}
+		}, {
+			"path": "challengeAward/challengeAward",
+			"style": {
+				"navigationBarTitleText": "设置挑战金"
+			}
+		}, {
+			"path": "statistics/statistics",
+			"style": {
+				"navigationBarTitleText": "统计详情"
+			}
+		}]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#f6f6f6",
+		"backgroundColor": "#f6f6f6"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

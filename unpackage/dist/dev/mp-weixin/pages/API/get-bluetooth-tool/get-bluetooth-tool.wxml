@@ -1,0 +1,1 @@
+<import src="/pages/API/get-bluetooth-tool/get-bluetooth-tool.vue.wxml" /><template is="f8fda9ea" data="{{ ...$root['0'], $root }}"/>

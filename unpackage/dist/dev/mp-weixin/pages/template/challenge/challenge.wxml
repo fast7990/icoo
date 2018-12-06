@@ -1,0 +1,1 @@
+<import src="/pages/template/challenge/challenge.vue.wxml" /><template is="78cf8887" data="{{ ...$root['0'], $root }}"/>

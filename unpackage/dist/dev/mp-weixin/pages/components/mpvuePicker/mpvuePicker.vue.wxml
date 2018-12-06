@@ -1,0 +1,42 @@
+<template name="705a3a3f">
+  <view class="_view data-v-4013f48e">
+    <page-head title="{{title}}" class="_page-head data-v-4013f48e"></page-head>
+    <view class="_view data-v-4013f48e page-body">
+      <view class="_view data-v-4013f48e page-section">
+        <view class="_view data-v-4013f48e page-section-title">地区选择器</view>
+        <view class="_view data-v-4013f48e uni-list">
+          <view class="_view data-v-4013f48e uni-list-cell">
+            <view class="_view data-v-4013f48e list-left"> 当前选择 </view>
+            <view class="_view data-v-4013f48e uni-list-cell-db">
+              <picker bindchange="handleProxy" value="{{index}}" range="{{array}}" data-eventid="{{'LJM-0'}}" data-comkey="{{$k}}" class="_picker data-v-4013f48e">
+                <view class="_view data-v-4013f48e uni-input">{{array[index]}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="_view data-v-4013f48e page-section-title">时间选择器</view>
+        <view class="_view data-v-4013f48e uni-list">
+          <view class="_view data-v-4013f48e uni-list-cell">
+            <view class="_view data-v-4013f48e list-left"> 当前选择 </view>
+            <view class="_view data-v-4013f48e uni-list-cell-db">
+              <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="handleProxy" data-eventid="{{'FzU-1'}}" data-comkey="{{$k}}" class="_picker data-v-4013f48e">
+                <view class="_view data-v-4013f48e uni-input">{{time}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="_view data-v-4013f48e page-section-title">日期选择器</view>
+        <view class="_view data-v-4013f48e uni-list">
+          <view class="_view data-v-4013f48e uni-list-cell">
+            <view class="_view data-v-4013f48e list-left"> 当前选择 </view>
+            <view class="_view data-v-4013f48e uni-list-cell-db">
+              <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="handleProxy" data-eventid="{{'cj4-2'}}" data-comkey="{{$k}}" class="_picker data-v-4013f48e">
+                <view class="_view data-v-4013f48e uni-input">{{date}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

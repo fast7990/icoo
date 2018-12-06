@@ -1,0 +1,65 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-bfa48fc2,
+view.data-v-bfa48fc2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page.data-v-bfa48fc2 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.canvasBox.data-v-bfa48fc2 {
+  position: relative;
+  height: 600rpx;
+}
+.canvasView.data-v-bfa48fc2 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 600rpx;
+}
+.day.data-v-bfa48fc2 {
+  left: 0;
+}
+.month.data-v-bfa48fc2 {
+  left: -100%;
+}
+.year.data-v-bfa48fc2 {
+  left: -200%;
+}
+.navigate.data-v-bfa48fc2 {
+  line-height: 80rpx;
+}
+.hidden.data-v-bfa48fc2 {
+  left: 0;
+}
+.page-section-tab.data-v-bfa48fc2 {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  background: #b3d6fb;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 4rpx 4rpx 0;
+}
+.tab.data-v-bfa48fc2 {
+  display: block;
+  width: 33.3%;
+  text-align: center;
+}
+.tab.tabActive.data-v-bfa48fc2 {
+  border-bottom: 2rpx solid #f5d100;
+}
+.navigate.data-v-bfa48fc2 {
+  color: #007AFF;
+}
+.strong-font.data-v-bfa48fc2 {
+  text-align: center;
+  font-size: 32rpx;
+}
+.small-font.data-v-bfa48fc2 {
+  font-size: 18rpx;
+}

@@ -1,0 +1,15 @@
+<import src="/components/segmented-control.vue.wxml" />
+<template name="848728ce">
+  <view class="_view data-v-4867e919 page">
+    <view class="_view data-v-4867e919 page-body uni-column">
+      <view class="_view data-v-4867e919 page-section">
+        <template bindclickItem="handleProxy" data-eventid="{{'LC9-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Sjp-0'],$root}}" is="e68b757a"></template>
+      </view>
+      <view class="_view data-v-4867e919 page-section content">
+        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 0 ? 'flex' : 'none') + ';')}}"> 1 </view>
+        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 1 ? 'flex' : 'none') + ';')}}"> 选项卡2的内容 </view>
+        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 2 ? 'flex' : 'none') + ';')}}"> 选项卡3的内容 </view>
+      </view>
+    </view>
+  </view>
+</template>

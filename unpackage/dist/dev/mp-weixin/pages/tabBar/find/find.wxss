@@ -1,0 +1,56 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-7ab9a55d,
+view.data-v-7ab9a55d {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page-body.data-v-7ab9a55d {
+  padding: 10rpx 30rpx;
+}
+.page-body.data-v-7ab9a55d,
+.page-section.data-v-7ab9a55d {
+  box-sizing: border-box;
+}
+text.data-v-7ab9a55d {
+  color: #17393c;
+}
+.content>view.data-v-7ab9a55d {
+  width: 100%;
+}
+.challenge .list.data-v-7ab9a55d {
+  position: relative;
+  width: 100%;
+  height: 280rpx;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+.challenge .list image.data-v-7ab9a55d {
+  width: 100%;
+  height: auto;
+}
+.challenge .list .text.data-v-7ab9a55d {
+  position: absolute;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  height: 56rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  background: rgba(255, 255, 255, 0.5);
+  bottom: 0;
+}
+.challenge .list .text text.data-v-7ab9a55d {
+  font-size: 22rpx;
+  line-height: 56rpx;
+}
+.challenge .list .text image.data-v-7ab9a55d {
+  width: 24rpx;
+  height: 27rpx;
+}

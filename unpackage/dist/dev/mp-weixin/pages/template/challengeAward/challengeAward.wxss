@@ -1,0 +1,59 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-20c55039,
+view.data-v-20c55039 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+text.data-v-20c55039 {
+  color: #17393C;
+}
+.page-body.data-v-20c55039 {
+  padding: 10rpx 30rpx;
+}
+.page-body.data-v-20c55039,
+.page-section.data-v-20c55039 {
+  box-sizing: border-box;
+}
+.jifen-list.data-v-20c55039 {
+  width: 150rpx;
+  height: 68rpx;
+  margin: 10rpx 30rpx;
+  border: 1rpx solid #17393C;
+  border-radius: 10rpx;
+}
+.user-list .box-list.data-v-20c55039 {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.user-list .box-list .label.data-v-20c55039 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.bgactive.data-v-20c55039 {
+  background: #17393C;
+}
+.bgactive text.data-v-20c55039 {
+  color: #FFFFFF;
+}
+.checkbox.data-v-20c55039 {
+  width: 34rpx;
+  height: 34rpx;
+  border: 1rpx solid #17393C;
+  border-radius: 100%;
+}
+.btn.data-v-20c55039 {
+  background: none;
+  border: #17393c 1rpx solid;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  padding: 15rpx 120rpx;
+}

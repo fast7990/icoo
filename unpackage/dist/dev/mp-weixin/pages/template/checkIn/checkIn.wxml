@@ -1,0 +1,1 @@
+<import src="/pages/template/checkIn/checkIn.vue.wxml" /><template is="62ddb6ca" data="{{ ...$root['0'], $root }}"/>

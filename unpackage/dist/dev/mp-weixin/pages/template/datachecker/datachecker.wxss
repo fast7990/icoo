@@ -1,0 +1,21 @@
+@import "../../../common/vendor.wxss";
+
+._label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  min-width: 270rpx;
+  margin-right: 20rpx;
+}
+.btn-submit {
+  background-color: #007aff;
+  color: #ffffff;
+}
+.uni-input {
+  width: 100%;
+  padding-left: 30rpx;
+}
