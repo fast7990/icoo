@@ -22,7 +22,7 @@
             <text class="_text data-v-1e6165c6 box-text" style="font-size: 58rpx;">{{dashboardValue}}</text>
             <text class="_text data-v-1e6165c6 box-text" style="line-height: 44rpx;background: #7aff70;border-radius: 10rpx;padding: 0 14rpx;font-size: 22rpx;color: #131313;">可以接着抽</text>
             <text class="_text data-v-1e6165c6 box-text" style="font-size: 22rpx;margin-top: 50rpx;">轻度抽烟可以愉悦身心，健康无害</text>
-            <text class="_text data-v-1e6165c6 box-text" style="font-size: 24rpx;padding: 0 40rpx;border-radius:20rpx;line-height: 48rpx;background: #ff7800;margin: 20rpx 0 10rpx" bindtap="handleProxy" data-eventid="{{'hn5-0'}}"
+            <text class="_text data-v-1e6165c6 box-text" style="font-size: 24rpx;padding: 0 40rpx;border-radius:20rpx;line-height: 48rpx;background: #ff7800;margin: 20rpx 0 10rpx" bindtap="handleProxy" data-eventid="{{'MsV-0'}}"
               data-comkey="{{$k}}">领取奖励</text>
             <text class="_text data-v-1e6165c6 box-text" style="font-size: 20rpx;">还差34口即可领取今日奖励</text>
           </view>
@@ -30,7 +30,7 @@
       </view>
       <view class="_view data-v-1e6165c6 page-section">
         <view class="_view data-v-1e6165c6 user-list">
-          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'Lod-1'}}" data-comkey="{{$k}}">
+          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'viw-1'}}" data-comkey="{{$k}}">
             <view class="_view data-v-1e6165c6 user-list-left" style="flex: 1;">
               <image src="../../../static/img/bangding.png" class="_image data-v-1e6165c6"></image>
             </view>
@@ -75,7 +75,7 @@
       </view>
       <view class="_view data-v-1e6165c6 page-section">
         <view class="_view data-v-1e6165c6 user-list">
-          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'MSN-2'}}" data-comkey="{{$k}}">
+          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'GcA-2'}}" data-comkey="{{$k}}">
             <view class="_view data-v-1e6165c6 user-list-left" style="flex: 1;">
               <image src="../../../static/img/paihang.png" class="_image data-v-1e6165c6"></image>
             </view>

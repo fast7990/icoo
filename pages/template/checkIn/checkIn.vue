@@ -5,35 +5,33 @@
 				<view class="tabs" style="flex: 1;flex-wrap: wrap;justify-content: center;">
 					<view class="checkin-tab uni-column" v-for="(item,index) in list" :key="index" @tap="checked(index,item)">
 						<view class="label-view">
-							<image src="../../../static/img/yilingqu.png" v-if="item.state"></image>
-							<image src="../../../static/img/weilingqu.png" v-else></image>
-						</view>
-						<view class="justify-center" style="margin-top: 67upx;margin-bottom: 5upx;">
-							<image src="../../../static/img/gold.png" style="width: 62upx;height: 45upx;"></image>
+							<image :src="'../../../static/img/'+item.imgname+'.png'" v-if="item.state"></image>
+							<image :src="'../../../static/img/'+item.imgname+'-1.png'" v-else></image>
 						</view>
 						<view class="justify-center">
-							<text style="color: #FFFFFF;">{{item.day}}</text>
+							<text style="color: #FFFFFF;font-size: 22upx;">{{item.day}}</text>
 						</view>
 					</view>
 				</view>
 			</view>
 			<view class="page-section uni-column justify-center align-center checkin-log">
 				<view class="uni-row" style="justify-content: space-between;margin-bottom: 20upx;">
-					<text style="font-size:34upx;">11月</text>
+					<text style="font-size:30upx;">11月</text>
 					<text style="font-size:24upx;">已累计签到20天</text>
 				</view>
 				<view class="uni-row" style="position: relative;">
-					<view class="integral" v-for="item in [10,20,28]" :key="item">
+					<view class="integral" v-for="(item,index) in [10,20,28]" :key="item">
 						<view class="uni-column align-center">
 							<view style="font-size: 16upx;color: #ea2022;align-items: center;line-height: 28upx;">
-								<text style="font-size: 28upx;color: #ea2022;">20</text>
-								积分
+								<text style="font-size: 24upx;">{{item}}天</text>
+							</view>
+							<view style="margin-bottom: 10upx;">
+								<image v-show="index===0" src="../../../static/img/tongpai.png" style="width: 50upx;height: 50upx;" mode=""></image>
+								<image v-show="index===1" src="../../../static/img/yinpai.png" style="width: 50upx;height: 50upx;" mode=""></image>
+								<image v-show="index===2" src="../../../static/img/jinpai.png" style="width: 50upx;height: 50upx;" mode=""></image>
 							</view>
 							<view>
-								<image src="../../../static/img/gift.png" style="width: 26upx;height: 26upx;" mode=""></image>
-							</view>
-							<view>
-								<text style="font-size: 22upx;line-height: 22upx;">{{item}}天</text>
+								<text style="font-size: 26upx;line-height: 22upx;">20积分</text>
 							</view>
 						</view>
 					</view>
@@ -45,8 +43,8 @@
 					<button type="primary" class="user-btn" :class="get_reward?'btn-active':''" @tap="getReward">{{get_reward?'已领取':'领取奖励'}}</button>
 				</view>
 				<view class="uni-row justify-center">
-					<navigator url="" style="color:#183b3e;font-size: 24upx;align-items: center;">查看规则说明<image src="../../../static/img/more2.png" style="width: 13upx;height: 21upx;"
-						 mode=""></image>
+					<navigator url="" style="color:#183b3e;font-size: 24upx;align-items: center;">查看规则说明<image src="../../../static/img/more2.png"
+						 style="width: 13upx;height: 21upx;" mode=""></image>
 					</navigator>
 				</view>
 			</view>
@@ -64,27 +62,34 @@
 				integral_day: '10',
 				get_reward: false,
 				list: [{
-						day: '周一',
-						state: false,
+						day: '星期一',
+						state: true,
+						imgname: 'monday'
 					},
 					{
-						day: '周二',
+						day: '星期二',
 						state: false,
+						imgname: 'tuesday'
 					}, {
-						day: '周三',
-						state: true,
-					}, {
-						day: '周四',
+						day: '星期三',
 						state: false,
+						imgname: 'wednesday'
 					}, {
-						day: '周五',
+						day: '星期四',
 						state: false,
+						imgname: 'thursday'
 					}, {
-						day: '周六',
+						day: '星期五',
 						state: false,
+						imgname: 'friday'
 					}, {
-						day: '周日',
+						day: '星期六',
 						state: false,
+						imgname: 'saturday'
+					}, {
+						day: '星期日',
+						state: false,
+						imgname: 'sunday'
 					}
 				]
 			}
@@ -126,6 +131,11 @@
 		/* uni-app默认使用flex布局。因为flex布局有利于跨更多平台，尤其是采用原生渲染的平台。如不了解flex布局，请参考http://www.w3.org/TR/css3-flexbox/。若不需要flex布局可删除本行*/
 	}
 
+	.page {
+		background: #FFFFFF;
+		height: 100%;
+	}
+
 	.page-section {
 		box-sizing: border-box;
 	}
@@ -135,23 +145,14 @@
 	}
 
 	.checkin-tab {
-		width: 128upx;
-		height: 178upx;
 		margin: 22upx 21upx;
-		background: #6fc3cb;
-		border-radius: 10upx;
-		position: relative;
 	}
 
-	.label-view {
-		position: absolute;
-		left: 0;
-		top: 0;
-	}
+	.label-view {}
 
 	.label-view image {
-		width: 83upx;
-		height: 82upx;
+		width: 120upx;
+		height: 120upx;
 	}
 
 	.checkin-log {
@@ -170,34 +171,31 @@
 		position: absolute;
 		left: 0;
 		top: 0;
+		margin-left: -45upx;
 	}
 
 	.integral:nth-child(1) {
 		left: 33.3%;
-		margin-left: -40upx;
 	}
 
 	.integral:nth-child(2) {
 		left: 66.6%;
-		margin-left: -40upx;
 	}
 
 	.integral:nth-child(3) {
 		left: 95%;
-		margin-left: -40upx;
 	}
 
 	.integral>view {
-		width: 80upx;
-		height: 80upx;
+		width: 90upx;
 	}
 
 	.integral-bg {
 		align-items: center;
 		width: 100%;
-		height: 18upx;
-		margin: 31upx 0;
-		background: #cacaca;
+		height: 8upx;
+		margin: 40upx 0;
+		background: #CACACA;
 		border-radius: 18upx;
 	}
 

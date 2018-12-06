@@ -6,7 +6,7 @@
           <text style="font-size: 36rpx;" class="_text data-v-7ab9a55d">健康挑战生活</text>
         </view>
         <view class="_view data-v-7ab9a55d challenge uni-column">
-          <view class="_view data-v-7ab9a55d list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'6Sz-0-'+index}}" data-comkey="{{$k}}" wx:for="{{challenge_list}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-7ab9a55d list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'pcQ-0-'+index}}" data-comkey="{{$k}}" wx:for="{{challenge_list}}" wx:for-index="index" wx:for-item="item">
             <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543988583531&di=ec34da9f255c95734f6437c03535574a&imgtype=0&src=http%3A%2F%2Fimg95.699pic.com%2Fphoto%2F50062%2F2841.jpg_wh300.jpg" mode class="_image data-v-7ab9a55d"></image>
             <view class="_view data-v-7ab9a55d text align-center">
               <text class="_text data-v-7ab9a55d">距离时间结束还有：{{item.endtime}}</text>

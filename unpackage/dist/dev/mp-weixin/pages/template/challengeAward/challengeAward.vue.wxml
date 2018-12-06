@@ -5,14 +5,14 @@
         <view class="_view data-v-20c55039 user-list uni-column">
           <text style="color: red;font-size: 24rpx;margin:10rpx 30rpx;" class="_text data-v-20c55039">挑战金在目标成功后会退还。挑战金设置越高，挑战成功获得的奖励越大。</text>
           <view class="_view data-v-20c55039 box-list">
-            <view class="_view data-v-20c55039 jifen-list align-center justify-center {{active_index == i ? 'bgactive' : ''}}" wx:key="i" key="{{i}}" bindtap="handleProxy" style="position: relative;" data-eventid="{{'LVS-0-'+i}}" data-comkey="{{$k}}" wx:for="{{jifen_data}}"
+            <view class="_view data-v-20c55039 jifen-list align-center justify-center {{active_index == i ? 'bgactive' : ''}}" wx:key="i" key="{{i}}" bindtap="handleProxy" style="position: relative;" data-eventid="{{'QvU-0-'+i}}" data-comkey="{{$k}}" wx:for="{{jifen_data}}"
               wx:for-index="i" wx:for-item="item">
               <text style="font-size: 26rpx;" class="_text data-v-20c55039">{{item}}积分</text>
               <image hidden="{{!(active_index==i?true:false)}}" src="../../../static/img/hot2.png" style="width: 40rpx;height: 40rpx;position: absolute;right: -15rpx;top: -15rpx;transform:rotate(20deg);" class="_image data-v-20c55039"></image>
             </view>
           </view>
           <view class="_view data-v-20c55039 box-list" style="padding: 26rpx 30rpx 60rpx;">
-            <view class="_view data-v-20c55039 label" bindtap="handleProxy" data-eventid="{{'8cC-1'}}" data-comkey="{{$k}}">
+            <view class="_view data-v-20c55039 label" bindtap="handleProxy" data-eventid="{{'ZfG-1'}}" data-comkey="{{$k}}">
               <view class="_view data-v-20c55039 checkbox">
                 <view class="_view data-v-20c55039 bgactive" wx:if="{{user_set_state}}" style="width: 20rpx;height: 20rpx;margin: 8rpx;border-radius:100%;"></view>
               </view>
@@ -20,7 +20,7 @@
             </view>
             <view class="_view data-v-20c55039 label"></view>
             <view class="_view data-v-20c55039 label">
-              <input type="number" disabled="{{!user_set_state}}" value="{{user_set_value}}" bindinput="handleProxy" style="border: none;background: none;border-bottom: 1rpx solid #17393C;width: 100rpx;" data-eventid="{{'irh-2'}}" data-comkey="{{$k}}" class="_input data-v-20c55039"
+              <input type="number" disabled="{{!user_set_state}}" value="{{user_set_value}}" bindinput="handleProxy" style="border: none;background: none;border-bottom: 1rpx solid #17393C;width: 100rpx;" data-eventid="{{'cNy-2'}}" data-comkey="{{$k}}" class="_input data-v-20c55039"
               />积分 </view>
           </view>
           <view class="_view data-v-20c55039 box-list uni-column align-center" style="margin-bottom: 80rpx;">
@@ -34,7 +34,7 @@
       </view>
       <view class="_view data-v-20c55039 page-section">
         <view class="_view data-v-20c55039 page-section justify-center align-center" style="margin-top: 80rpx;">
-          <view class="_view data-v-20c55039 btn" bindtap="handleProxy" data-eventid="{{'BlC-3'}}" data-comkey="{{$k}}">立即开始</view>
+          <view class="_view data-v-20c55039 btn" bindtap="handleProxy" data-eventid="{{'aWa-3'}}" data-comkey="{{$k}}">立即开始</view>
         </view>
       </view>
     </view>
