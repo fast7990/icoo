@@ -7,28 +7,33 @@ view.data-v-244819c1 {
   display: flex;
 }
 .page-body.data-v-244819c1 {
-  padding: 10rpx 30rpx;
+  padding: 60rpx 30rpx 0;
 }
 text.data-v-244819c1 {
-  color: #FFFFFF;
+  color: #17393C;
 }
 .page-body.data-v-244819c1,
 .page-section.data-v-244819c1 {
   box-sizing: border-box;
 }
 .panel.data-v-244819c1 {
-  background: #17393c;
-  padding: 40rpx 0;
+  background: #FFFFFF;
+  padding: 0 0 40rpx;
 }
 .panel .top.data-v-244819c1 {
-  margin-bottom: 60rpx;
+  position: relative;
+  margin-bottom: 40rpx;
 }
 .panel .top .left.data-v-244819c1 {
-  width: 145rpx;
-  height: 145rpx;
-  margin-right: 27rpx;
-  border-radius: 145rpx;
+  position: absolute;
+  top: -50rpx;
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 100%;
   overflow: hidden;
+}
+.panel .top .right.data-v-244819c1 {
+  padding-top: 80rpx;
 }
 .top.data-v-244819c1,
 .last.data-v-244819c1 {

@@ -3,11 +3,11 @@
     <view class="_view data-v-84d90b16 input-group">
       <view class="_view data-v-84d90b16 input-row">
         <text class="_text data-v-84d90b16 title">邮箱：</text>
-        <input type="text" value="{{email}}" bindinput="handleProxy" placeholder="请输入邮箱" data-eventid="{{'U6u-0'}}" data-comkey="{{$k}}" class="_input data-v-84d90b16" />
+        <input type="text" value="{{email}}" bindinput="handleProxy" placeholder="请输入邮箱" data-eventid="{{'K8j-0'}}" data-comkey="{{$k}}" class="_input data-v-84d90b16" />
       </view>
     </view>
     <view class="_view data-v-84d90b16 btn-row">
-      <button type="primary" class="_button data-v-84d90b16 primary" bindtap="handleProxy" data-eventid="{{'CjR-1'}}" data-comkey="{{$k}}">提交</button>
+      <button type="primary" class="_button data-v-84d90b16 primary" bindtap="handleProxy" data-eventid="{{'Aa2-1'}}" data-comkey="{{$k}}">提交</button>
     </view>
   </view>
 </template>

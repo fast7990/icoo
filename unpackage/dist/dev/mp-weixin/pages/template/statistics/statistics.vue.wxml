@@ -1,14 +1,45 @@
 <import src="/components/segmented-control.vue.wxml" />
+<import src="/components/mpvue-echarts/src/echarts.vue.wxml" />
 <template name="848728ce">
   <view class="_view data-v-4867e919 page">
     <view class="_view data-v-4867e919 page-body uni-column">
       <view class="_view data-v-4867e919 page-section">
-        <template bindclickItem="handleProxy" data-eventid="{{'WFN-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'uaj-0'],$root}}" is="e68b757a"></template>
+        <template bindclickItem="handleProxy" data-eventid="{{'Fsp-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'tiW-0'],$root}}" is="e68b757a"></template>
       </view>
+      <view class="_view data-v-4867e919 page-section" style="height: 30rpx;background: #F7F7F7;"></view>
       <view class="_view data-v-4867e919 page-section content">
-        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 0 ? 'flex' : 'none') + ';')}}"> 1 </view>
-        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 1 ? 'flex' : 'none') + ';')}}"> 选项卡2的内容 </view>
-        <view class="_view data-v-4867e919 uni-column" style=" {{('display:' + (current === 2 ? 'flex' : 'none') + ';')}}"> 选项卡3的内容 </view>
+        <view class="_view data-v-4867e919 user-list panel uni-row">
+          <view class="_view data-v-4867e919 content">
+            <view class="_view data-v-4867e919 left uni-column">
+              <view class="_view data-v-4867e919">烟油消耗量
+                <text class="_text data-v-4867e919">     {{panel_list[current].tobacco_consume}}</text>
+              </view>
+              <view class="_view data-v-4867e919">减少焦油摄入
+                <text class="_text data-v-4867e919"> {{panel_list[current].tar_reduce}}</text>
+              </view>
+              <view class="_view data-v-4867e919">寿命延长时间
+                <text class="_text data-v-4867e919"> {{panel_list[current].life}}</text>
+              </view>
+            </view>
+            <view class="_view data-v-4867e919 right uni-column">
+              <text style="font-size: 66rpx;font-weight: bold;" class="_text data-v-4867e919">{{panel_list[current].has_mouth}}</text>
+              <text class="_text data-v-4867e919">再吸{{panel_list[current].need_mouth}}口即可获得今日奖励</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-4867e919 page-section uni-column boxline align-center" style="padding: 0;margin: 0;">
+        <view class="_view data-v-4867e919" style="width: 680rpx;height: 680rpx;position: relative;">
+          <view class="_view data-v-4867e919 canvasView" style=" {{('left:' + (current === 0 ? '0' : '-150%') + ';')}}">
+            <template canvasId="day" data="{{...$root['0'], ...$root[$kk+'yaw-1'],$root}}" is="61f08012"></template>
+          </view>
+          <view class="_view data-v-4867e919 canvasView" style=" {{('left:' + (current === 1 ? '0' : '-150%') + ';')}}">
+            <template canvasId="month" data="{{...$root['0'], ...$root[$kk+'rsI-2'],$root}}" is="61f08012"></template>
+          </view>
+          <view class="_view data-v-4867e919 canvasView" style=" {{('left:' + (current === 2 ? '0' : '-150%') + ';')}}">
+            <template canvasId="year" data="{{...$root['0'], ...$root[$kk+'0hb-3'],$root}}" is="61f08012"></template>
+          </view>
+        </view>
       </view>
     </view>
   </view>

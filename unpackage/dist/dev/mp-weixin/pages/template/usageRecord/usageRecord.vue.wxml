@@ -1,9 +1,9 @@
-<import src="/pages/components/mpvue-echarts/src/echarts.vue.wxml" />
+<import src="/components/mpvue-echarts/src/echarts.vue.wxml" />
 <template name="e998d6b6">
   <view class="_view data-v-bfa48fc2 page">
     <view class="_view data-v-bfa48fc2 page-section-tab" style=" {{('background:' + backgroundColor + ';')}}">
       <view class="_view data-v-bfa48fc2 tab {{[index == activeIndex ? 'tabActive' : '']}}" wx:key="item" key="{{item}}" wx:for="{{navList}}" wx:for-index="index" wx:for-item="item">
-        <text class="_text data-v-bfa48fc2 navigate" bindtap="handleProxy" daycolor="red" data-eventid="{{'qSg-0-'+index}}" data-comkey="{{$k}}">{{item.text}}</text>
+        <text class="_text data-v-bfa48fc2 navigate" bindtap="handleProxy" daycolor="red" data-eventid="{{'72I-0-'+index}}" data-comkey="{{$k}}">{{item.text}}</text>
       </view>
     </view>
     <view class="_view data-v-bfa48fc2 page-body bannder" style="height: 400rpx;flex-direction: column;align-items: center;justify-content: center; {{('background-color:' + backgroundColor + ';')}}">
@@ -56,13 +56,13 @@
     </view>
     <view class="_view data-v-bfa48fc2 canvasBox">
       <view class="_div data-v-bfa48fc2 canvasView {{barInitState == 'day' ? 'hidden' : 'day'}}">
-        <template canvasId="day" data="{{...$root['0'], ...$root[$kk+'R4x-0'],$root}}" is="b1e24c62"></template>
+        <template canvasId="day" data="{{...$root['0'], ...$root[$kk+'xc4-0'],$root}}" is="61f08012"></template>
       </view>
       <view class="_div data-v-bfa48fc2 canvasView {{barInitState == 'month' ? 'hidden' : 'month'}}">
-        <template canvasId="month" data="{{...$root['0'], ...$root[$kk+'bK1-1'],$root}}" is="b1e24c62"></template>
+        <template canvasId="month" data="{{...$root['0'], ...$root[$kk+'K8G-1'],$root}}" is="61f08012"></template>
       </view>
       <view class="_div data-v-bfa48fc2 canvasView {{barInitState == 'year' ? 'hidden' : 'year'}}">
-        <template canvasId="year" data="{{...$root['0'], ...$root[$kk+'oQu-2'],$root}}" is="b1e24c62"></template>
+        <template canvasId="year" data="{{...$root['0'], ...$root[$kk+'Tnw-2'],$root}}" is="61f08012"></template>
       </view>
     </view>
   </view>

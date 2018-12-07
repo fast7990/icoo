@@ -19,7 +19,7 @@ view.data-v-d168f606 {
 }
 .my-top.data-v-d168f606 {
   width: 630rpx;
-  padding: 50rpx 0 100rpx;
+  padding-top: 40rpx;
 }
 .user-card.data-v-d168f606 {
   position: relative;
@@ -28,17 +28,10 @@ view.data-v-d168f606 {
   justify-content: center;
   height: 95rpx;
   background: none;
+  padding: 30rpx 0;
 }
 .user-card .user-card-list.data-v-d168f606 {
-  position: absolute;
-  width: 620rpx;
-  border-radius: 25rpx;
-  box-shadow: 5rpx 5rpx 30rpx #CACACA;
-  top: -74rpx;
-  background: #FFFFFF;
-}
-.user-card-list.data-v-d168f606 {
-  padding: 20rpx 0;
+  width: 630rpx;
 }
 .user-card-list .list.data-v-d168f606 {
   -webkit-box-flex: 1;
@@ -58,6 +51,9 @@ view.data-v-d168f606 {
 .user-card-list .list.data-v-d168f606:nth-child(2) {
   border-left: solid 1rpx #5e9196;
   border-right: solid 1rpx #5e9196;
+}
+.user-card-list .list text.data-v-d168f606 {
+  color: #FFFFFF;
 }
 .user-card-list .list text.data-v-d168f606:nth-child(1) {
   font-size: 30rpx;

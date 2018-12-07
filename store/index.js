@@ -12,6 +12,10 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		userName: "",
 		userData: "",
+		userCode: "4a71e132d3e6423885afe0ea5dedaa3d", //用户码
+		token: "123", //标志
+		deviceCode: "", //设备码
+		deviceName: "" //设备名称
 	},
 	mutations: {
 		login(state, userName) {
@@ -24,6 +28,18 @@ const store = new Vuex.Store({
 		},
 		userData(state, value) {
 			state.userData = value;
+		},
+		userCode(state, value) {
+			state.userCode = value;
+		},
+		token(state, value) {
+			state.token = value;
+		},
+		deviceCode(state, value) {
+			state.deviceCode = value;
+		},
+		deviceName(state, value) {
+			state.deviceName = value;
 		}
 	}
 })

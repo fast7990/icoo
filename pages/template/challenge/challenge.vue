@@ -3,17 +3,12 @@
 		<view class="page-body uni-column">
 			<view class="page-section">
 				<view class="user-list panel uni-column">
-					<view class="top align-center">
+					<view class="top uni-column align-center">
 						<view class="left" style="">
 							<image :src="my_data.imgsrc" style="width: 100%;height: 100%;"></image>
 						</view>
-						<view class="right uni-column">
+						<view class="right uni-column align-center">
 							<text style="font-size: 26upx;">{{my_data.name}}</text>
-							<view>
-								<text style="font-size: 34upx;font-weight: bold;margin-right: 10upx;">{{my_data.result?'挑战成功':'挑战失败'}}</text>
-								<image src="../../../static/img/happy.png" style="width: 60upx;height: 60upx;" v-if="my_data.result"></image>
-								<image src="../../../static/img/unhappy.png" style="width: 60upx;height: 60upx;" v-else></image>
-							</view>
 							<text style="font-size: 24upx;">--每天吸爱氪电子烟{{my_data.koushu}}口</text>
 						</view>
 					</view>
@@ -85,11 +80,11 @@
 	}
 
 	.page-body {
-		padding: 10upx 30upx;
+		padding: 60upx 30upx 0;
 	}
 
 	text {
-		color: #FFFFFF;
+		color: #17393C;
 	}
 
 	.page-body,
@@ -98,20 +93,26 @@
 	}
 
 	.panel {
-		background: #17393c;
-		padding: 40upx 0;
+		background: #FFFFFF;
+		padding: 0 0 40upx;
 	}
 
 	.panel .top {
-		margin-bottom: 60upx;
+		position: relative;
+		margin-bottom: 40upx;
 	}
 
 	.panel .top .left {
-		width: 145upx;
-		height: 145upx;
-		margin-right: 27upx;
-		border-radius: 145upx;
+		position: absolute;
+		top: -50upx;
+		width: 124upx;
+		height: 124upx;
+		border-radius: 100%;
 		overflow: hidden;
+	}
+
+	.panel .top .right {
+		padding-top: 80upx;
 	}
 
 	.top,

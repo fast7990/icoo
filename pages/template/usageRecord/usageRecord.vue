@@ -71,7 +71,7 @@
 
 <script>
 	import * as echarts from '../../components/echarts/echarts.min.js';
-	import mpvueEcharts from '../../components/mpvue-echarts/src/echarts.vue';
+	import mpvueEcharts from '../../../components/mpvue-echarts/src/echarts.vue';
 	import {
 		IsDate
 	} from '../../../common/util.js';
@@ -100,7 +100,7 @@
 	let monthDataZoom = [{
 			show: false,
 			start: 0,
-			end: 50
+			end: 30
 		},
 		{
 			type: 'inside',

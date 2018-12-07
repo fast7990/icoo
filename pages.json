@@ -12,7 +12,7 @@
 		{
 			"path": "pages/tabBar/community/community",
 			"style": {
-				"navigationBarTitleText": "社区",
+				"navigationBarTitleText": "我的积分",
 				"navigationBarTextStyle": "black",
 				"navigationBarBackgroundColor": "#f6f6f6",
 				"enablePullDownRefresh": true
@@ -23,15 +23,14 @@
 			"style": {
 				"navigationBarTitleText": "发现",
 				"navigationBarTextStyle": "black",
-				"navigationBarBackgroundColor": "#f6f6f6",
-				"enablePullDownRefresh": true
+				"navigationBarBackgroundColor": "#f6f6f6"
 			}
 		},
 		{
 			"path": "pages/tabBar/my/my",
 			"style": {
 				"navigationBarTitleText": "个人中心",
-				"navigationBarBackgroundColor": "#326e73",
+				"navigationBarBackgroundColor": "#f6f6f6",
 				"enablePullDownRefresh": true
 			}
 		}
@@ -47,7 +46,7 @@
 			"selectedIconPath": "static/img/indexHL.png"
 		}, {
 			"pagePath": "pages/tabBar/community/community",
-			"text": "社区",
+			"text": "积分",
 			"iconPath": "static/img/community.png",
 			"selectedIconPath": "static/img/communityHL.png"
 		}, {
@@ -149,6 +148,11 @@
 			"path": "statistics/statistics",
 			"style": {
 				"navigationBarTitleText": "统计详情"
+			}
+		}, {
+			"path": "integralDetail/integralDetail",
+			"style": {
+				"navigationBarTitleText": "积分明细"
 			}
 		}]
 	}],

@@ -6,64 +6,60 @@ view.data-v-4867e919 {
   display: -webkit-flex;
   display: flex;
 }
+.page.data-v-4867e919 {
+  height: 100%;
+  background-color: #FFFFFF;
+}
 text.data-v-4867e919 {
   color: #17393C;
 }
-.page-body.data-v-4867e919 {
-  padding: 0 30rpx;
-}
-.page-body.data-v-4867e919,
 .page-section.data-v-4867e919 {
   box-sizing: border-box;
   background: #FFFFFF;
-}
-.page-section.data-v-4867e919:nth-child(1) {
-  margin-bottom: 20rpx;
+  padding: 0 30rpx;
 }
 .content>view.data-v-4867e919 {
   width: 100%;
 }
-.segmented-control {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  font-size: 26rpx;
-  border-radius: 12rpx;
-  box-sizing: border-box;
-  margin: 0 auto;
+.panel.data-v-4867e919 {
+  width: 680rpx;
+  height: 250rpx;
+  border-radius: 25rpx;
   overflow: hidden;
-  color: #17393C;
+  padding: 0;
+  box-shadow: none;
+  margin: 30rpx 0 70rpx;
+  background-image: url(https://www.icoo.tech/imgup/2018-12-07/201812070510509u6amx1a47x.jpg);
+  background-size: 100% 100%;
 }
-.segmented-control.button {
-  border: 1rpx solid;
+.panel .content.data-v-4867e919 {
+  width: 100%;
+  padding: 50rpx;
 }
-.segmented-control.text {
-  border: 0;
-  border-radius: 0rpx;
-}
-.segmented-control-item {
+.panel .left.data-v-4867e919,
+.panel .right.data-v-4867e919 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
+  color: #FFFFFF;
+  font-size: 22rpx;
+}
+.panel .right.data-v-4867e919 {
   text-align: center;
-  line-height: 70rpx;
-  box-sizing: border-box;
-  margin: 0 40rpx;
 }
-.segmented-control-item.button {
-  border-left: 1rpx solid;
+.panel .left.data-v-4867e919 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  font-size: 28rpx;
 }
-.segmented-control-item.text {
-  border-left: 0;
+.panel text.data-v-4867e919 {
+  color: #FFFFFF;
 }
-.segmented-control-item:first-child {
-  border-left-width: 0;
+.canvasView.data-v-4867e919 {
+  width: 680rpx;
+  height: 680rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
 }

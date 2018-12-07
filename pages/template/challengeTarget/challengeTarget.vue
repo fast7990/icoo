@@ -6,10 +6,12 @@
 					<view class="top">
 						<image src="../../../static/calendar.png" mode=""></image><text>&nbsp;目标完成天数</text>
 					</view>
-					<view class="content" style="justify-content: space-between;">
-						<view class="text" v-for="(item,indexs) in [7,21,30,60]" :key="indexs" :class="indexs==target_index?'bgactive':''"
-						 @tap="targetTime(indexs)">
-							<text style="font-size: 30upx;">{{item}}天</text>
+					<view class="content" style="justify-content: center;">
+						<view class="text uni-column align-center" v-for="(item,indexs) in complete_day" :key="indexs" @tap="targetTime(indexs)">
+							<view class="justify-center" style="width: 100%;height: 50%;" :class="indexs==target_index?'bgactive':''">
+								<text style="font-size: 26upx; width: 92%;border-bottom: 1upx solid #17393C;height: 62upx;">{{item.day}}天</text>
+							</view>
+							<text style="font-size: 24upx;">{{item.rate}}</text>
 						</view>
 					</view>
 				</view>
@@ -30,7 +32,7 @@
 			<view class="page-section">
 				<view class="user-list uni-column">
 					<view class="top">
-						<image src="../../../static/challengetarget.png" mode=""></image><text>&nbsp;挑战开始时间</text>
+						<image src="../../../static/clock.png" mode=""></image><text>&nbsp;挑战开始时间</text>
 					</view>
 					<view class="content">
 						<view style="justify-content: space-between;align-items: center;flex: 1;">
@@ -47,7 +49,7 @@
 				</view>
 			</view>
 			<view class="page-section justify-center align-center" style="margin-top: 80upx;">
-				<view class="btn" @tap="submit">确认</view>
+				<view class="btn" @tap="submit">确&nbsp;认</view>
 			</view>
 		</view>
 	</view>
@@ -67,7 +69,17 @@
 				time1: date1,
 				time2: date2,
 				startday_index: 0,
-				target_index: -1
+				target_index: -1,
+				complete_day: [{
+					day: 7,
+					rate: 1.05
+				}, {
+					day: 14,
+					rate: 1.05
+				}, {
+					day: 21,
+					rate: 1.05
+				}]
 			};
 		},
 		methods: {
@@ -78,7 +90,7 @@
 				console.log(i)
 				this.target_index = i;
 			},
-			submit(){
+			submit() {
 				uni.navigateTo({
 					url: '../challengeAward/challengeAward',
 					success: res => {},
@@ -101,6 +113,7 @@
 
 	text {
 		color: #17393C;
+		font-weight: bold;
 	}
 
 	.page-body {
@@ -132,16 +145,24 @@
 	}
 
 	.page-section:nth-child(1) .content>view {
-		width: 85upx;
-		height: 85upx;
+		width: 92upx;
+		height: 126upx;
+		margin: 0 30upx;
 		justify-content: center;
 		align-items: center;
 		border: 1upx solid #17393C;
-		border-radius: 100%;
+		border-radius: 5upx;
+	}
+
+	.page-section:nth-child(1) .content>view text {
+		text-align: center;
+		width: 100%;
+		height: 50%;
+		line-height: 63upx;
 	}
 
 	.user-list .content {
-		padding: 50upx;
+		padding: 40upx;
 	}
 
 	.content .start {
@@ -152,6 +173,7 @@
 	}
 
 	.bgactive {
+		color: #FFFFFF;
 		background: #17393C;
 	}
 
@@ -169,5 +191,6 @@
 		border-radius: 50upx;
 		font-size: 26upx;
 		padding: 15upx 120upx;
+		font-weight: bold;
 	}
 </style>

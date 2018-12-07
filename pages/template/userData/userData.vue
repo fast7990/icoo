@@ -2,12 +2,12 @@
 	<view class="page">
 		<view class="page-body uni-column">
 			<view class="page-section justify-center align-center" style="">
-				<view class="portrait">
+				<view class="portrait" @tap="chooseImage">
 					<view>
-						<image src="http://img3.imgtn.bdimg.com/it/u=466871861,443615080&fm=26&gp=0.jpg" mode=""></image>
+						<image :src="headerImageSrc" class="image" mode="aspectFit"></image>
 					</view>
 					<view>
-						<image src="../../../static/img/camera.png" mode=""></image>
+						<image src="../../../static/img/camera.png"></image>
 					</view>
 				</view>
 			</view>
@@ -44,12 +44,12 @@
 			const currentDate = this.getDate({
 				format: true
 			});
-
 			return {
 				index: 0,
 				array: ['男', '女'],
 				date: currentDate,
 				user_data: '',
+				headerImageSrc: 'http://img3.imgtn.bdimg.com/it/u=466871861,443615080&fm=26&gp=0.jpg',
 				util_list: [{
 					name: '昵称',
 					info: '编辑昵称',
@@ -85,14 +85,14 @@
 				return this.getDate('end');
 			}
 		},
+		onUnload() {
+			this.headerImageSrc = '';
+		},
 		onShow: function() {
 			let user_data = this.$store.state.userData;
 			if (Array.isArray(user_data)) {
 				this.setListData(user_data[0], user_data[1]);
 			}
-		},
-		created: function() {
-
 		},
 		methods: {
 			setListData(key, value) {
@@ -114,7 +114,7 @@
 					this.open(item.target);
 				}
 			},
-			open(type) {
+			open(type) { //打开
 				switch (type) {
 					case 'nickname':
 						this.target('datachecker', type, 'template');
@@ -161,6 +161,45 @@
 						console.log(res)
 					}
 				});
+			},
+			chooseImage: function() {
+				uni.chooseImage({
+					count: 1, //图片数量
+					sizeType: ['compressed'], //原图，缩略图['original', 'compressed']
+					sourceType: ['album'], //否 album 从相册选图，camera 使用相机，默认二者都有
+					success: (res) => {
+						console.log('chooseImage success, temp path is', res.tempFilePaths[0])
+						var imageSrc = res.tempFilePaths[0]
+						uni.uploadFile({
+							url: "https://www.icoo.tech/common/sysFile/testuploadimg",
+							filePath: imageSrc,
+							name: 'file',
+							success: (res) => {
+								console.log('uploadImage success, res is:', res)
+								uni.showToast({
+									title: '上传成功',
+									icon: 'success',
+									duration: 1000
+								})
+								this.headerImageSrc = imageSrc
+							},
+							fail: (err) => {
+								console.log('uploadImage fail', err);
+								uni.showModal({
+									content: err.errMsg,
+									showCancel: false
+								})
+							},
+							complete: () => {
+								console.log("complate")
+							}
+						})
+
+					},
+					fail: (err) => {
+						console.log('chooseImage fail', err)
+					}
+				})
 			}
 		},
 	}

@@ -1,13 +1,17 @@
 <template>
 	<view class="page">
 		<view class="page-body uni-column">
+			<view class="page-section" style="margin-bottom: 20upx;">
+				<view class="user-list" style="background: #17393C;">
+					<text style="color: #FFFFFF;font-size: 24upx;padding:10upx 30upx;">挑战金在目标成功后会退还。挑战金设置越高，挑战成功获得的奖励越大。</text>
+				</view>
+			</view>
 			<view class="page-section">
 				<view class="user-list uni-column">
-					<text style="color: red;font-size: 24upx;margin:10upx 30upx;">挑战金在目标成功后会退还。挑战金设置越高，挑战成功获得的奖励越大。</text>
 					<view class="box-list">
 						<view class="jifen-list align-center justify-center" :class="active_index==i?'bgactive':''" v-for="(item,i) in jifen_data"
 						 :key="i" @tap="chooseValue(i,item)" style="position: relative;">
-							<text style="font-size: 26upx;">{{item}}积分</text>
+							<text style="font-size: 26upx;font-weight:bold;">{{item}}积分</text>
 							<image v-show="active_index==i?true:false" src="../../../static/img/hot2.png" style="width: 40upx;height: 40upx;position: absolute;right: -15upx;top: -15upx;transform:rotate(20deg);"></image>
 						</view>
 					</view>
@@ -133,5 +137,6 @@
 		border-radius: 50upx;
 		font-size: 26upx;
 		padding: 15upx 120upx;
+		font-weight: bold;
 	}
 </style>

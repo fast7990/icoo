@@ -1,7 +1,7 @@
 <template name="f8fda9ea">
   <view class="_view data-v-36b9c0cb page">
     <view class="_view data-v-36b9c0cb page-body">
-      <view class="_view data-v-36b9c0cb mask" hidden="{{!(popupShowMask)}}" bindtap="handleProxy" data-eventid="{{'A1v-0'}}" data-comkey="{{$k}}"></view>
+      <view class="_view data-v-36b9c0cb mask" hidden="{{!(popupShowMask)}}" bindtap="handleProxy" data-eventid="{{'mRj-0'}}" data-comkey="{{$k}}"></view>
       <view class="_view data-v-36b9c0cb popup popup-top" hidden="{{!(popupShowState.top)}}">
         <text class="_text data-v-36b9c0cb">顶部 popup</text>
       </view>
@@ -14,20 +14,20 @@
       <view class="_view data-v-36b9c0cb section">
         <text class="_text data-v-36b9c0cb status">接收到消息：{{ jieshou }}</text>
       </view>
-      <input type="text" value="{{inputValue}}" bindinput="handleProxy" data-eventid="{{'16O-1'}}" data-comkey="{{$k}}" class="_input data-v-36b9c0cb" />
+      <input type="text" value="{{inputValue}}" bindinput="handleProxy" data-eventid="{{'aDP-1'}}" data-comkey="{{$k}}" class="_input data-v-36b9c0cb" />
       <view class="_view data-v-36b9c0cb btn-row">
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'NaA-2'}}" data-comkey="{{$k}}">初始化蓝牙</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'PY9-3'}}" data-comkey="{{$k}}">搜索周边设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'RQV-4'}}" data-comkey="{{$k}}">获取所有设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'rTh-5'}}" data-comkey="{{$k}}">监听发现设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'ylx-6'}}" data-comkey="{{$k}}">获取连接设备server</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'GXe-7'}}" data-comkey="{{$k}}">获取连接设备所有特征</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'XSc-8'}}" data-comkey="{{$k}}">发送数据</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'uJw-9'}}" data-comkey="{{$k}}">启用设备特征值变化时的notify</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'N1n-10'}}" data-comkey="{{$k}}">接收消息</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'AL5-11'}}" data-comkey="{{$k}}">本机蓝牙适配器状态</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'t4k-12'}}" data-comkey="{{$k}}">停止搜索周边设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'WsK-13'}}" data-comkey="{{$k}}">断开蓝牙连接</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'6MN-2'}}" data-comkey="{{$k}}">初始化蓝牙</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Q8K-3'}}" data-comkey="{{$k}}">搜索周边设备</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'4bp-4'}}" data-comkey="{{$k}}">获取所有设备</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'LEI-5'}}" data-comkey="{{$k}}">监听发现设备</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Jts-6'}}" data-comkey="{{$k}}">获取连接设备server</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'3gu-7'}}" data-comkey="{{$k}}">获取连接设备所有特征</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'N2Q-8'}}" data-comkey="{{$k}}">发送数据</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'rVv-9'}}" data-comkey="{{$k}}">启用设备特征值变化时的notify</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'KQ1-10'}}" data-comkey="{{$k}}">接收消息</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'SKu-11'}}" data-comkey="{{$k}}">本机蓝牙适配器状态</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'qt5-12'}}" data-comkey="{{$k}}">停止搜索周边设备</button>
+        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Ihf-13'}}" data-comkey="{{$k}}">断开蓝牙连接</button>
       </view>
     </view>
     <view class="_view data-v-36b9c0cb venues_list">
@@ -38,7 +38,7 @@
           <text class="_text data-v-36b9c0cb status">连接状态:{{connectedDeviceId == item.deviceId?"已连接":"未连接"}}</text>
           <view class="_view data-v-36b9c0cb section"></view>
           <view class="_view data-v-36b9c0cb section">
-            <button type="warn" class="_button data-v-36b9c0cb button" id="{{item.deviceId}}" bindtap="handleProxy" data-eventid="{{'n2C-14-'+index}}" data-comkey="{{$k}}">连接</button>
+            <button type="warn" class="_button data-v-36b9c0cb button" id="{{item.deviceId}}" bindtap="handleProxy" data-eventid="{{'zbM-14-'+index}}" data-comkey="{{$k}}">连接</button>
           </view>
         </view>
       </block>

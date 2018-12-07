@@ -24,8 +24,7 @@
               </view>
             </view>
             <view class="_view data-v-a02efd32" style="flex: 3;align-items: center;">
-              <text style="font-size: 56rpx;font-weight: bold;" class="_text data-v-a02efd32">{{my_data.koushu}}</text>
-              <text style="font-size: 22rpx;margin-top: 35rpx;" class="_text data-v-a02efd32">口</text>
+              <text style="font-size: 68rpx;font-weight: bold;" class="_text data-v-a02efd32">{{my_data.koushu}}</text>
             </view>
           </view>
           <view class="_view data-v-a02efd32 user-list-right uni-column" style="flex: 1;align-items: center;">
@@ -54,8 +53,7 @@
               <text style="font-size: 24rpx;" class="_text data-v-a02efd32">{{item.name}}</text>
             </view>
             <view class="_view data-v-a02efd32 align-center" style="flex: 5;">
-              <text style="font-size: 28rpx;font-weight: bold;color: #17393c;" class="_text data-v-a02efd32">{{item.koushu}}</text>
-              <text style="font-size: 22rpx;margin-top: 16rpx;color: #17393c;" class="_text data-v-a02efd32">口</text>
+              <text style="font-size: 32rpx;font-weight: bold;color: #17393c;" class="_text data-v-a02efd32">{{item.koushu}}</text>
             </view>
             <view class="_view data-v-a02efd32 user-list-right uni-column" style="flex: 2;align-items: center;">
               <image src="../../../static/img/dianzan.png" class="_image data-v-a02efd32"></image>

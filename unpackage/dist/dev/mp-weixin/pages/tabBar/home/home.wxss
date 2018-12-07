@@ -17,6 +17,17 @@ view.data-v-1e6165c6 {
   -webkit-justify-content: center;
   justify-content: center;
 }
+.topinfo.data-v-1e6165c6 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #3d5658;
+  padding-bottom: 20rpx;
+}
+.topinfo text.data-v-1e6165c6 {
+  font-size: 22rpx;
+  color: #FFFFFF;
+}
 .canvasView.data-v-1e6165c6 {
   width: 500rpx;
   height: 480rpx;

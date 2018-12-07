@@ -8,10 +8,12 @@
             <image src="../../../static/calendar.png" mode class="_image data-v-8b0288ba"></image>
             <text class="_text data-v-8b0288ba"> 目标完成天数</text>
           </view>
-          <view class="_view data-v-8b0288ba content" style="justify-content: space-between;">
-            <view class="_view data-v-8b0288ba text {{indexs == target_index ? 'bgactive' : ''}}" wx:key="indexs" key="{{indexs}}" bindtap="handleProxy" data-eventid="{{'4xZ-0-'+indexs}}" data-comkey="{{$k}}" wx:for="{{[7,21,30,60]}}" wx:for-index="indexs"
-              wx:for-item="item">
-              <text style="font-size: 30rpx;" class="_text data-v-8b0288ba">{{item}}天</text>
+          <view class="_view data-v-8b0288ba content" style="justify-content: center;">
+            <view class="_view data-v-8b0288ba text uni-column align-center" wx:key="indexs" key="{{indexs}}" bindtap="handleProxy" data-eventid="{{'fSf-0-'+indexs}}" data-comkey="{{$k}}" wx:for="{{complete_day}}" wx:for-index="indexs" wx:for-item="item">
+              <view class="_view data-v-8b0288ba justify-center {{indexs == target_index ? 'bgactive' : ''}}" style="width: 100%;height: 50%;">
+                <text style="font-size: 26rpx; width: 92%;border-bottom: 1rpx solid #17393C;height: 62rpx;" class="_text data-v-8b0288ba">{{item.day}}天</text>
+              </view>
+              <text style="font-size: 24rpx;" class="_text data-v-8b0288ba">{{item.rate}}</text>
             </view>
           </view>
         </view>
@@ -25,7 +27,7 @@
           <view class="_view data-v-8b0288ba content">
             <view style="justify-content: space-between;align-items: center;flex: 1;" class="_view data-v-8b0288ba">
               <text class="_text data-v-8b0288ba">每天吸烟口数</text>
-              <template bindupdate="handleProxy" min="0" data-eventid="{{'cGR-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'778-0'],$root}}" is="8086e314"></template>
+              <template bindupdate="handleProxy" min="0" data-eventid="{{'J04-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'IEV-0'],$root}}" is="8086e314"></template>
             </view>
           </view>
         </view>
@@ -33,16 +35,16 @@
       <view class="_view data-v-8b0288ba page-section">
         <view class="_view data-v-8b0288ba user-list uni-column">
           <view class="_view data-v-8b0288ba top">
-            <image src="../../../static/challengetarget.png" mode class="_image data-v-8b0288ba"></image>
+            <image src="../../../static/clock.png" mode class="_image data-v-8b0288ba"></image>
             <text class="_text data-v-8b0288ba"> 挑战开始时间</text>
           </view>
           <view class="_view data-v-8b0288ba content">
             <view style="justify-content: space-between;align-items: center;flex: 1;" class="_view data-v-8b0288ba">
-              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 1 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'8tG-2'}}" data-comkey="{{$k}}">
+              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 1 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'Itk-2'}}" data-comkey="{{$k}}">
                 <text class="_text data-v-8b0288ba">今天</text>
                 <text class="_text data-v-8b0288ba">({{time1}})</text>
               </view>
-              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 2 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'Lpu-3'}}" data-comkey="{{$k}}">
+              <view class="_view data-v-8b0288ba start uni-column {{startday_index == 2 ? 'bgactive' : ''}}" bindtap="handleProxy" data-eventid="{{'XX5-3'}}" data-comkey="{{$k}}">
                 <text class="_text data-v-8b0288ba">明天</text>
                 <text class="_text data-v-8b0288ba">({{time2}})</text>
               </view>
@@ -51,7 +53,7 @@
         </view>
       </view>
       <view class="_view data-v-8b0288ba page-section justify-center align-center" style="margin-top: 80rpx;">
-        <view class="_view data-v-8b0288ba btn" bindtap="handleProxy" data-eventid="{{'GyE-4'}}" data-comkey="{{$k}}">确认</view>
+        <view class="_view data-v-8b0288ba btn" bindtap="handleProxy" data-eventid="{{'Dx0-4'}}" data-comkey="{{$k}}">确 认</view>
       </view>
     </view>
   </view>

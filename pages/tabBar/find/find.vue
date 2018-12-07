@@ -1,19 +1,35 @@
 <template>
 	<view class="page">
-		<view class="page-body">
-			<view class="page-section uni-column">
-				<view class="title">
-					<text style="font-size: 36upx;">健康挑战生活</text>
+		<view class="page-body uni-column">
+			<view class="page-section" style="margin: 20upx 0;">
+				<view  style="overflow: hidden;height: 300upx;width: 100%;border-radius:25upx;">
+					<image :src="topimgsrc" style="wi"></image>
 				</view>
-				<view class="challenge uni-column">
+			</view>
+			<view class="page-section">
+				<scroll-view class="scroll-view_H" scroll-x="true">
+					<view class="scroll-view-item_H">
+						<image :src="topimgsrc" mode=""></image>
+					</view>
+					<view class="scroll-view-item_H">
+						<image :src="topimgsrc" mode=""></image>
+					</view>
+					<view class="scroll-view-item_H">
+						<image :src="topimgsrc" mode=""></image>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="page-section uni-column">
+				<view class="title" style="margin-top: 20upx;">
+					<text style="font-size: 36upx;font-weight: bold;">健康挑战生活</text>
+				</view>
+				<view class="challenge">
 					<view class="list" v-for="(item,index) in challenge_list" :key="index" @tap="target('challengeTarget')">
-						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543988583531&di=ec34da9f255c95734f6437c03535574a&imgtype=0&src=http%3A%2F%2Fimg95.699pic.com%2Fphoto%2F50062%2F2841.jpg_wh300.jpg"
-						 mode=""></image>
-						<view class="text align-center">
-							<text>距离时间结束还有：{{item.endtime}}</text>
-							<view class="align-center">
-								<image src="../../../static/img/hot.png" mode=""></image><text style="color: red;">&nbsp;&nbsp;{{item.hotnum}}</text>
-							</view>
+						<view class="left" style="flex: 3;overflow: hidden;">
+							<image src="" mode=""></image>
+						</view>
+						<view class="right uni-column" style="flex: 4;">
+							
 						</view>
 					</view>
 				</view>
@@ -26,10 +42,8 @@
 	export default {
 		data() {
 			return {
+				topimgsrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544184555700&di=74a6a15fc5d32a9da10841030b2d6572&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F018d2b57b19c780000018c1bac947f.jpg%402o.jpg',
 				challenge_list: [{
-					endtime: '2天6小时',
-					hotnum: '2.3w'
-				}, {
 					endtime: '2天6小时',
 					hotnum: '2.3w'
 				}]
@@ -92,6 +106,24 @@
 		color: #17393c;
 	}
 
+	.scroll-view_H {
+		white-space: nowrap;
+		width: 100%;
+	}
+
+	.scroll-view-item_H {
+		display: inline-block;
+		width: 300upx;
+		height: 160upx;
+		border-radius: 25upx;
+		overflow: hidden;
+		margin-right: 20upx;
+	}
+
+	.scroll-view-item_H image {
+		
+	}
+
 	.content>view {
 		width: 100%;
 	}
@@ -100,7 +132,7 @@
 		position: relative;
 		width: 100%;
 		height: 280upx;
-		border-radius: 20upx;
+		border-radius: 25upx;
 		margin-bottom: 30upx;
 		overflow: hidden;
 	}
@@ -122,13 +154,4 @@
 		bottom: 0;
 	}
 
-	.challenge .list .text text {
-		font-size: 22upx;
-		line-height: 56upx;
-	}
-
-	.challenge .list .text image {
-		width: 24upx;
-		height: 27upx;
-	}
 </style>

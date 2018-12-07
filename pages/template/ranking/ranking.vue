@@ -28,8 +28,7 @@
 							</view>
 						</view>
 						<view class="" style="flex: 3;align-items: center;">
-							<text style="font-size: 56upx;font-weight: bold;">{{my_data.koushu}}</text>
-							<text style="font-size: 22upx;margin-top: 35upx;">口</text>
+							<text style="font-size: 68upx;font-weight: bold;">{{my_data.koushu}}</text>
 						</view>
 					</view>
 					<view class="user-list-right uni-column" style="flex: 1;align-items: center;">
@@ -60,8 +59,7 @@
 							<text style="font-size: 24upx;">{{item.name}}</text>
 						</view>
 						<view class="align-center" style="flex: 5;">
-							<text style="font-size: 28upx;font-weight: bold;color: #17393c;">{{item.koushu}}</text>
-							<text style="font-size: 22upx;margin-top: 16upx;color: #17393c;">口</text>
+							<text style="font-size: 32upx;font-weight: bold;color: #17393c;">{{item.koushu}}</text>
 						</view>
 						<view class="user-list-right uni-column" style="flex: 2;align-items: center;">
 							<image src="../../../static/img/dianzan.png"></image>
@@ -100,7 +98,7 @@
 					koushu: 10,
 					like_num: 100
 				}, {
-					mingci: 2,
+					mingci: 3,
 					imgsrc: 'http://img4.imgtn.bdimg.com/it/u=1500340397,2782091651&fm=26&gp=0.jpg',
 					name: '加上快递回',
 					koushu: 10,

@@ -1,26 +1,28 @@
 <template>
 	<view class="page">
 		<view class="page-body uni-column">
-			<view class="page-section align-center justify-center" style="background: #326e73;margin-bottom: 0upx;">
-				<view class="my-top action-row">
-					<view class="left align-center" style="flex: 3;justify-content: flex-start;">
-						<view style="width: 120upx;height: 120upx;border-radius: 120upx;overflow: hidden;">
-							<image :src="my_data.imgsrc" style="width: 100%;height: 100%;"></image>
+			<view class="page-section" style="padding: 10upx 30upx 20upx;">
+				<view class="user-list align-center justify-center uni-column" style="background: #17393c;">
+					<view class="my-top action-row" @tap="target('userData')">
+						<view class="left align-center" style="flex: 4;justify-content: flex-start;padding-left: 50upx;">
+							<view style="width: 120upx;height: 120upx;border-radius: 120upx;overflow: hidden;">
+								<image :src="my_data.imgsrc" style="width: 100%;height: 100%;"></image>
+							</view>
+							<view class="name">
+								<text style="font-size: 30upx;margin-left: 10upx;color: #FFFFFF;">&nbsp;&nbsp;{{my_data.name}}</text>
+							</view>
 						</view>
-						<view class="name">
-							<text style="font-size: 28upx;margin-left: 10upx;color: #FFFFFF;">{{my_data.name}}</text>
+						<view class="right align-center" style="flex: 1;justify-content: flex-end;">
+							<!-- <image src="../../../static/img/more1.png" mode="" style="width: 17upx;height: 24upx;"></image> -->
 						</view>
 					</view>
-					<view class="right align-center" style="flex: 1;justify-content: flex-end;">
-						<image src="../../../static/img/more1.png" mode="" style="width: 17upx;height: 24upx;"></image>
-					</view>
-				</view>
-			</view>
-			<view class="user-card">
-				<view class="user-card-list">
-					<view class="list" v-for="(item,index) in user_atten_list" :key="index">
-						<text>{{item.value}}</text>
-						<text>{{item.name}}</text>
+					<view class="user-card">
+						<view class="user-card-list">
+							<view class="list" v-for="(item,index) in user_atten_list" :key="index">
+								<text>{{item.value}}</text>
+								<text>{{item.name}}</text>
+							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -52,7 +54,6 @@
 								<view class="box justify-center align-center" :class="(item.state?'box-active':'')||(item.day==today?'box-now':'')"
 								 style="position: relative;">
 									<text>{{item.day}}</text>
-									<image src="../../../static/img/gift02.png" v-if="index==sign_list.length-1"></image>
 								</view>
 								<view class="">
 									<text>
@@ -66,7 +67,7 @@
 			</view>
 			<view class="page-section uni-column">
 				<view class="util-list justify-center" hover-class="uni-list-cell-hover" v-for="(item,index) in util_list" :key="index">
-					<view class="list uni-row" :class="index==util_list.length-1?'uni-border-none':''" @tap="openList">
+					<view class="list uni-row" :class="index==util_list.length-1?'uni-border-none':''" @tap="target(item.target)">
 						<view class="" style="flex: 1;">
 							<image :src="item.imgsrc" mode=""></image>
 						</view>
@@ -163,7 +164,7 @@
 						state: false
 					}, {
 						day: 7,
-						integral: '九折',
+						integral: '+30',
 						state: false
 					}
 				],
@@ -187,6 +188,11 @@
 					name: '关于',
 					info: '',
 					target: '',
+				}, {
+					imgsrc: '../../../static/img/guanyu.png',
+					name: '健康挑战',
+					info: '',
+					target: 'challenge',
 				}]
 			}
 		},
@@ -194,9 +200,6 @@
 
 		},
 		methods: {
-			openList() {
-
-			},
 			target(tag) {
 				if (tag == '') {
 					return;
@@ -233,7 +236,7 @@
 
 	.my-top {
 		width: 630upx;
-		padding: 50upx 0 100upx;
+		padding-top: 40upx;
 	}
 
 	.user-card {
@@ -241,20 +244,13 @@
 		justify-content: center;
 		height: 95upx;
 		background: none;
+		padding: 30upx 0;
 	}
 
 	.user-card .user-card-list {
-		position: absolute;
-		width: 620upx;
-		border-radius: 25upx;
-		box-shadow: 5upx 5upx 30upx #CACACA;
-		top: -74upx;
-		background: #FFFFFF;
+		width: 630upx;
 	}
 
-	.user-card-list {
-		padding: 20upx 0;
-	}
 
 	.user-card-list .list {
 		flex: 1;
@@ -269,7 +265,7 @@
 	}
 
 	.user-card-list .list text {
-		
+		color: #FFFFFF;
 	}
 
 	.user-card-list .list text:nth-child(1) {

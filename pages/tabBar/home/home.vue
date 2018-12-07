@@ -2,42 +2,43 @@
 	<view class="page">
 		<view class="page-body uni-column">
 			<view class="page-section" style="margin-top: 15upx;">
-				<view class="user-list yibiao" style="align-items: center;justify-content: center;">
-					<view class="yibiao-box">
-						<view class="box neiceng">
-							<image src="../../../static/img/neiceng.png" mode=""></image>
-						</view>
-						<view class="box waiceng" id="wai1" :style="{transform:rotate_wai1}">
-							<image src="../../../static/img/wai.png" mode=""></image>
-						</view>
-						<view class="box waiceng" id="wai2" :style="{transform:rotate_wai2}">
-							<image src="../../../static/img/wai.png" mode=""></image>
-						</view>
-						<view class="box waiceng" id="wai3" :style="{transform:rotate_wai3}">
-							<image src="../../../static/img/wai.png" mode=""></image>
-						</view>
+				<view class="user-list uni-column" style="background: #17393C;">
+					<view class="uni-row topinfo">
+						<text>当前爱氪世界总人口数：{{all_people}}</text>
+						<text>您是第{{you_ranking}}位居民</text>
 					</view>
-					<view class="box uni-column align-center" style="padding-top: 120upx;height: auto;">
-						<text class="box-text" style="font-size: 22upx;">吸烟口数</text>
-						<text class="box-text" style="font-size: 58upx;">{{dashboardValue}}</text>
-						<text class="box-text" style="line-height: 44upx;background: #7aff70;border-radius: 10upx;padding: 0 14upx;font-size: 22upx;color: #131313;">可以接着抽</text>
-						<text class="box-text" style="font-size: 22upx;margin-top: 50upx;">轻度抽烟可以愉悦身心，健康无害</text>
-						<text class="box-text" style="font-size: 24upx;padding: 0 40upx;border-radius:20upx;line-height: 48upx;background: #ff7800;margin: 20upx 0 10upx"
-						 @tap="target('checkIn')">领取奖励</text>
-						<text class="box-text" style="font-size: 20upx;">还差34口即可领取今日奖励</text>
+					<view class="yibiao" style="align-items: center;justify-content: center;">
+						<view class="yibiao-box">
+							<view class="box neiceng">
+								<image src="../../../static/img/neiceng.png" mode=""></image>
+							</view>
+							<view class="box waiceng" id="wai1" :style="{transform:rotate_wai1}">
+								<image src="../../../static/img/wai.png" mode=""></image>
+							</view>
+							<view class="box waiceng" id="wai2" :style="{transform:rotate_wai2}">
+								<image src="../../../static/img/wai.png" mode=""></image>
+							</view>
+							<view class="box waiceng" id="wai3" :style="{transform:rotate_wai3}">
+								<image src="../../../static/img/wai.png" mode=""></image>
+							</view>
+						</view>
+						<view class="box uni-column align-center" style="padding-top: 120upx;height: auto;">
+							<text class="box-text" style="font-size: 22upx;">吸烟口数</text>
+							<text class="box-text" style="font-size: 58upx;">{{dashboardValue}}</text>
+							<text class="box-text" style="line-height: 44upx;background: #7aff70;border-radius: 10upx;padding: 0 14upx;font-size: 22upx;color: #131313;">可以接着抽</text>
+							<text class="box-text" style="font-size: 22upx;margin-top: 50upx;">轻度抽烟可以愉悦身心，健康无害</text>
+							<text class="box-text" style="font-size: 24upx;padding: 0 40upx;border-radius:20upx;line-height: 48upx;background: #ff7800;margin: 20upx 0 10upx"
+							 @tap="target('checkIn')">领取奖励</text>
+							<text class="box-text" style="font-size: 20upx;">还差34口即可领取今日奖励</text>
+						</view>
 					</view>
 				</view>
-
 			</view>
-			<!-- 			<view class="page-section">
-				<input type="text" value="" v-model="dashboardValue" />
-				<button type="primary" @tap="initDashboard">数值</button>
-			</view> -->
 			<view class="page-section">
 				<view class="user-list">
 					<view class="list0 action-row" @tap="openBluetooth">
 						<view class="user-list-left" style="flex: 1;">
-							<image src="../../../static/img/bangding.png"></image>
+							<image src="../../../static/img/bluetooth1.png" style="width: 32upx;height: 40upx;"></image>
 						</view>
 						<view class="user-list-center uni-column" style="flex: 6;">
 							<view>
@@ -58,12 +59,37 @@
 				</view>
 			</view>
 			<view class="page-section">
+				<view class="user-list">
+					<view class="list0 action-row" @tap="target('invitedFriend')">
+						<view class="user-list-left" style="flex: 1;">
+							<image src="../../../static/img/paihang.png"></image>
+						</view>
+						<view class="user-list-center uni-column" style="flex: 6;">
+							<view>
+								<text class="user-list-text-h2" style="font-weight: bold;">
+									邀请好友共享健康
+								</text>
+							</view>
+						</view>
+						<view class="user-list-right uni-column" style="flex: 1;align-items: center;">
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="page-section">
+				<view class="user-list">
+					<text style="flex: 8;font-size: 28upx;font-weight: bold;">设备名称：hhhgs</text>
+					<view style="flex: 1;border-left:1upx solid #d3d3d3;"></view>
+					<text style="flex: 6;font-size: 28upx;font-weight: bold;">设备电量：78%</text>
+				</view>
+			</view>
+			<view class="page-section">
 				<view class="user-list uni-column">
 					<view class="list0">
 						<view class="user-list-center uni-column">
 							<view>
-								<text class="user-list-text-h2">
-									消耗油烟{{list_data.lampblack_num}}
+								<text class="user-list-text-h2" style="font-weight: bold;">
+									消耗油烟&nbsp;{{list_data.lampblack_num}}
 								</text>
 							</view>
 							<view>
@@ -77,8 +103,8 @@
 					<view class="list0">
 						<view class="user-list-center uni-column">
 							<view>
-								<text class="user-list-text-h2">
-									寿命延长{{list_data.life_num}}小时
+								<text class="user-list-text-h2" style="font-weight: bold;">
+									寿命延长&nbsp;{{list_data.life_num}}
 								</text>
 							</view>
 							<view>
@@ -98,13 +124,8 @@
 						</view>
 						<view class="user-list-center uni-column" style="flex: 6;">
 							<view>
-								<text class="user-list-text-h2">
-									健康风云榜排行{{list_data.health_ranking}}
-								</text>
-							</view>
-							<view>
-								<text class="user-list-text-h4">
-									我的当前排名{{list_data.health_ranking_num}}
+								<text class="user-list-text-h2" style="font-weight: bold;">
+									健康排行榜&nbsp;{{list_data.health_ranking}}名
 								</text>
 							</view>
 						</view>
@@ -117,10 +138,8 @@
 					</view>
 				</view>
 			</view>
-			<view class="page-section">
-				<view class="user-text">
-					<text class="text-h1">健康生活</text>
-				</view>
+			<view class="page-section" style="margin: 0;justify-content: flex-start;">
+				<text class="text-h1" style="font-size: 36upx;font-weight: bold;">icoo爱氪生活</text>
 			</view>
 			<view class="page-section">
 				<view class="user-list uni-column">
@@ -151,8 +170,6 @@
 
 <script>
 	import uniIcon from "../../components/uni-icon.vue";
-	import * as echarts from '../../components/echarts/echarts.min.js';
-	import mpvueEcharts from '../../components/mpvue-echarts/src/echarts.vue';
 
 	function getBarOption(xAxisData, DataZoom, seriesData) {
 		return {
@@ -205,6 +222,8 @@
 		data() {
 			return {
 				title: '蓝牙',
+				all_people: 2000,
+				you_ranking: 1550,
 				rotate_wai1: 'rotate(-108deg)',
 				rotate_wai2: 'rotate(-108deg)',
 				rotate_wai3: 'rotate(-108deg)',
@@ -230,10 +249,26 @@
 		created() {
 			this.initDashboard();
 		},
+		onLoad() {
+			this.getApiData();
+		},
 		onPullDownRefresh: function() {
+			this.getApiData()
 			console.log('onPullDownRefresh');
 		},
 		methods: {
+			getApiData() {
+				this.$api.statisticsUserPuffs({
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token,
+					type: 1
+				}, function(res) {
+					uni.stopPullDownRefresh();
+					console.log(res)
+				}, function(err) {
+					uni.stopPullDownRefresh();
+				});
+			},
 			openBluetooth(e) {
 				uni.navigateTo({
 					url: '../../API/get-bluetooth-tool/get-bluetooth-tool'
@@ -263,12 +298,11 @@
 					this.rotate_wai2 = 'rotate(69deg)';
 					this.rotate_wai3 = 'rotate(' + rotate + 'deg)';
 				}
-				console.log(rotate);
+				// console.log(rotate);
 			}
 		},
 		components: {
-			uniIcon,
-			mpvueEcharts
+			uniIcon
 		}
 	}
 </script>
@@ -288,6 +322,17 @@
 		box-sizing: border-box;
 		margin-bottom: 30upx;
 		justify-content: center;
+	}
+
+	.topinfo {
+		justify-content: space-between;
+		border-bottom: 1upx solid #3d5658;
+		padding-bottom: 20upx;
+	}
+
+	.topinfo text {
+		font-size: 22upx;
+		color: #FFFFFF;
 	}
 
 	.canvasView {

@@ -3,7 +3,7 @@
     <view class="_view data-v-5ed63395 page-body uni-column">
       <view class="_view data-v-5ed63395 page-section" style="background: #17393c;">
         <view class="_view data-v-5ed63395 tabs" style="flex: 1;flex-wrap: wrap;justify-content: center;">
-          <view class="_view data-v-5ed63395 checkin-tab uni-column" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'0ic-0-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-5ed63395 checkin-tab uni-column" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'kN4-0-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
             <view class="_view data-v-5ed63395 label-view">
               <image src="{{'../../../static/img/'+item.imgname+'.png'}}" wx:if="{{item.state}}" class="_image data-v-5ed63395"></image>
               <image src="{{'../../../static/img/'+item.imgname+'-1.png'}}" wx:else class="_image data-v-5ed63395"></image>
@@ -40,7 +40,7 @@
           </view>
         </view>
         <view class="_view data-v-5ed63395 uni-row" style="padding: 72rpx 0 126rpx;">
-          <button type="primary" class="_button data-v-5ed63395 user-btn {{get_reward ? 'btn-active' : ''}}" bindtap="handleProxy" data-eventid="{{'atr-1'}}" data-comkey="{{$k}}">{{get_reward?'已领取':'领取奖励'}}</button>
+          <button type="primary" class="_button data-v-5ed63395 user-btn {{get_reward ? 'btn-active' : ''}}" bindtap="handleProxy" data-eventid="{{'J4L-1'}}" data-comkey="{{$k}}">{{get_reward?'已领取':'领取奖励'}}</button>
         </view>
         <view class="_view data-v-5ed63395 uni-row justify-center">
           <navigator url style="color:#183b3e;font-size: 24rpx;align-items: center;" class="_navigator data-v-5ed63395">查看规则说明

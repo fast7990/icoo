@@ -1,32 +1,32 @@
 <template name="7706f27d">
   <view class="_view data-v-d168f606 page">
     <view class="_view data-v-d168f606 page-body uni-column">
-      <view class="_view data-v-d168f606 page-section align-center justify-center" style="background: #326e73;margin-bottom: 0rpx;">
-        <view class="_view data-v-d168f606 my-top action-row">
-          <view class="_view data-v-d168f606 left align-center" style="flex: 3;justify-content: flex-start;">
-            <view style="width: 120rpx;height: 120rpx;border-radius: 120rpx;overflow: hidden;" class="_view data-v-d168f606">
-              <image src="{{my_data.imgsrc}}" style="width: 100%;height: 100%;" class="_image data-v-d168f606"></image>
+      <view class="_view data-v-d168f606 page-section" style="padding: 10rpx 30rpx 20rpx;">
+        <view class="_view data-v-d168f606 user-list align-center justify-center uni-column" style="background: #17393c;">
+          <view class="_view data-v-d168f606 my-top action-row" bindtap="handleProxy" data-eventid="{{'3M1-0'}}" data-comkey="{{$k}}">
+            <view class="_view data-v-d168f606 left align-center" style="flex: 4;justify-content: flex-start;padding-left: 50rpx;">
+              <view style="width: 120rpx;height: 120rpx;border-radius: 120rpx;overflow: hidden;" class="_view data-v-d168f606">
+                <image src="{{my_data.imgsrc}}" style="width: 100%;height: 100%;" class="_image data-v-d168f606"></image>
+              </view>
+              <view class="_view data-v-d168f606 name">
+                <text style="font-size: 30rpx;margin-left: 10rpx;color: #FFFFFF;" class="_text data-v-d168f606">  {{my_data.name}}</text>
+              </view>
             </view>
-            <view class="_view data-v-d168f606 name">
-              <text style="font-size: 28rpx;margin-left: 10rpx;color: #FFFFFF;" class="_text data-v-d168f606">{{my_data.name}}</text>
+            <view class="_view data-v-d168f606 right align-center" style="flex: 1;justify-content: flex-end;"></view>
+          </view>
+          <view class="_view data-v-d168f606 user-card">
+            <view class="_view data-v-d168f606 user-card-list">
+              <view class="_view data-v-d168f606 list" wx:key="index" key="{{index}}" wx:for="{{user_atten_list}}" wx:for-index="index" wx:for-item="item">
+                <text class="_text data-v-d168f606">{{item.value}}</text>
+                <text class="_text data-v-d168f606">{{item.name}}</text>
+              </view>
             </view>
-          </view>
-          <view class="_view data-v-d168f606 right align-center" style="flex: 1;justify-content: flex-end;">
-            <image src="../../../static/img/more1.png" mode style="width: 17rpx;height: 24rpx;" class="_image data-v-d168f606"></image>
-          </view>
-        </view>
-      </view>
-      <view class="_view data-v-d168f606 user-card">
-        <view class="_view data-v-d168f606 user-card-list">
-          <view class="_view data-v-d168f606 list" wx:key="index" key="{{index}}" wx:for="{{user_atten_list}}" wx:for-index="index" wx:for-item="item">
-            <text class="_text data-v-d168f606">{{item.value}}</text>
-            <text class="_text data-v-d168f606">{{item.name}}</text>
           </view>
         </view>
       </view>
       <view class="_view data-v-d168f606 page-section justify-center">
         <view class="_view data-v-d168f606 tabr action-row">
-          <view class="_view data-v-d168f606 list" wx:key="index" key="{{index}}" hover-class="uni-list-cell-hover" bindtap="handleProxy" data-eventid="{{'gyf-0-'+index}}" data-comkey="{{$k}}" wx:for="{{tabr_list}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-d168f606 list" wx:key="index" key="{{index}}" hover-class="uni-list-cell-hover" bindtap="handleProxy" data-eventid="{{'v8v-1-'+index}}" data-comkey="{{$k}}" wx:for="{{tabr_list}}" wx:for-index="index" wx:for-item="item">
             <image src="{{item.icon_src}}" mode class="_image data-v-d168f606"></image>
             <text class="_text data-v-d168f606">{{item.name}}</text>
           </view>
@@ -40,7 +40,7 @@
               <text style="font-size: 24rpx;" class="_text data-v-d168f606">连续签到一周，可获得9折券</text>
             </view>
             <view class="_view data-v-d168f606 align-center" style="justify-content: flex-end;flex: 1;">
-              <text style="font-size: 26rpx;line-height: 52rpx;padding: 0 40rpx;border-radius: 40rpx;border:1rpx solid #17393c;" bindtap="handleProxy" data-eventid="{{'jol-1'}}" data-comkey="{{$k}}" class="_text data-v-d168f606"> 领取 </text>
+              <text style="font-size: 26rpx;line-height: 52rpx;padding: 0 40rpx;border-radius: 40rpx;border:1rpx solid #17393c;" bindtap="handleProxy" data-eventid="{{'C2r-2'}}" data-comkey="{{$k}}" class="_text data-v-d168f606"> 领取 </text>
             </view>
           </view>
           <view class="_view data-v-d168f606 bottom">
@@ -48,7 +48,6 @@
               <view class="_view data-v-d168f606 uni-column align-center">
                 <view class="_view data-v-d168f606 box justify-center align-center {{(item.state ? 'box-active' : '') || (item.day == today ? 'box-now' : '')}}" style="position: relative;">
                   <text class="_text data-v-d168f606">{{item.day}}</text>
-                  <image src="../../../static/img/gift02.png" wx:if="{{index==sign_list.length-1}}" class="_image data-v-d168f606"></image>
                 </view>
                 <view class="_view data-v-d168f606">
                   <text class="_text data-v-d168f606"> {{item.integral}} </text>
@@ -60,7 +59,7 @@
       </view>
       <view class="_view data-v-d168f606 page-section uni-column">
         <view class="_view data-v-d168f606 util-list justify-center" hover-class="uni-list-cell-hover" wx:key="index" key="{{index}}" wx:for="{{util_list}}" wx:for-index="index" wx:for-item="item">
-          <view class="_view data-v-d168f606 list uni-row {{index == util_list.length - 1 ? 'uni-border-none' : ''}}" bindtap="handleProxy" data-eventid="{{'bgq-2-'+index}}" data-comkey="{{$k}}">
+          <view class="_view data-v-d168f606 list uni-row {{index == util_list.length - 1 ? 'uni-border-none' : ''}}" bindtap="handleProxy" data-eventid="{{'0rj-3-'+index}}" data-comkey="{{$k}}">
             <view class="_view data-v-d168f606" style="flex: 1;">
               <image src="{{item.imgsrc}}" mode class="_image data-v-d168f606"></image>
             </view>
