@@ -1,0 +1,30 @@
+<template name="82630246">
+  <view class="_view data-v-639348c6 page">
+    <view class="_view data-v-639348c6 page-body uni-column">
+      <view class="_view data-v-639348c6 page-section uni-column">
+        <view class="_view data-v-639348c6 justify-center toplogo">
+          <image src="../../../static/img/icoologo.png" mode style="width: 138rpx;height: 138rpx;" class="_image data-v-639348c6"></image>
+        </view>
+        <view class="_view data-v-639348c6 input-group uni-column align-center">
+          <view class="_view data-v-639348c6 input-row align-center">
+            <image src="../../../static/img/login/name.png" mode class="_image data-v-639348c6"></image>
+            <input type="text" value="{{mobile}}" bindinput="handleProxy" placeholder="请输入手机号" style="width: 100%;" data-eventid="{{'d71-0'}}" data-comkey="{{$k}}" class="_input data-v-639348c6" />
+          </view>
+          <view class="_view data-v-639348c6 input-row align-center">
+            <image src="../../../static/img/login/shoujiyanzheng.png" mode class="_image data-v-639348c6"></image>
+            <input type="text" value="{{verifyCode}}" bindinput="handleProxy" placeholder="请输入验证码" style="flex: 1;" data-eventid="{{'0ow-1'}}" data-comkey="{{$k}}" class="_input data-v-639348c6" />
+            <view class="_view data-v-639348c6 code justify-center" bindtap="handleProxy" style="height: 2em;width: auto;" data-eventid="{{'dhO-2'}}" data-comkey="{{$k}}"> 点击获取验证码 </view>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-639348c6 page-section justify-center" style="margin-top: 150rpx;">
+        <view class="_view data-v-639348c6 btn-row">
+          <button type="primary" class="_button data-v-639348c6 primary" bindtap="handleProxy" hover-class="uni-list-cell-hover" disabled="{{submit_status}}" data-eventid="{{'Bz2-3'}}" data-comkey="{{$k}}">注册并登录</button>
+        </view>
+      </view>
+    </view>
+    <view class="_view data-v-639348c6 imgbg">
+      <image src="../../../static/img/login/bglogin.jpg" mode class="_image data-v-639348c6"></image>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,82 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-639348c6,
+view.data-v-639348c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page.data-v-639348c6,
+.page-body.data-v-639348c6 {
+  width: 100%;
+  height: 100%;
+}
+.page-body.data-v-639348c6 {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+.page.data-v-639348c6 {
+  position: relative;
+}
+.imgbg.data-v-639348c6 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.imgbg image.data-v-639348c6 {
+  width: 100%;
+  height: 100%;
+}
+.input-row.data-v-639348c6 {
+  width: 480rpx;
+  padding: 0 20rpx;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 22rpx 0;
+}
+.input-row image.data-v-639348c6 {
+  width: 32rpx;
+  height: 34rpx;
+  margin-right: 15rpx;
+}
+.input-row ._input.data-v-639348c6 {
+  padding: 22rpx 0;
+  font-size: 26rpx;
+  color: #000000;
+}
+._input.data-v-639348c6:-webkit-input-placeholder {
+  color: #000000;
+}
+._input.data-v-639348c6:-moz-placeholder {
+  color: #000000;
+}
+._input.data-v-639348c6::-moz-placeholder {
+  color: #000000;
+}
+._input.data-v-639348c6:-ms-input-placeholder {
+  color: #000000;
+}
+.toplogo.data-v-639348c6 {
+  margin: 150rpx 0 125rpx;
+}
+.code.data-v-639348c6 {
+  font-size: 24rpx;
+  line-height: 48rpx;
+  padding: 0 20rpx;
+  border-radius: 50rpx;
+  background: #19595b;
+  color: #FFFFFF;
+}
+.btn-row ._button.data-v-639348c6 {
+  font-size: 26rpx;
+  line-height: 1em;
+  background: #35737a;
+  color: #FFFFFF;
+  padding: 30rpx 130rpx;
+  border-radius: 50rpx;
+}

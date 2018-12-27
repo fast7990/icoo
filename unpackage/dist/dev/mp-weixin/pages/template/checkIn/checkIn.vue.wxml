@@ -3,7 +3,7 @@
     <view class="_view data-v-5ed63395 page-body uni-column">
       <view class="_view data-v-5ed63395 page-section" style="background: #17393c;">
         <view class="_view data-v-5ed63395 tabs" style="flex: 1;flex-wrap: wrap;justify-content: center;">
-          <view class="_view data-v-5ed63395 checkin-tab uni-column" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'kN4-0-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-5ed63395 checkin-tab uni-column" wx:key="index" key="{{index}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
             <view class="_view data-v-5ed63395 label-view">
               <image src="{{'../../../static/img/'+item.imgname+'.png'}}" wx:if="{{item.state}}" class="_image data-v-5ed63395"></image>
               <image src="{{'../../../static/img/'+item.imgname+'-1.png'}}" wx:else class="_image data-v-5ed63395"></image>
@@ -17,21 +17,22 @@
       <view class="_view data-v-5ed63395 page-section uni-column justify-center align-center checkin-log">
         <view class="_view data-v-5ed63395 uni-row" style="justify-content: space-between;margin-bottom: 20rpx;">
           <text style="font-size:30rpx;" class="_text data-v-5ed63395">11月</text>
-          <text style="font-size:24rpx;" class="_text data-v-5ed63395">已累计签到20天</text>
+          <text style="font-size:24rpx;" class="_text data-v-5ed63395">已累计签到{{integral_day}}天</text>
         </view>
         <view class="_view data-v-5ed63395 uni-row" style="position: relative;">
-          <view class="_view data-v-5ed63395 integral" wx:key="item" key="{{item}}" wx:for="{{[10,20,28]}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-5ed63395 integral" wx:key="item" key="{{item}}" wx:for="{{list_day}}" wx:for-index="index" wx:for-item="item">
             <view class="_view data-v-5ed63395 uni-column align-center">
               <view style="font-size: 16rpx;color: #ea2022;align-items: center;line-height: 28rpx;" class="_view data-v-5ed63395">
-                <text style="font-size: 24rpx;" class="_text data-v-5ed63395">{{item}}天</text>
+                <text style="font-size: 24rpx;" class="_text data-v-5ed63395">{{item.day}}天</text>
               </view>
-              <view style="margin-bottom: 10rpx;" class="_view data-v-5ed63395">
-                <image hidden="{{!(index===0)}}" src="../../../static/img/tongpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
-                <image hidden="{{!(index===1)}}" src="../../../static/img/yinpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
-                <image hidden="{{!(index===2)}}" src="../../../static/img/jinpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
+              <view class="_view data-v-5ed63395 uni-column justify-center align-center" style="margin-bottom: 10rpx;margin-top: 10rpx;">
+                <image src="../../../static/img/bangbang.png" mode style="width: 25rpx;height: 40rpx;" class="_image data-v-5ed63395"></image>
+                <image wx:if="{{index===0}}" src="../../../static/img/tongpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
+                <image wx:if="{{index===1}}" src="../../../static/img/yinpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
+                <image wx:if="{{index===2}}" src="../../../static/img/jinpai.png" style="width: 50rpx;height: 50rpx;" mode class="_image data-v-5ed63395"></image>
               </view>
               <view class="_view data-v-5ed63395">
-                <text style="font-size: 26rpx;line-height: 22rpx;" class="_text data-v-5ed63395">20积分</text>
+                <text style="font-size: 26rpx;line-height: 22rpx;" class="_text data-v-5ed63395">{{item.integral}}积分</text>
               </view>
             </view>
           </view>
@@ -39,8 +40,9 @@
             <view class="_view data-v-5ed63395" style=" {{('width:' + speed_day + ';')}}"></view>
           </view>
         </view>
-        <view class="_view data-v-5ed63395 uni-row" style="padding: 72rpx 0 126rpx;">
-          <button type="primary" class="_button data-v-5ed63395 user-btn {{get_reward ? 'btn-active' : ''}}" bindtap="handleProxy" data-eventid="{{'J4L-1'}}" data-comkey="{{$k}}">{{get_reward?'已领取':'领取奖励'}}</button>
+        <view class="_view data-v-5ed63395 uni-row" style="padding: 120rpx 0 126rpx;">
+          <button type="primary" class="_button data-v-5ed63395 user-btn {{signState == 1 ? '' : 'checkInTure'}}" bindtap="handleProxy" wx:if="{{receivingState}}" data-eventid="{{'B0b-1'}}" data-comkey="{{$k}}">{{signState==0?'领取奖励':'领取奖励'}}</button>
+          <button type="primary" class="_button data-v-5ed63395 user-btn {{signState == 1 ? '' : 'checkInTure'}}" bindtap="handleProxy" wx:else data-eventid="{{'STy-0'}}" data-comkey="{{$k}}">{{signState==0?'领取奖励':'领取奖励'}}</button>
         </view>
         <view class="_view data-v-5ed63395 uni-row justify-center">
           <navigator url style="color:#183b3e;font-size: 24rpx;align-items: center;" class="_navigator data-v-5ed63395">查看规则说明

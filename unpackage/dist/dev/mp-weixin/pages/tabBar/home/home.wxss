@@ -41,9 +41,14 @@ view.data-v-1e6165c6 {
 .yibiao-box.data-v-1e6165c6 {
   position: absolute;
   width: 470rpx;
-  height: 310rpx;
+  height: 350rpx;
   top: 36rpx;
   overflow: hidden;
+}
+.yibiao-box ._canvas.data-v-1e6165c6 {
+  width: 470rpx;
+  height: 350rpx;
+  position: absolute;
 }
 .neiceng.data-v-1e6165c6 {
   position: relative;
@@ -54,7 +59,6 @@ view.data-v-1e6165c6 {
   height: 470rpx;
   top: 0;
   left: 0;
-  z-index: 3;
 }
 .box image.data-v-1e6165c6 {
   width: 470rpx;
@@ -62,4 +66,15 @@ view.data-v-1e6165c6 {
 }
 .box-text.data-v-1e6165c6 {
   color: #FFFFFF;
+}
+.box .reward.data-v-1e6165c6 {
+  font-size: 22rpx;
+  padding: 0 40rpx;
+  border-radius: 20rpx;
+  line-height: 44rpx;
+  background: #ff7800;
+  margin: 20rpx 0 10rpx;
+}
+.box .reward-after.data-v-1e6165c6 {
+  background: #CACACA;
 }

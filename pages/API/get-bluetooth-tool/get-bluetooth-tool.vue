@@ -1,161 +1,187 @@
 <template>
 	<view class="page">
-		<view class="page-body">
-			<view class="mask" v-show="popupShowMask" @tap="popupHide"></view>
-			<view class="popup popup-top" v-show="popupShowState.top">
-				<text>顶部 popup</text>
+		<view class="page-body uni-column">
+			<view class="action-row align-center uni-column" style="justify-content: flex-start;">
+				<text style="font-size: 36upx;">请摇一摇您手中的电子烟设备</text>
+				<text style="font-size: 24upx;">持续晃动确保设备激活</text>
 			</view>
-			<view class="page-body-text">
-				<text class="status">适配器状态：{{ status }}</text>
-				<text class="sousuo">是否搜索：{{ sousuo }}</text>
-				<text class="msg">消息：{{ msg }} </text>
-				<text class="msg1">消息：{{ msg1 }}</text>
+			<view class="action-row image-section">
+				<image class="image" src="../../../static/img/shebei.jpg" style="width: 117upx;height: 590upx;"></image>
 			</view>
-			<view class="section">
-				<text class="status">接收到消息：{{ jieshou }}</text>
-			</view>
-			<input type="text" v-model="inputValue" />
-			<view class="btn-row">
-				<button type="primary" class="button" @tap="initOpen">初始化蓝牙</button>
-				<button type="primary" class="button" @tap="findBLEDevices">搜索周边设备</button>
-				<button type="primary" class="button" @tap="getBluetoothDevices">获取所有设备</button>
-				<button type="primary" class="button" @tap="onBluetoothDeviceFound">监听发现设备</button>
-				<button type="primary" class="button" @tap="getBLEDeviceServices">获取连接设备server</button>
-				<button type="primary" class="button" @tap="getBLEDeviceCharacteristics">获取连接设备所有特征</button>
-				<button type="primary" class="button" @tap="sendBLEValueChange">发送数据</button>
-				<button type="primary" class="button" @tap="notifyBLEValueChange">启用设备特征值变化时的notify</button>
-				<button type="primary" class="button" @tap="getBLEValueChange">接收消息</button>
-				<button type="primary" class="button" @tap="getBluetoothState">本机蓝牙适配器状态</button>
-				<button type="primary" class="button" @tap="stopFindBLEDevices">停止搜索周边设备</button>
-				<button type="primary" class="button" @tap="closeBLEDevices">断开蓝牙连接</button>
-			</view>
-		</view>
-		<view class="venues_list">
-			<block v-for="(item,index) in devices" :key="index">
-				<view class="venues_item">
-					<text class="status">设备名称:{{item.name}}</text>
-					<text class="status">设备ID:{{item.deviceId}}</text>
-					<text class="status">连接状态:{{connectedDeviceId == item.deviceId?"已连接":"未连接"}}</text>
-					<view class="section">
-					</view>
-					<view class="section">
-						<button type="warn" class="button" :id="item.deviceId" @tap="connectTO($event)">连接</button>
-					</view>
-				</view>
-			</block>
 		</view>
 	</view>
 </template>
 
 <script>
-	import bluetooth from '../../../common/util/bluetooth'
+	import uniIcon from "../../components/uni-icon.vue";
 	import {
-		childMixin
-	} from '../../../common/mixins'
-
-	function inArray(arr, key, val) {
-		for (let i = 0; i < arr.length; i++) {
-			if (arr[i][key] === val) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	// ArrayBuffer转16进度字符串示例
+		bluetoothKeepLive
+	} from '../../../common/bluetoothKeepLive';
+	// ArrayBuffer转为16进制数
 	function ab2hex(buffer) {
 		var hexArr = Array.prototype.map.call(
 			new Uint8Array(buffer),
 			function(bit) {
-				return ('00' + bit.toString(16)).slice(-2)
+				return ('00' + bit.toString(16)).slice(-2);
 			}
 		)
-		return hexArr.join('');
+		return hexArr;
 	}
 	export default {
-		mixins: [childMixin],
 		data() {
 			return {
-				status: "",
-				sousuo: "",
-				msg: "",
-				msg1: "",
-				connectedDeviceId: "", //已连接设备uuid
-				services: "00001000-0000-1000-8000-00805f9b34fb", // 连接设备的服务
-				characteristics: "", // 连接设备的状态值
-				writeServicweId: "00001000-0000-1000-8000-00805f9b34fb", // 可写服务uuid
-				writeCharacteristicsId: "00001001-0000-1000-8000-00805f9b34fb", //可写特征值uuid
-				readServicweId: "00001000-0000-1000-8000-00805f9b34fb", // 可读服务uuid
-				readCharacteristicsId: "00001005-0000-1000-8000-00805f9b34fb", //可读特征值uuid
-				notifyServicweId: "00001000-0000-1000-8000-00805f9b34fb", //通知服务UUid
-				notifyCharacteristicsId: "00001002-0000-1000-8000-00805f9b34fb", //通知特征值UUID
-				inputValue: '85',
-				devices: [],
-				characteristics1: "" // 连接设备的状态值
+				bluetoothKeepLiveState: false
 			}
 		},
-		onLoad: function() {
+		mixins: [bluetoothKeepLive],
+		onLoad(option) {
+			var that = this;
+			this.bluetoothKeepLiveState = this.$store.state.bluetoothKeepLiveState;
+			let switch_device = option.switchDevice; //切换设备
+			console.log('switch_device', switch_device);
+			wx.getSystemInfo({
+				success(res) {
+					that.platform = res.platform
+				}
+			});
 			if (wx.openBluetoothAdapter) {
-				wx.openBluetoothAdapter()
+				let that = this;
+				if (switch_device == 1) { //1切换
+					this.bluetoothKeepLiveStop();
+				} else if (switch_device == 2) { //2添加新设备
+					if (this.bluetoothKeepLiveState) { //连接中
+						this.bluetoothKeepLiveStop();
+						this.closeBLEDevices();
+					}
+					setTimeout(function() {
+						that.initOpen();
+					}, 2000);
+				} else {
+					if (!this.bluetoothKeepLiveState) { //连接已中断
+						this.initOpen();
+					}
+				}
 			} else {
 				// 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
 				wx.showModal({
 					title: '提示',
 					content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
-				})
+				});
 			}
-
+		},
+		onUnload() {
+			let bluetoothKeepLiveState = this.$store.state.bluetoothKeepLiveState;
+			if (!bluetoothKeepLiveState) {
+				this.stopFindBLEDevices();
+				this.closeBLEDevices();
+			}
+			this.not_find_status = true;
+			wx.hideLoading();
+			console.log('页面卸载');
 		},
 		methods: {
-			connectTO(e) {
-				bluetooth.connectTO(e, this,function(){});
+			childPagPuffsLogUpdata(result) {
+				this.puffsLogUpdata(result);
 			},
-			initOpen() {
-				bluetooth.openBluetoothAdapter(this, function(state, result) {
-					if (!state) {
-						wx.showModal({
-							title: '蓝牙未打开',
-							content: '请打开蓝牙后重试连接'
-						})
-					}
-					return state;
-				});
+			childPagIsUserDevice(msg) {
+				this.backHome(false, msg);
 			},
-			closeBLEDevices() {
-				bluetooth.closeBLEConnection(this);
+			childPagResult() {
+				this.$store.commit('set_bluetoothKeepLiveState', true);
+				this.backHome(true);
 			},
-			findBLEDevices() {
-				bluetooth.startBluetoothDevicesDiscovery(this, function(state, result) {})
-			},
-			stopFindBLEDevices() {
-				bluetooth.stopBluetoothDevicesDiscovery(this, function(state, result) {});
-			},
-			getBluetoothDevices() {
-				bluetooth.getBluetoothDevices(this); //获取所有设备
-				bluetooth.onBluetoothDeviceFound(this); //监听发现的设备
-			},
-			sendBLEValueChange() {
-				bluetooth.sendBLEValueChange(this,function(){});
-			},
-			notifyBLEValueChange() {
-				bluetooth.notifyBLEValueChange(this,function(){});
-			},
-			getBLEValueChange() {
-				bluetooth.getBLEValueChange(this);
-			},
-			getBluetoothState() {
-				bluetooth.getBluetoothAdapterState(this);
-			},
-			getBLEDeviceServices() {
-				bluetooth.getBLEDeviceServices(this);
-			},
-			getBLEDeviceCharacteristics() {
-				bluetooth.getBLEDeviceCharacteristics(this);
+			backHome(flag, msg) {
+				let that = this;
+				if (flag) {
+					wx.showModal({
+						title: '温馨提示',
+						content: '绑定成功是否返回',
+						showCancel: true,
+						success: function() {
+							wx.hideLoading();
+							uni.switchTab({
+								url: '../../tabBar/home/home'
+							});
+						}
+					});
+				} else {
+					wx.showModal({
+						title: '温馨提示',
+						content: msg,
+						showCancel: true,
+						success: function() {
+							that.$store.commit('set_BLEDriverData', '');
+							uni.switchTab({
+								url: '../../tabBar/home/home'
+							});
+						}
+					});
+				}
 			}
+		},
+		components: {
+			uniIcon
 		}
 	}
 </script>
 
 <style scoped>
 	@import '../../../common/css/popup.css';
+
+	page,
+	view {
+		display: flex;
+		/* uni-app默认使用flex布局。因为flex布局有利于跨更多平台，尤其是采用原生渲染的平台。如不了解flex布局，请参考http://www.w3.org/TR/css3-flexbox/。若不需要flex布局可删除本行*/
+	}
+
+	.page,
+	.page-body {
+		width: 100%;
+		height: 100%;
+	}
+
+	.page-body {
+		justify-content: space-between;
+	}
+
+	.image-section {
+		width: 100%;
+		height: 500upx;
+		justify-content: center;
+	}
+
+	.image {
+		width: 500upx;
+		height: 500upx;
+		position: relative;
+		animation: shake 5s infinite linear;
+		-moz-animation: shake 5s infinite linear;
+		/* Firefox */
+		-webkit-animation: shake 5s infinite linear;
+		/* Safari and Chrome */
+		-o-animation: shake 3s infinite linear;
+		/* Opera */
+		transform-origin: bottom;
+	}
+
+	@keyframes shake {
+
+		0%,
+		50% {
+			transform: rotate(0deg);
+		}
+
+		55% {
+			transform: rotate(30deg);
+		}
+
+		60% {
+			transform: rotate(-30deg);
+		}
+
+		65%,
+		100% {
+			transform: rotate(0deg);
+		}
+	}
 </style>

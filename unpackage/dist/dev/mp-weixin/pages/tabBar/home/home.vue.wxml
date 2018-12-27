@@ -4,59 +4,52 @@
       <view class="_view data-v-1e6165c6 page-section" style="margin-top: 15rpx;">
         <view class="_view data-v-1e6165c6 user-list uni-column" style="background: #17393C;">
           <view class="_view data-v-1e6165c6 uni-row topinfo">
-            <text class="_text data-v-1e6165c6">当前爱氪世界总人口数：{{all_people}}</text>
-            <text class="_text data-v-1e6165c6">您是第{{you_ranking}}位居民</text>
+            <text class="_text data-v-1e6165c6">当前爱氪世界总人口数：{{list_data.sortSum}}</text>
+            <text class="_text data-v-1e6165c6">您是第{{list_data.sort}}位居民</text>
           </view>
           <view class="_view data-v-1e6165c6 yibiao" style="align-items: center;justify-content: center;">
             <view class="_view data-v-1e6165c6 yibiao-box">
-              <view class="_view data-v-1e6165c6 box neiceng">
-                <image src="../../../static/img/neiceng.png" mode class="_image data-v-1e6165c6"></image>
-              </view>
-              <view class="_view data-v-1e6165c6 box waiceng" id="wai1" style=" {{('transform:' + rotate_wai1 + ';')}}">
-                <image src="../../../static/img/wai.png" mode class="_image data-v-1e6165c6"></image>
-              </view>
-              <view class="_view data-v-1e6165c6 box waiceng" id="wai2" style=" {{('transform:' + rotate_wai2 + ';')}}">
-                <image src="../../../static/img/wai.png" mode class="_image data-v-1e6165c6"></image>
-              </view>
-              <view class="_view data-v-1e6165c6 box waiceng" id="wai3" style=" {{('transform:' + rotate_wai3 + ';')}}">
-                <image src="../../../static/img/wai.png" mode class="_image data-v-1e6165c6"></image>
-              </view>
+              <block>
+                <canvas canvas-id="clock" class="_canvas data-v-1e6165c6 canvas" width="470px" height="470px"></canvas>
+                <canvas canvas-id="pointer" class="_canvas data-v-1e6165c6 canvas" width="470px" height="470px"></canvas>
+              </block>
             </view>
-            <view class="_view data-v-1e6165c6 box uni-column align-center" style="padding-top: 120rpx;height: auto;">
-              <text class="_text data-v-1e6165c6 box-text" style="font-size: 22rpx;">吸烟口数</text>
-              <text class="_text data-v-1e6165c6 box-text" style="font-size: 58rpx;">{{dashboardValue}}</text>
-              <text class="_text data-v-1e6165c6 box-text" style="line-height: 44rpx;background: #7aff70;border-radius: 10rpx;padding: 0 14rpx;font-size: 22rpx;color: #131313;">可以接着抽</text>
+            <view class="_view data-v-1e6165c6 box uni-column align-center" style="padding-top: 160rpx;height: auto;z-index: 10;">
+              <text class="_text data-v-1e6165c6 box-text" style="font-size: 58rpx;">{{list_data.dashboardValue>0?list_data.dashboardValue:0}}</text>
+              <text class="_text data-v-1e6165c6 box-text" style="line-height: 44rpx;background: #7aff70;border-radius: 10rpx;padding: 0 14rpx;font-size: 22rpx;color: #131313;">{{list_data.smokeInfo}}</text>
               <text class="_text data-v-1e6165c6 box-text" style="font-size: 22rpx;margin-top: 50rpx;">轻度抽烟可以愉悦身心，健康无害</text>
-              <text class="_text data-v-1e6165c6 box-text" style="font-size: 24rpx;padding: 0 40rpx;border-radius:20rpx;line-height: 48rpx;background: #ff7800;margin: 20rpx 0 10rpx" bindtap="handleProxy" data-eventid="{{'Zzs-0'}}"
-                data-comkey="{{$k}}">领取奖励</text>
-              <text class="_text data-v-1e6165c6 box-text" style="font-size: 20rpx;">还差34口即可领取今日奖励</text>
+              <text class="_text data-v-1e6165c6 box-text reward {{list_data.signState == 1 ? 'reward-after' : ''}}" bindtap="handleProxy" wx:if="{{receivingState}}" data-eventid="{{'q7y-1'}}" data-comkey="{{$k}}">{{list_data.signState?'已领取':'可领取奖励'}}</text>
+              <text class="_text data-v-1e6165c6 box-text reward reward-after" bindtap="handleProxy" wx:else data-eventid="{{'GHp-0'}}" data-comkey="{{$k}}">{{list_data.signState?'已领取':'领取奖励'}}</text>
+              <text class="_text data-v-1e6165c6 box-text" style="font-size: 20rpx;">您还差{{list_data.sysPuffsNum-list_data.dashboardValue>0?list_data.sysPuffsNum-list_data.dashboardValue:0}}口即可获得当日积分奖励</text>
             </view>
           </view>
         </view>
       </view>
       <view class="_view data-v-1e6165c6 page-section">
-        <view class="_view data-v-1e6165c6 user-list">
-          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'S31-1'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-1e6165c6 user-list" style="height: 118rpx;">
+          <view class="_view data-v-1e6165c6 list0 action-row align-center" bindtap="handleProxy" data-eventid="{{'aUT-2'}}" data-comkey="{{$k}}">
             <view class="_view data-v-1e6165c6 user-list-left" style="flex: 1;">
-              <image src="../../../static/img/bluetooth1.png" style="width: 32rpx;height: 40rpx;" class="_image data-v-1e6165c6"></image>
+              <image src="../../../static/img/bluetooth0.png" mode wx:if="{{list_data.bindStatus}}" class="_image data-v-1e6165c6"></image>
+              <image src="../../../static/img/bluetooth1.png" style="width: 32rpx;height: 40rpx;" wx:else class="_image data-v-1e6165c6"></image>
             </view>
-            <view class="_view data-v-1e6165c6 user-list-center uni-column" style="flex: 6;">
+            <view class="_view data-v-1e6165c6 user-list-center action-row align-center" style="flex: 6;justify-content: space-between;">
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h2"> {{list_data.bind}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> {{list_data.bindStatus?'已绑定设备':'未绑定设备'}} </text>
               </view>
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h4"> {{list_data.bind_info}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h4"> {{list_data.bindInfo}} </text>
               </view>
             </view>
             <view class="_view data-v-1e6165c6 user-list-right" style="flex: 1;">
-              <image src="../../../static/img/close.png" class="_image data-v-1e6165c6"></image>
+              <image src="../../../static/img/battery_charging.jpg" mode wx:if="{{battery_charging}}" class="_image data-v-1e6165c6"></image>
+              <image src="../../../static/img/close.png" wx:else class="_image data-v-1e6165c6"></image>
             </view>
           </view>
         </view>
       </view>
       <view class="_view data-v-1e6165c6 page-section">
-        <view class="_view data-v-1e6165c6 user-list">
-          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'Gcs-2'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-1e6165c6 user-list align-center" style="height: 118rpx;">
+          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'Jr5-3'}}" data-comkey="{{$k}}">
             <view class="_view data-v-1e6165c6 user-list-left" style="flex: 1;">
               <image src="../../../static/img/paihang.png" class="_image data-v-1e6165c6"></image>
             </view>
@@ -70,10 +63,10 @@
         </view>
       </view>
       <view class="_view data-v-1e6165c6 page-section">
-        <view class="_view data-v-1e6165c6 user-list">
-          <text style="flex: 8;font-size: 28rpx;font-weight: bold;" class="_text data-v-1e6165c6">设备名称：hhhgs</text>
+        <view class="_view data-v-1e6165c6 user-list align-center" style="height: 118rpx;">
+          <text style="flex: 8;font-size: 28rpx;font-weight: bold;" class="_text data-v-1e6165c6">设备名称：{{list_data.deviceName?list_data.deviceName:''}}</text>
           <view style="flex: 1;border-left:1rpx solid #d3d3d3;" class="_view data-v-1e6165c6"></view>
-          <text style="flex: 6;font-size: 28rpx;font-weight: bold;" class="_text data-v-1e6165c6">设备电量：78%</text>
+          <text style="flex: 6;font-size: 28rpx;font-weight: bold;" class="_text data-v-1e6165c6">设备电量：{{list_data.driverBatter?list_data.driverBatter+'%':''}}</text>
         </view>
       </view>
       <view class="_view data-v-1e6165c6 page-section">
@@ -81,10 +74,10 @@
           <view class="_view data-v-1e6165c6 list0">
             <view class="_view data-v-1e6165c6 user-list-center uni-column">
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 消耗油烟 {{list_data.lampblack_num}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 消耗油烟 {{list_data.lampblack_num>0?list_data.lampblack_num:0}} 毫升 </text>
               </view>
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h4"> {{list_data.lampblack_info}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h4" style="padding-top: 10rpx;"> {{list_data.lampblack_info}} </text>
               </view>
             </view>
           </view>
@@ -92,10 +85,10 @@
           <view class="_view data-v-1e6165c6 list0">
             <view class="_view data-v-1e6165c6 user-list-center uni-column">
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 寿命延长 {{list_data.life_num}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 寿命延长 {{list_data.life_num>0?list_data.life_num:0}} 分钟 </text>
               </view>
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h4"> {{list_data.life_info}} </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h4" style="padding-top: 10rpx;"> {{list_data.life_info}} </text>
               </view>
             </view>
           </view>
@@ -103,18 +96,18 @@
       </view>
       <view class="_view data-v-1e6165c6 page-section">
         <view class="_view data-v-1e6165c6 user-list">
-          <view class="_view data-v-1e6165c6 list0 action-row" bindtap="handleProxy" data-eventid="{{'yU2-3'}}" data-comkey="{{$k}}">
+          <view class="_view data-v-1e6165c6 list0 action-row align-center" bindtap="handleProxy" data-eventid="{{'XOo-4'}}" data-comkey="{{$k}}">
             <view class="_view data-v-1e6165c6 user-list-left" style="flex: 1;">
               <image src="../../../static/img/paihang.png" class="_image data-v-1e6165c6"></image>
             </view>
             <view class="_view data-v-1e6165c6 user-list-center uni-column" style="flex: 6;">
               <view class="_view data-v-1e6165c6">
-                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 健康排行榜 {{list_data.health_ranking}}名 </text>
+                <text class="_text data-v-1e6165c6 user-list-text-h2" style="font-weight: bold;"> 健康排行榜 {{list_data.puffsSort}}名 </text>
               </view>
             </view>
             <view class="_view data-v-1e6165c6 user-list-right uni-column" style="flex: 1;align-items: center;">
               <image src="../../../static/img/dianzan.png" class="_image data-v-1e6165c6"></image>
-              <text class="_text data-v-1e6165c6 user-list-text-h4" style="text-align: center;"> {{list_data.like_num}} </text>
+              <text class="_text data-v-1e6165c6 user-list-text-h4" style="text-align: center;"> {{list_data.sortSupport}} </text>
             </view>
           </view>
         </view>
@@ -122,22 +115,22 @@
       <view class="_view data-v-1e6165c6 page-section" style="margin: 0;justify-content: flex-start;">
         <text class="_text data-v-1e6165c6 text-h1" style="font-size: 36rpx;font-weight: bold;">icoo爱氪生活</text>
       </view>
-      <view class="_view data-v-1e6165c6 page-section">
-        <view class="_view data-v-1e6165c6 user-list uni-column">
-          <view class="_view data-v-1e6165c6 user-list-cardview-top" style="width: 100%;">
-            <image src="{{cardview_data.imgsrc}}" class="_image data-v-1e6165c6"></image>
+      <view class="_view data-v-1e6165c6 page-section uni-column">
+        <view class="_view data-v-1e6165c6 user-list uni-column" wx:key="index" key="{{index}}" style="margin-bottom: 20rpx;" wx:for="{{cardview_data}}" wx:for-index="index" wx:for-item="item">
+          <view class="_view data-v-1e6165c6 user-list-cardview-top" style="width: 100%;" bindtap="handleProxy" data-eventid="{{'Qlv-5-'+index}}" data-comkey="{{$k}}">
+            <image src="{{item.banner_url?baseusrl+item.banner_url:''}}" class="_image data-v-1e6165c6"></image>
           </view>
           <view class="_view data-v-1e6165c6 user-list-cardview-bottom uni-column" style="width: 100%;">
             <view class="_view data-v-1e6165c6 user-text">
-              <text style="font-size: 30rpx;flex: 1;" class="_text data-v-1e6165c6"> 这件发假假按揭阿萨德撒娇的阿斯达四大 </text>
+              <text style="font-size: 30rpx;flex: 1;" class="_text data-v-1e6165c6"> {{item.banner_name}} </text>
             </view>
             <view class="_view data-v-1e6165c6 user-text" style="justify-content: space-between;">
               <view class="_view data-v-1e6165c6 align-center">
                 <image src="../../../static/img/eye.png" style="width: 23rpx;height: 16rpx;" class="_image data-v-1e6165c6"></image>
-                <text class="_text data-v-1e6165c6 user-list-text-h4">{{cardview_data.glance_num}}</text>
+                <text class="_text data-v-1e6165c6 user-list-text-h4"> {{item.bannerid}}</text>
               </view>
               <view class="_view data-v-1e6165c6 align-center">
-                <text class="_text data-v-1e6165c6 user-list-text-h4">{{cardview_data.creat_time}}</text>
+                <text class="_text data-v-1e6165c6 user-list-text-h4">{{item.create_time}}</text>
               </view>
             </view>
           </view>

@@ -1,5 +1,8 @@
+<import src="/components/segmented-control.vue.wxml" />
 <import src="/components/mpvue-echarts/src/echarts.vue.wxml" />
+<import src="/components/segmented-control.vue.wxml" />
+<import src="/components/fans-control.vue.wxml" />
+<import src="/components/load-more.vue.wxml" />
+<import src="/components/qrcode/qrcode.vue.wxml" />
 <import src="/components/number-box.vue.wxml" />
 <import src="/components/segmented-control.vue.wxml" />
-<import src="/components/segmented-control.vue.wxml" />
-<import src="/components/mpvue-echarts/src/echarts.vue.wxml" />

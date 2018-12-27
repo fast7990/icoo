@@ -1,47 +1,13 @@
 <template name="f8fda9ea">
   <view class="_view data-v-36b9c0cb page">
-    <view class="_view data-v-36b9c0cb page-body">
-      <view class="_view data-v-36b9c0cb mask" hidden="{{!(popupShowMask)}}" bindtap="handleProxy" data-eventid="{{'mRj-0'}}" data-comkey="{{$k}}"></view>
-      <view class="_view data-v-36b9c0cb popup popup-top" hidden="{{!(popupShowState.top)}}">
-        <text class="_text data-v-36b9c0cb">顶部 popup</text>
+    <view class="_view data-v-36b9c0cb page-body uni-column">
+      <view class="_view data-v-36b9c0cb action-row align-center uni-column" style="justify-content: flex-start;">
+        <text style="font-size: 36rpx;" class="_text data-v-36b9c0cb">请摇一摇您手中的电子烟设备</text>
+        <text style="font-size: 24rpx;" class="_text data-v-36b9c0cb">持续晃动确保设备激活</text>
       </view>
-      <view class="_view data-v-36b9c0cb page-body-text">
-        <text class="_text data-v-36b9c0cb status">适配器状态：{{ status }}</text>
-        <text class="_text data-v-36b9c0cb sousuo">是否搜索：{{ sousuo }}</text>
-        <text class="_text data-v-36b9c0cb msg">消息：{{ msg }} </text>
-        <text class="_text data-v-36b9c0cb msg1">消息：{{ msg1 }}</text>
+      <view class="_view data-v-36b9c0cb action-row image-section">
+        <image class="_image data-v-36b9c0cb image" src="../../../static/img/shebei.jpg" style="width: 117rpx;height: 590rpx;"></image>
       </view>
-      <view class="_view data-v-36b9c0cb section">
-        <text class="_text data-v-36b9c0cb status">接收到消息：{{ jieshou }}</text>
-      </view>
-      <input type="text" value="{{inputValue}}" bindinput="handleProxy" data-eventid="{{'aDP-1'}}" data-comkey="{{$k}}" class="_input data-v-36b9c0cb" />
-      <view class="_view data-v-36b9c0cb btn-row">
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'6MN-2'}}" data-comkey="{{$k}}">初始化蓝牙</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Q8K-3'}}" data-comkey="{{$k}}">搜索周边设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'4bp-4'}}" data-comkey="{{$k}}">获取所有设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'LEI-5'}}" data-comkey="{{$k}}">监听发现设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Jts-6'}}" data-comkey="{{$k}}">获取连接设备server</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'3gu-7'}}" data-comkey="{{$k}}">获取连接设备所有特征</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'N2Q-8'}}" data-comkey="{{$k}}">发送数据</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'rVv-9'}}" data-comkey="{{$k}}">启用设备特征值变化时的notify</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'KQ1-10'}}" data-comkey="{{$k}}">接收消息</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'SKu-11'}}" data-comkey="{{$k}}">本机蓝牙适配器状态</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'qt5-12'}}" data-comkey="{{$k}}">停止搜索周边设备</button>
-        <button type="primary" class="_button data-v-36b9c0cb button" bindtap="handleProxy" data-eventid="{{'Ihf-13'}}" data-comkey="{{$k}}">断开蓝牙连接</button>
-      </view>
-    </view>
-    <view class="_view data-v-36b9c0cb venues_list">
-      <block wx:key="index" key="{{index}}" wx:for="{{devices}}" wx:for-index="index" wx:for-item="item">
-        <view class="_view data-v-36b9c0cb venues_item">
-          <text class="_text data-v-36b9c0cb status">设备名称:{{item.name}}</text>
-          <text class="_text data-v-36b9c0cb status">设备ID:{{item.deviceId}}</text>
-          <text class="_text data-v-36b9c0cb status">连接状态:{{connectedDeviceId == item.deviceId?"已连接":"未连接"}}</text>
-          <view class="_view data-v-36b9c0cb section"></view>
-          <view class="_view data-v-36b9c0cb section">
-            <button type="warn" class="_button data-v-36b9c0cb button" id="{{item.deviceId}}" bindtap="handleProxy" data-eventid="{{'zbM-14-'+index}}" data-comkey="{{$k}}">连接</button>
-          </view>
-        </view>
-      </block>
     </view>
   </view>
 </template>

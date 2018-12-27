@@ -1,7 +1,5 @@
 class bluetooth {
-	constructor(arg) {
-
-	}
+	constructor(arg) {}
 	/** 
 	 * 初始化蓝牙适配器
 	 * @param {Object} str
@@ -10,22 +8,35 @@ class bluetooth {
 	 */
 	openBluetoothAdapter(_this, callback) {
 		var that = _this;
+		var _this = this;
+		wx.showLoading({
+			title: '开启蓝牙适配'
+		});
 		wx.openBluetoothAdapter({
 			success: function(res) {
 				console.log("初始化蓝牙适配器成功！" + JSON.stringify(res));
-				//监听蓝牙适配器状态
-				wx.onBluetoothAdapterStateChange(function(res) {
-					console.log(res.discovering ? "在搜索。" : "未搜索。");
-					console.log(res.available ? "可用。" : "不可用。");
-				})
-				console.log(that.msg);
+				_this.getBluetoothAdapterState(that);
 				callback(true, res);
 			},
 			fail: function(res) {
 				console.log(res);
 				callback(false, res);
+			},
+			complete: function() {
+				setTimeout(function() {
+					wx.hideToast()
+				}, 2000);
 			}
-		})
+		});
+		//监听蓝牙适配器状态
+		wx.onBluetoothAdapterStateChange(function(res) {
+			var available = res.available;
+			console.log(res.discovering ? "开启完毕正在搜索。" : "开启完毕未搜索。");
+			console.log(res.available ? "开启完毕蓝牙可用。" : "开启完毕蓝牙不可用。");
+			if (available) {
+				_this.getBluetoothAdapterState(that);
+			}
+		});
 	}
 
 	// 本机蓝牙适配器状态
@@ -34,13 +45,25 @@ class bluetooth {
 		wx.getBluetoothAdapterState({
 			success: function(res) {
 				that.msg = "本机蓝牙适配器状态" + "/" + JSON.stringify(res.errMsg);
-				console.log(res.discovering ? "在搜索。" : "未搜索。");
-				console.log(res.available ? "可用。" : "不可用。");
-				//监听蓝牙适配器状态
-				wx.onBluetoothAdapterStateChange(function(res) {
-					console.log(res.discovering ? "在搜索。" : "未搜索。");
-					console.log(res.available ? "可用。" : "不可用。");
-				})
+				console.log(res.discovering ? "状态：在搜索。" : "状态：未搜索。");
+				console.log(res.available ? "蓝牙可用。" : "蓝牙不可用。");
+				console.log(that.msg);
+				if (!res.available) {
+					wx.showToast({
+						title: '请打开手机蓝牙',
+						icon: 'success',
+						duration: 2000
+					});
+					setTimeout(function() {
+						wx.hideToast()
+					}, 2000);
+					that.bluetoothOpenFlag = false;
+				} else {
+					if (that.bluetoothOpenFlag) {
+						that.initOpen();
+						that.bluetoothOpenFlag = true;
+					}
+				}
 			},
 			fail: function(res) {
 				console.log(res)
@@ -58,20 +81,19 @@ class bluetooth {
 		that.devices = [];
 		wx.startBluetoothDevicesDiscovery({
 			success: function(res) {
-				that.msg = "搜索设备" + JSON.stringify(res);
 				//监听蓝牙适配器状态
 				wx.onBluetoothAdapterStateChange(function(res) {
-					console.log(res.discovering ? "在搜索。" : "未搜索。");
-					console.log(res.available ? "可用。" : "不可用。");
+					console.log(res.discovering ? "搜索状态：在搜索。" : "搜索状态：未搜索。");
 				});
 				console.log("开始搜索设备成功:", res);
 				callback(true, res);
 			},
 			fail: function(res) {
 				callback(false, res);
-				console.log("搜索失败：", res)
+				console.log("搜索设备失败：", res)
 			}
-		})
+		});
+
 	}
 	/** 
 	 * 获取所有已发现的设备
@@ -91,18 +113,19 @@ class bluetooth {
 						console.log("发现设备状态", JSON.stringify(res));
 						if (res.devices[0]) {
 							console.log("已连接设备");
-						} else {
-
 						}
-						// that.connectedDeviceId = res.deviceId;
-						//5s内未搜索到设备，关闭搜索，关闭蓝牙模块
-						// 							setTimeout(function() {
-						// 								if (!that.deviceId) {
-						// 									//关闭搜索
-						// 									console.log('超时关闭');
-						// 									that.stopFindBLEDevices();
-						// 								}
-						// 							}, 5000);
+						that.connectedDeviceId = res.deviceId;
+						// 5 s内未搜索到设备， 关闭搜索， 关闭蓝牙模块
+						setTimeout(function() {
+							if (!that.deviceId) {
+								//关闭搜索
+								console.log('超时关闭');
+								that.stopFindBLEDevices();
+								setTimeout(function() {
+									that.initOpen();
+								}, 2000);
+							}
+						}, 5000);
 					},
 					fail: function(res) {
 						console.log("获取失败", res)
@@ -137,19 +160,29 @@ class bluetooth {
 	onBluetoothDeviceFound(_this, callback) {
 		let that = _this;
 		wx.onBluetoothDeviceFound(function(res) {
-			console.log('发现设备:', res.devices)
+			// console.log('发现设备:', res.devices)
+			if (that.find_status) {
+				return;
+			}
 			for (let i = 0; i < res.devices.length; i++) {
 				//检索指定设备
 				if (res.devices[i].name.indexOf('GSD-') != -1) {
-					let connectedDeviceId = res.devices[i].deviceId;
-					callback(true, connectedDeviceId);
+					let connectedDeviceInfo = res.devices[i];
+					// console.log("mac:", ab2hex(res.devices[i].advertisData));
+					let driver_mac = ab2hex(res.devices[i].advertisData);
 					//关闭搜索
-					that.stopFindBLEDevices();
+					that.find_status = true;
 					console.log('已找到指定设备:', res.devices[i].deviceId, '设备名：', res.devices[i].name);
+					that.driver_name = res.devices[i].name;
+					callback(true, connectedDeviceInfo, driver_mac);
+					return;
 				} else {
 					callback(false, '');
 				}
 			}
+		});
+		wx.onBeaconUpdate(function(res) {
+			console.log('监听设备', res);
 		});
 	}
 	/** 
@@ -184,7 +217,7 @@ class bluetooth {
 			that.connectedDeviceId = deviceId;
 		}
 		if (!deviceId) {
-			console.log("设备id错误")
+			console.log("没有发现设备id")
 			return false;
 		}
 		console.log("连接设备id:", deviceId);
@@ -213,7 +246,7 @@ class bluetooth {
 	 * @return {Boolean} 返回值 
 	 * @author xxx 
 	 */
-	getBLEDeviceServices(_this) {
+	getBLEDeviceServices(_this, callback) {
 		var that = _this;
 		let deviceId = that.connectedDeviceId.toString();
 		console.log(deviceId);
@@ -221,16 +254,22 @@ class bluetooth {
 			// 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
 			deviceId: deviceId,
 			success: function(res) {
-				console.log('获取连接设备的service服务成功，设备服务列表:', JSON.stringify(res.services));
+				console.log('获取连接设备的service服务成功，设备服务列表:', res);
 				that.services = res.services;
-			}
+				callback(true)
+			},
+			fail: function(res) {
+				console.log("链接设备service服务失败", res);
+				callback(false)
+			},
 		})
 	}
 	//获取连接设备的所有特征值
-	getBLEDeviceCharacteristics(_this) {
+	getBLEDeviceCharacteristics(_this, callback) {
 		var that = _this;
 		let deviceId = that.connectedDeviceId;
 		let serverid = "00001000-0000-1000-8000-00805F9B34FB";
+		// let serverid = "0000180A-0000-1000-8000-00805F9B34FB";
 		wx.getBLEDeviceCharacteristics({
 			// 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
 			deviceId: deviceId,
@@ -238,42 +277,58 @@ class bluetooth {
 			// serviceId: that.services[0].uuid,
 			serviceId: serverid,
 			success: function(res) {
-				// 				for (let i = 0; i < res.characteristics.length; i++) {
-				// 					if (res.characteristics[i].properties.notify) {
-				// 						console.log("111", that.services[0].uuid);
-				// 						console.log("222", res.characteristics[i].uuid);
-				// 						that.notifyServicweId = that.services[0].uuid;
-				// 						that.notifyCharacteristicsId = res.characteristics[i].uuid;
-				// 					}
-				// 					if (res.characteristics[i].properties.write) {
-				// 						that.writeServicweId = that.services[0].uuid;
-				// 						that.writeCharacteristicsId = res.characteristics[i].uuid;
-				// 					} else if (res.characteristics[i].properties.read) {
-				// 						that.readServicweId = that.services[0].uuid;
-				// 						that.readCharacteristicsId = res.characteristics[i].uuid;
-				// 					}
-				// 				}
-				console.log('设备服务列表:', res);
+				console.log('特征值设备服务列表:', res);
+				// that.getBLEValueChange();
+				callback(true);
 			},
-			fail: function() {
-				console.log("fail");
+			fail: function(res) {
+				console.log("获取连接设备特征值失败", res);
+				callback(false);
 			},
 			complete: function() {
-				console.log("complete");
+				// console.log("complete");
 			}
 		});
 	}
-	//发送
-	sendBLEValueChange(_this, callback) {
+	//启用低功耗蓝牙设备特征值变化时的 notify 功能
+	notifyBLEValueChange(_this, callback) {
 		var that = _this;
 		let deviceId = that.connectedDeviceId.toString();
+		let notifyServicweId = that.notifyServicweId.toUpperCase(); //必须大写UUID
+		let notifyCharacteristicsId = that.notifyCharacteristicsId.toUpperCase(); //必须大写UUID
+		console.log("deviceId", deviceId);
+		console.log("notifyServicweId", notifyServicweId);
+		console.log("notifyCharacteristicsId", notifyCharacteristicsId);
+		wx.notifyBLECharacteristicValueChange({
+			state: true, // 启用 notify 功能
+			// 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
+			deviceId: deviceId,
+			// 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
+			serviceId: notifyServicweId,
+			// 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
+			characteristicId: notifyCharacteristicsId,
+			success: function(res) {
+				console.log('启用蓝牙设备特征值变化notify 功能成功', res);
+				callback(true, res);
+			},
+			fail: function(res) {
+				callback(false, res);
+				console.log('启用蓝牙设备特征值变化notify 功能失败', res);
+			}
+		})
+	}
+	//发送数据
+	sendBLEValueChange(_this, inputValue, callback) {
+		var that = _this;
+		let deviceId = that.$store.state.connectedDeviceId;
 		// 这里的回调可以获取到 write 导致的特征值改变
 		wx.onBLECharacteristicValueChange(function(res) {
 			let hex = ab2hex(res.value);
-			callback(true, 'success', hex);
 			console.log("发送的接收消息,返回值", hex, res);
+			callback(true, 'result', hex);
 		});
-		let senddata = that.inputValue;
+		let senddata = inputValue;
+		console.log(senddata, deviceId)
 		let buffer = new ArrayBuffer(3)
 		let dataView = new DataView(buffer)
 		dataView.setUint8(0, senddata);
@@ -295,50 +350,12 @@ class bluetooth {
 			},
 			fail: function(res) {
 				callback(false, '', res);
-				console.log('发送成功：', res);
+				console.log('发送失败：', res);
 			}
-		})
-		// 		wx.request({
-		// 			url: '../getEncrypt',
-		// 			success: function(data) {
-		// 				var arr = data.data.data.split(",");
-		// 				console.log(arr);
-		// 				for (var i = 0; i < arr.length; i++) {
-		// 					dataView.setInt8(i, arr[i]);
-		// 				}
-		// 				
-		// 			}
-		// 		})
-	}
-	//启用低功耗蓝牙设备特征值变化时的 notify 功能
-	notifyBLEValueChange(_this, callback) {
-		var that = _this;
-		let deviceId = that.connectedDeviceId.toString();
-		//var notifyServicweId = that.data.notifyServicweId.toUpperCase();
-		//var notifyCharacteristicsId = that.data.notifyCharacteristicsId.toUpperCase();
-		console.log("111", deviceId);
-		console.log("111", that.notifyServicweId);
-		console.log("222", that.notifyCharacteristicsId);
-		wx.notifyBLECharacteristicValueChange({
-			state: true, // 启用 notify 功能
-			// 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
-			deviceId: deviceId,
-			// 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
-			serviceId: that.notifyServicweId,
-			// 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
-			characteristicId: that.notifyCharacteristicsId,
-			success: function(res) {
-				console.log('启用蓝牙设备特征值变化notify 功能成功', res);
-				callback(true, res);
-			},
-			fail: function(res) {
-				callback(false, res);
-				console.log('启用蓝牙设备特征值变化notify 功能失败', res);
-			}
-		})
+		});
 	}
 	//接收消息
-	getBLEValueChange(_this) {
+	getBLEValueChange(_this, callback) {
 		var that = _this;
 		let deviceId = that.connectedDeviceId.toString();
 		// 必须在这里的回调才能获取
@@ -346,19 +363,21 @@ class bluetooth {
 			let hex = ab2hex(characteristic.value);
 			console.log("接收消息：,返回值", hex, characteristic);
 		})
-		console.log("readServicweId：", that.readServicweId);
-		console.log("readCharacteristicsId：", that.readCharacteristicsId);
+		console.log("readServicweId：", that.serviceuuid);
+		console.log("readCharacteristicsId：", that.readuuid);
 		wx.readBLECharacteristicValue({
 			// 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
 			deviceId: deviceId,
 			// 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
-			serviceId: that.readServicweId,
+			serviceId: that.serviceuuid,
 			// 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
-			characteristicId: that.readCharacteristicsId,
+			characteristicId: that.readuuid,
 			success: function(res) {
+				callback(true, res);
 				console.log('可读特征值:', res);
 			},
 			fail: function(res) {
+				callback(false, res);
 				console.log('读取可读特征值失败', res);
 			}
 		})
@@ -366,16 +385,12 @@ class bluetooth {
 	//断开设备连接
 	closeBLEConnection(_this) {
 		var that = _this;
-		let deviceId = ''
-		if (that.connectedDeviceId.length > 0) {
-			deviceId = that.connectedDeviceId.toString();
+		let deviceId = that.$store.state.connectedDeviceId;
+		if (deviceId.length > 0) {
+			deviceId = deviceId.toString();
 		} else {
-			console.log("没有connectedDeviceId")
+			console.log("没有连接设备id")
 			return;
-		}
-		if (!that.connectedDeviceId) {
-			console.log("没有连接设备，断开失败", that.connectedDeviceId)
-			return false;
 		}
 		wx.closeBLEConnection({
 			deviceId: deviceId,
@@ -389,7 +404,10 @@ class bluetooth {
 		})
 		wx.closeBluetoothAdapter({
 			success(res) {
-				console.log(res)
+				console.log('关闭蓝牙适配器成功', res);
+			},
+			fail: function(err) {
+				console.log('关闭适配器失败', err)
 			}
 		});
 	}

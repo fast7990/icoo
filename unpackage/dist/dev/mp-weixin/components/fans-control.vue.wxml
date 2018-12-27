@@ -1,0 +1,17 @@
+<template name="27d1173f">
+  <view class="_view data-v-2d759ba5 fans-control uni-column {{styleType}}">
+    <view class="_view data-v-2d759ba5 fans-control-item align-center {{index == values.length - 1 ? 'last' : ''}}" wx:key="index" key="{{index}}" wx:for="{{values}}" wx:for-index="index" wx:for-item="item">
+      <view class="_view data-v-2d759ba5 left" style="flex: 1;">
+        <view class="_view data-v-2d759ba5 imgheader">
+          <image src="{{item.headpicUrl?item.headpicUrl:nopicture}}" mode url="{{item.headpicUrl}}" class="_image data-v-2d759ba5"></image>
+        </view>
+      </view>
+      <view class="_view data-v-2d759ba5 center" style="flex: 4;">
+        <text style="margin-left: 10rpx;" class="_text data-v-2d759ba5">{{item.nickName?item.nickName:''}}</text>
+      </view>
+      <view class="_view data-v-2d759ba5 right" hidden="{{!(followStatus)}}" style="flex: 2;" bindtap="handleProxy" data-eventid="{{'M80-0-'+index}}" data-comkey="{{$k}}">
+        <text class="_text data-v-2d759ba5">{{item.followState==0?'+关注':'已关注'}}</text>
+      </view>
+    </view>
+  </view>
+</template>

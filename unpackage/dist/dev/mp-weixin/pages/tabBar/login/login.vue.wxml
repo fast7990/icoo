@@ -1,0 +1,17 @@
+<template name="6fd32617">
+  <view wx:if="{{canIUse}}" class="_view data-v-0a1f1ad1">
+    <view class="_view data-v-0a1f1ad1 header">
+      <image src="../../../static/img/login/icoologo.png" class="_image data-v-0a1f1ad1"></image>
+    </view>
+    <view class="_view data-v-0a1f1ad1 page-section" style="text-align: center;margin-top: 50rpx;" hidden="{{!(!show_status)}}">
+      <text style="font-size:36rpx;" class="_text data-v-0a1f1ad1">爱氪生活</text>
+    </view>
+    <view class="_view data-v-0a1f1ad1 page-section grant" hidden="{{!(show_status)}}">
+      <view class="_view data-v-0a1f1ad1 content">
+        <view class="_view data-v-0a1f1ad1">申请获取以下权限</view>
+        <text class="_text data-v-0a1f1ad1">获得你的公开信息(昵称，头像等)</text>
+      </view>
+      <button class="_button data-v-0a1f1ad1 bottom" type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleProxy" data-eventid="{{'duM-0'}}" data-comkey="{{$k}}"> 授权登录 </button>
+    </view>
+  </view>
+</template>

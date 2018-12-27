@@ -15,6 +15,16 @@ function formatTime(time) {
 	}).join(':')
 }
 
+function formatDate(date) {
+	var year = date.getFullYear()
+	var month = date.getMonth() + 1
+	var day = date.getDate()
+	var hour = date.getHours()
+	var minute = date.getMinutes()
+	var second = date.getSeconds()
+	return [year, month, day].map(formatNumber).join('/');
+}
+
 function formatLocation(longitude, latitude) {
 	if (typeof longitude === 'string' && typeof latitude === 'string') {
 		longitude = parseFloat(longitude)
@@ -97,5 +107,6 @@ module.exports = {
 	formatTime: formatTime,
 	formatLocation: formatLocation,
 	dateUtils: dateUtils,
-	IsDate: IsDate
+	IsDate: IsDate,
+	formatDate: formatDate
 }

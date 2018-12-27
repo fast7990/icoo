@@ -1,0 +1,9 @@
+<template name="6aa8b6ce">
+  <view class="_view data-v-388087d9 page">
+    <view class="_view data-v-388087d9 page-body">
+      <view class="_view data-v-388087d9 page-section text">
+        <text class="_text data-v-388087d9">{{text?text:''}}</text>
+      </view>
+    </view>
+  </view>
+</template>

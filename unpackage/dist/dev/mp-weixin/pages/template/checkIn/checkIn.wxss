@@ -32,6 +32,11 @@ view.data-v-5ed63395 {
 .checkin-log text.data-v-5ed63395 {
   color: #17393C;
 }
+.checkInTure.data-v-5ed63395 {
+  background: #CACACA;
+  border: 1rpx solid #CACACA;
+  color: #FFFFFF;
+}
 .integral.data-v-5ed63395 {
   position: absolute;
   left: 0;

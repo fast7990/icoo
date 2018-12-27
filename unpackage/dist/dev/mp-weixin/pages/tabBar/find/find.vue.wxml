@@ -2,20 +2,22 @@
   <view class="_view data-v-7ab9a55d page">
     <view class="_view data-v-7ab9a55d page-body uni-column">
       <view class="_view data-v-7ab9a55d page-section" style="margin: 20rpx 0;">
-        <view style="overflow: hidden;height: 300rpx;width: 100%;border-radius:25rpx;" class="_view data-v-7ab9a55d">
-          <image src="{{topimgsrc}}" style="wi" class="_image data-v-7ab9a55d"></image>
+        <view class="_view data-v-7ab9a55d uni-swiper-msg">
+          <swiper indicator-dots="true" autoplay="autoplay" interval="5000" duration="500" class="_swiper data-v-7ab9a55d">
+            <block wx:key="index" key="{{index}}" wx:for="{{news_list}}" wx:for-index="index" wx:for-item="item">
+              <swiper-item bindtap="handleProxy" data-eventid="{{'mMb-0-'+index}}" data-comkey="{{$k}}" class="_swiper-item data-v-7ab9a55d">
+                <view class="_view data-v-7ab9a55d swiper-item color1" style="width: 100%;height: 100%;">
+                  <image src="{{baseurl+item.banner_url}}" mode style="width: 100%;height: 100%;" class="_image data-v-7ab9a55d"></image>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
         </view>
       </view>
       <view class="_view data-v-7ab9a55d page-section">
         <scroll-view class="_scroll-view data-v-7ab9a55d scroll-view_H" scroll-x="true">
-          <view class="_view data-v-7ab9a55d scroll-view-item_H">
-            <image src="{{topimgsrc}}" mode class="_image data-v-7ab9a55d"></image>
-          </view>
-          <view class="_view data-v-7ab9a55d scroll-view-item_H">
-            <image src="{{topimgsrc}}" mode class="_image data-v-7ab9a55d"></image>
-          </view>
-          <view class="_view data-v-7ab9a55d scroll-view-item_H">
-            <image src="{{topimgsrc}}" mode class="_image data-v-7ab9a55d"></image>
+          <view class="_view data-v-7ab9a55d scroll-view-item_H" wx:key="index" key="{{index}}" wx:for="{{banner_list}}" wx:for-index="index" wx:for-item="item">
+            <image src="{{baseurl+item.banner_url}}" mode class="_image data-v-7ab9a55d"></image>
           </view>
         </scroll-view>
       </view>
@@ -24,11 +26,24 @@
           <text style="font-size: 36rpx;font-weight: bold;" class="_text data-v-7ab9a55d">健康挑战生活</text>
         </view>
         <view class="_view data-v-7ab9a55d challenge">
-          <view class="_view data-v-7ab9a55d list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'5UI-0-'+index}}" data-comkey="{{$k}}" wx:for="{{challenge_list}}" wx:for-index="index" wx:for-item="item">
-            <view class="_view data-v-7ab9a55d left" style="flex: 3;overflow: hidden;">
-              <image src mode class="_image data-v-7ab9a55d"></image>
-            </view>
-            <view class="_view data-v-7ab9a55d right uni-column" style="flex: 4;"></view>
+          <view class="_view data-v-7ab9a55d list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'tCV-1-'+index}}" data-comkey="{{$k}}" wx:for="{{challenge_list}}" wx:for-index="index" wx:for-item="item">
+            <image src="{{baseurl+item.banner_url}}" mode style="width: 100%;height: 300rpx;" class="_image data-v-7ab9a55d"></image>
+          </view>
+        </view>
+      </view>
+      <view class="_view data-v-7ab9a55d page-section agree" wx:if="{{agreestatus}}">
+        <view class="_view data-v-7ab9a55d box">
+          <view class="_view data-v-7ab9a55d" style="display: flex;justify-content: flex-end;">
+            <image src="../../../static/img/close.png" mode style="width: 45rpx;height: 45rpx;" bindtap="handleProxy" data-eventid="{{'wZX-2'}}" data-comkey="{{$k}}" class="_image data-v-7ab9a55d"></image>
+          </view>
+          <text class="_text data-v-7ab9a55d">在发起目标前请认真阅读下列详细规则。</text>
+          <text class="_text data-v-7ab9a55d">1.关于目标</text>
+          <text class="_text data-v-7ab9a55d">2.关于挑战金</text>
+          <text class="_text data-v-7ab9a55d">3.关于监督人</text>
+          <text class="_text data-v-7ab9a55d">4.其他</text>
+          <text class="_text data-v-7ab9a55d">如果你同意本协议中全部条款则可以发起目标</text>
+          <view class="_view data-v-7ab9a55d btn">
+            <text bindtap="handleProxy" data-eventid="{{'1EY-3'}}" data-comkey="{{$k}}" class="_text data-v-7ab9a55d"> 我同意 </text>
           </view>
         </view>
       </view>

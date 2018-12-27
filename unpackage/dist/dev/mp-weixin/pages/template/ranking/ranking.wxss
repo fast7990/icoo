@@ -43,5 +43,5 @@ view.data-v-a02efd32 {
   top: -22rpx;
 }
 .noborder.data-v-a02efd32 {
-  border: none!important;
+  border: none !important;
 }

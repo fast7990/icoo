@@ -11,7 +11,7 @@
 							<view class="justify-center" style="width: 100%;height: 50%;" :class="indexs==target_index?'bgactive':''">
 								<text style="font-size: 26upx; width: 92%;border-bottom: 1upx solid #17393C;height: 62upx;">{{item.day}}天</text>
 							</view>
-							<text style="font-size: 24upx;">{{item.rate}}</text>
+							<text>{{item.rate}}</text>
 						</view>
 					</view>
 				</view>
@@ -24,7 +24,7 @@
 					<view class="content">
 						<view style="justify-content: space-between;align-items: center;flex: 1;">
 							<text>每天吸烟口数</text>
-							<number-box v-on:update="numberUpdate" min="0"></number-box>
+							<number-box v-on:update="numberUpdate" :value="minvalue" :min="unlockPuffsTime"></number-box>
 						</view>
 					</view>
 				</view>
@@ -68,8 +68,12 @@
 				numberValue: 0,
 				time1: date1,
 				time2: date2,
-				startday_index: 0,
+				startday_index: -1,
 				target_index: -1,
+				unlockPuffsTime: 0,
+				minvalue: 0,
+				score: 0,
+				rate: 0,
 				complete_day: [{
 					day: 7,
 					rate: 1.05
@@ -82,7 +86,34 @@
 				}]
 			};
 		},
+		onLoad: function() {
+			this.initData();
+		},
 		methods: {
+			initData() {
+				let that = this;
+				this.$api.activeInfo({
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token
+				}, function(res) {
+					console.log(res);
+					if (res.data.status == 1) {
+						that.setDataInfo(res.data.data)
+					}
+				}, function(err) {
+					console.log(err)
+				});
+			},
+			setDataInfo(value) {
+				if (typeof value == 'object') {
+					this.unlockPuffsTime = value.unlockPuffsTime;
+					this.minvalue = value.unlockPuffsTime;
+					this.score = value.score;
+					this.complete_day[0].rate = value.firstRate;
+					this.complete_day[1].rate = value.secondRate;
+					this.complete_day[2].rate = value.thridRate;
+				}
+			},
 			changeTime(i) {
 				this.startday_index = i;
 			},
@@ -90,12 +121,34 @@
 				console.log(i)
 				this.target_index = i;
 			},
+			numberUpdate(value) {
+				this.numberValue = value;
+				this.minvalue = value;
+			},
 			submit() {
+				if (this.target_index == -1) {
+					uni.showToast({
+						title: '请设置目标天数',
+						icon: 'none'
+					});
+					return;
+				}
+				if (this.startday_index == -1) {
+					uni.showToast({
+						title: '请设置开始时间',
+						icon: 'none'
+					});
+					return;
+				}
+				let targetPuffsTime, startType, targetDays, rate;
+				targetPuffsTime = this.numberValue;
+				startType = this.startday_index;
+				targetDays = this.complete_day[this.target_index].day;
+				rate = this.complete_day[this.target_index].rate;
 				uni.navigateTo({
-					url: '../challengeAward/challengeAward',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
+					url: '../challengeAward/challengeAward?targetPuffsTime=' + targetPuffsTime + '&startType=' + startType +
+						'&targetDays=' + targetDays + '&score=' + this.score + '&rate=' + rate,
+					success: res => {}
 				});
 			}
 		},
@@ -105,7 +158,7 @@
 	}
 </script>
 
-<style scoped>
+<style scoped="scoped">
 	page,
 	view {
 		display: flex;
@@ -114,6 +167,7 @@
 	text {
 		color: #17393C;
 		font-weight: bold;
+		font-size: 24upx;
 	}
 
 	.page-body {

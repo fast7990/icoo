@@ -3,10 +3,10 @@
     <view class="_view data-v-c0f0ae5e page-body uni-column">
       <view class="_view data-v-c0f0ae5e page-section">
         <view class="_view data-v-c0f0ae5e user-list uni-column align-center" style="background: #17393C;">
-          <text style="font-size: 68rpx;margin: 25rpx 0 10rpx;line-height: 1em;" class="_text data-v-c0f0ae5e">{{user_integral}}</text>
+          <text style="font-size: 68rpx;margin: 25rpx 0 10rpx;line-height: 1em;" class="_text data-v-c0f0ae5e">{{totalScore}}</text>
           <text style="font-size: 24rpx;" class="_text data-v-c0f0ae5e">我的积分</text>
           <view class="_view data-v-c0f0ae5e user-card-list" style="margin:40rpx 0 10rpx;">
-            <view class="_view data-v-c0f0ae5e list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'f3Y-0-'+index}}" data-comkey="{{$k}}" wx:for="{{user_atten_list}}" wx:for-index="index" wx:for-item="item">
+            <view class="_view data-v-c0f0ae5e list" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'EGC-0-'+index}}" data-comkey="{{$k}}" wx:for="{{user_atten_list}}" wx:for-index="index" wx:for-item="item">
               <image src="{{item.imgsrc}}" mode style="width: 60rpx;height: 60rpx;" class="_image data-v-c0f0ae5e"></image>
               <text class="_text data-v-c0f0ae5e">{{item.name}}</text>
             </view>
@@ -15,14 +15,14 @@
       </view>
       <view class="_view data-v-c0f0ae5e page-section">
         <view class="_view data-v-c0f0ae5e user-list uni-column">
-          <view class="_view data-v-c0f0ae5e task-list {{task_index == user_task_list.length - 1 ? 'uni-border-none' : ''}}" hover-class="uni-list-cell-hover" wx:key="task_index" key="{{task_index}}" bindtap="handleProxy" data-eventid="{{'Y7u-1-'+task_index}}"
+          <view class="_view data-v-c0f0ae5e task-list {{task_index == user_task_list.length - 1 ? 'uni-border-none' : ''}}" hover-class="uni-list-cell-hover" wx:key="task_index" key="{{task_index}}" bindtap="handleProxy" data-eventid="{{'onb-1-'+task_index}}"
             data-comkey="{{$k}}" wx:for="{{user_task_list}}" wx:for-index="task_index" wx:for-item="item">
             <view class="_view data-v-c0f0ae5e uni-column">
               <text class="_text data-v-c0f0ae5e top">{{item.task}}</text>
               <text class="_text data-v-c0f0ae5e bottom">{{item.task_info}}</text>
             </view>
             <view class="_view data-v-c0f0ae5e uni-row">
-              <text class="_text data-v-c0f0ae5e last">{{item.reward}}</text>
+              <text class="_text data-v-c0f0ae5e last">{{item.status==1?'已完成':'+50积分'}}</text>
             </view>
             <view class="_view data-v-c0f0ae5e uni-row">
               <image src="../../../static/img/more2.png" style="width: 13rpx;height: 21rpx;" mode class="_image data-v-c0f0ae5e"></image>

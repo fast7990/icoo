@@ -3,27 +3,27 @@
   <view class="_view data-v-7b3ca44e page">
     <view class="_view data-v-7b3ca44e page-body uni-column">
       <view class="_view data-v-7b3ca44e page-section" style="padding: 0 20%;margin-bottom: 30rpx;">
-        <template bindclickItem="handleProxy" data-eventid="{{'GcE-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'8uO-0'],$root}}" is="e68b757a"></template>
+        <template bindclickItem="handleProxy" data-eventid="{{'d3f-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'Ahu-0'],$root}}" is="e68b757a"></template>
       </view>
-      <view class="_view data-v-7b3ca44e page-section" style="flex: 1;padding: 0 30rpx;align-content: flex-start;">
+      <view class="_view data-v-7b3ca44e page-section uni-column" style="flex: 1;padding: 0 30rpx;justify-content: flex-start;">
         <view class="_view data-v-7b3ca44e list-cell uni-column justify-center" wx:key="add_index" key="{{add_index}}" wx:for="{{add_list}}" wx:for-index="add_index" wx:for-item="item" style=" {{('display:' + (current === 0 ? 'flex' : 'none') + ';')}}">
           <view class="_view data-v-7b3ca44e top">
-            <text style="text-align: left;font-size:34rpx;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.name}}</text>
-            <text style="text-align: center;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.type}}</text>
+            <text style="text-align: left;font-size:34rpx;font-weight: bold;" class="_text data-v-7b3ca44e">积分增加</text>
+            <text style="text-align: center;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.score?item.score:''}}</text>
           </view>
           <view class="_view data-v-7b3ca44e bottom">
-            <text style="text-align: left;color: #CACACA;" class="_text data-v-7b3ca44e">{{item.add}}</text>
-            <text style="text-align: center;" class="_text data-v-7b3ca44e">{{item.date}}</text>
+            <text style="text-align: left;color: #CACACA;" class="_text data-v-7b3ca44e">{{item.remark?item.remark:''}}</text>
+            <text style="text-align: center;" class="_text data-v-7b3ca44e">{{item.createDate}}</text>
           </view>
         </view>
         <view class="_view data-v-7b3ca44e list-cell uni-column justify-center" wx:key="index" key="{{index}}" wx:for="{{reduce_list}}" wx:for-index="index" wx:for-item="item" style=" {{('display:' + (current === 1 ? 'flex' : 'none') + ';')}}">
           <view class="_view data-v-7b3ca44e top">
-            <text style="text-align: left;font-size:34rpx;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.name}}</text>
-            <text style="text-align: center;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.type}}</text>
+            <text style="text-align: left;font-size:34rpx;font-weight: bold;" class="_text data-v-7b3ca44e">积分支出</text>
+            <text style="text-align: center;font-weight: bold;" class="_text data-v-7b3ca44e">{{item.score?item.score:''}}</text>
           </view>
           <view class="_view data-v-7b3ca44e bottom">
-            <text style="text-align: left;color: #CACACA;" class="_text data-v-7b3ca44e">{{item.reduce}}</text>
-            <text style="text-align: center;" class="_text data-v-7b3ca44e">{{item.date}}</text>
+            <text style="text-align: left;color: #CACACA;" class="_text data-v-7b3ca44e">{{item.remark?item.remark:''}}</text>
+            <text style="text-align: center;" class="_text data-v-7b3ca44e">{{item.createDate}}</text>
           </view>
         </view>
       </view>

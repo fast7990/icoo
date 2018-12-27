@@ -9,6 +9,7 @@ view.data-v-8b0288ba {
 text.data-v-8b0288ba {
   color: #17393C;
   font-weight: bold;
+  font-size: 24rpx;
 }
 .page-body.data-v-8b0288ba {
   padding: 10rpx 30rpx;

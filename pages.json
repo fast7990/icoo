@@ -1,6 +1,22 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页,
 		{
+			"path": "pages/tabBar/login/login",
+			"style": {
+				"navigationBarTitleText": "用户登录",
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/tabBar/register/register",
+			"style": {
+				"navigationBarTitleText": "用户注册",
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
 			"path": "pages/tabBar/home/home",
 			"style": {
 				"navigationBarTitleText": "爱氪电子烟",
@@ -23,7 +39,8 @@
 			"style": {
 				"navigationBarTitleText": "发现",
 				"navigationBarTextStyle": "black",
-				"navigationBarBackgroundColor": "#f6f6f6"
+				"navigationBarBackgroundColor": "#f6f6f6",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -62,100 +79,113 @@
 		}]
 	},
 	"subPackages": [{
-		"root": "pages/components/",
-		"pages": [{
-			"path": "mpvuePicker/mpvuePicker",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		}]
-	}, {
-		"root": "pages/API/",
-		"pages": [{
-			"path": "get-bluetooth-tool/get-bluetooth-tool",
-			"style": {
-				"navigationBarTitleText": "蓝牙"
-			}
-		}]
-	}, {
-		"root": "pages/template/",
-		"pages": [{
-			"path": "main/main",
-			"style": {
-				"navigationBarTitleText": "登录模板"
-			}
-		}, {
-			"path": "login/login",
-			"style": {
-				"navigationBarTitleText": "登录"
-			}
-		}, {
-			"path": "reg/reg",
-			"style": {
-				"navigationBarTitleText": "注册"
-			}
-		}, {
-			"path": "pwd/pwd",
-			"style": {
-				"navigationBarTitleText": "找回密码"
-			}
-		}, {
-			"path": "user/user",
-			"style": {
-				"navigationBarTitleText": "我的"
-			}
-		}, {
-			"path": "usageRecord/usageRecord",
-			"style": {
-				"navigationBarTitleText": "统计详情"
-			}
-		}, {
-			"path": "ranking/ranking",
-			"style": {
-				"navigationBarTitleText": "我的社区"
-			}
-		}, {
-			"path": "checkIn/checkIn",
-			"style": {
-				"navigationBarTitleText": "每日签到"
-			}
-		}, {
-			"path": "userData/userData",
-			"style": {
-				"navigationBarTitleText": "个人资料"
-			}
-		}, {
-			"path": "datachecker/datachecker",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		}, {
-			"path": "challenge/challenge",
-			"style": {
-				"navigationBarTitleText": "健康挑战"
-			}
-		}, {
-			"path": "challengeTarget/challengeTarget",
-			"style": {
-				"navigationBarTitleText": "目标设置"
-			}
-		}, {
-			"path": "challengeAward/challengeAward",
-			"style": {
-				"navigationBarTitleText": "设置挑战金"
-			}
-		}, {
-			"path": "statistics/statistics",
-			"style": {
-				"navigationBarTitleText": "统计详情"
-			}
-		}, {
-			"path": "integralDetail/integralDetail",
-			"style": {
-				"navigationBarTitleText": "积分明细"
-			}
-		}]
-	}],
+			"root": "pages/components/",
+			"pages": []
+		},
+		{
+			"root": "pages/API/",
+			"pages": [{
+				"path": "get-bluetooth-tool/get-bluetooth-tool",
+				"style": {
+					"navigationBarTitleText": "蓝牙"
+				}
+			}]
+		},
+		{
+			"root": "pages/template/",
+			"pages": [{
+				"path": "main/main",
+				"style": {
+					"navigationBarTitleText": "登录模板"
+				}
+			}, {
+				"path": "pwd/pwd",
+				"style": {
+					"navigationBarTitleText": "找回密码"
+				}
+			}, {
+				"path": "ranking/ranking",
+				"style": {
+					"navigationBarTitleText": "健康排行"
+				}
+			}, {
+				"path": "checkIn/checkIn",
+				"style": {
+					"navigationBarTitleText": "每日签到"
+				}
+			}, {
+				"path": "userData/userData",
+				"style": {
+					"navigationBarTitleText": "个人资料"
+				}
+			}, {
+				"path": "datachecker/datachecker",
+				"style": {
+					"navigationBarTitleText": ""
+				}
+			}, {
+				"path": "challenge/challenge",
+				"style": {
+					"navigationBarTitleText": "健康挑战"
+				}
+			}, {
+				"path": "challengeTarget/challengeTarget",
+				"style": {
+					"navigationBarTitleText": "目标设置"
+				}
+			}, {
+				"path": "challengeAward/challengeAward",
+				"style": {
+					"navigationBarTitleText": "设置挑战金"
+				}
+			}, {
+				"path": "statistics/statistics",
+				"style": {
+					"navigationBarTitleText": "统计详情"
+				}
+			}, {
+				"path": "integralDetail/integralDetail",
+				"style": {
+					"navigationBarTitleText": "积分明细"
+				}
+			}, {
+				"path": "fans/fans",
+				"style": {
+					"navigationBarTitleText": "我的社区"
+				}
+			}, {
+				"path": "mydevice/mydevice",
+				"style": {
+					"navigationBarTitleText": "我的设备"
+				}
+			}, {
+				"path": "invitedFriend/invitedFriend",
+				"style": {
+					"navigationBarTitleText": "邀请好友"
+				}
+			}, {
+				"path": "webView/webView",
+				"style": {
+					"navigationBarTitleText": "新闻"
+				}
+			}, {
+				"path": "changeMobile/changeMobile",
+				"style": {
+					"navigationBarTitleText": "更换手机号"
+				}
+			}, {
+				"path": "help/help",
+				"style": {
+					"navigationBarTitleText": "帮助"
+				}
+			}, {
+				"path": "version/version",
+				"style": {
+					"navigationBarTitleText": "关于我们"
+				}
+			}]
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarBackgroundColor": "#f6f6f6",

@@ -5,25 +5,25 @@
 				<segmented-control :current="current" :values="tabitems" v-on:clickItem="onClickItem" :styleType="styleType"
 				 :activeColor="activeColor"></segmented-control>
 			</view>
-			<view class="page-section" style="flex: 1;padding: 0 30upx;align-content: flex-start;">
+			<view class="page-section uni-column" style="flex: 1;padding: 0 30upx;justify-content: flex-start;">
 				<view class="list-cell uni-column justify-center" v-for="(item,add_index) in add_list" :key="add_index" :style="{display:current === 0?'flex':'none'}">
 					<view class="top">
-						<text style="text-align: left;font-size:34upx;font-weight: bold;">{{item.name}}</text>
-						<text style="text-align: center;font-weight: bold;">{{item.type}}</text>
+						<text style="text-align: left;font-size:34upx;font-weight: bold;">积分增加</text>
+						<text style="text-align: center;font-weight: bold;">{{item.score?item.score:''}}</text>
 					</view>
 					<view class="bottom">
-						<text style="text-align: left;color: #CACACA;">{{item.add}}</text>
-						<text style="text-align: center;">{{item.date}}</text>
+						<text style="text-align: left;color: #CACACA;">{{item.remark?item.remark:''}}</text>
+						<text style="text-align: center;">{{item.createDate}}</text>
 					</view>
 				</view>
 				<view class="list-cell uni-column justify-center" v-for="(item,index) in reduce_list" :key="index" :style="{display:current === 1?'flex':'none'}">
 					<view class="top">
-						<text style="text-align: left;font-size:34upx;font-weight: bold;">{{item.name}}</text>
-						<text style="text-align: center;font-weight: bold;">{{item.type}}</text>
+						<text style="text-align: left;font-size:34upx;font-weight: bold;">积分支出</text>
+						<text style="text-align: center;font-weight: bold;">{{item.score?item.score:''}}</text>
 					</view>
 					<view class="bottom">
-						<text style="text-align: left;color: #CACACA;">{{item.reduce}}</text>
-						<text style="text-align: center;">{{item.date}}</text>
+						<text style="text-align: left;color: #CACACA;">{{item.remark?item.remark:''}}</text>
+						<text style="text-align: center;">{{item.createDate}}</text>
 					</view>
 				</view>
 			</view>
@@ -43,25 +43,61 @@
 				current: 0,
 				activeColor: '#17393c',
 				styleType: 'text',
-				add_list: [{
-					name: '积分增加',
-					type: '签到',
-					add: '+10',
-					date: '2018-10-10'
-				}],
-				reduce_list: [{
-					name: '积分减少',
-					type: '活动',
-					reduce: '-10',
-					date: '2018-10-10'
-				}]
+				scoreCount: '', //总条数
+				totalScore: '', //总积分数
+				add_list: [],
+				reduce_list: []
 			};
 		},
+		onLoad: function() {
+			this.getInitData(0, 20, 1);
+		},
 		methods: {
+			getInitData(type, limit, pageNum) {
+				let that = this;
+				let data = {
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token,
+					type: type,
+					limit: limit,
+					pageNum: pageNum
+				}
+				this.$api.myScoreInfo(data, function(res) {
+					if (res.data.status == 1) {
+						that.scoreCount = res.data.data.scoreCount;
+						that.totalScore = res.data.data.totalScore;
+						that.listItem(type, res.data.data.scoreList);
+					}
+					console.log(res)
+				}, function(err) {
+					console.log(err)
+				});
+			},
+			listItem(type, value) {
+				let list_type = '';
+				let that = this;
+				if (type == 0) {
+					list_type = 'add_list';
+				} else {
+					list_type = 'reduce_list';
+				}
+				if (Array.isArray(value)) {
+					let arr = value;
+					value.map(function(item, index) {
+						arr[index].createDate = value[index].createDate.substring(0, 10)
+					});
+					this[list_type] = arr;
+				}
+			},
 			onClickItem(index) {
+				console.log(index)
 				if (this.current !== index) {
 					this.current = index;
 				}
+				this.getInitData(index, 20, 1);
+			},
+			formatDate(data) {
+				return data.toString().slice(0, 10);
 			}
 		},
 		components: {

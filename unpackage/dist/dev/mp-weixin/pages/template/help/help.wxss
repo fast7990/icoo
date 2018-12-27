@@ -1,0 +1,24 @@
+@import "../../../common/vendor.wxss";
+
+page.data-v-388087d9,
+view.data-v-388087d9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.page.data-v-388087d9,
+.page-body.data-v-388087d9 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.page-section.data-v-388087d9 {
+  margin: 20rpx;
+}
+.text text.data-v-388087d9 {
+  font-size: 28rpx;
+  line-height: 2em;
+}

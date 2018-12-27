@@ -42,7 +42,6 @@ text.data-v-c0f0ae5e {
 }
 .user-card-list .list.data-v-c0f0ae5e:nth-child(2) {
   border-left: solid 1rpx #5e9196;
-  border-right: solid 1rpx #5e9196;
 }
 .user-card-list .list text.data-v-c0f0ae5e {
   color: #FFFFFF;

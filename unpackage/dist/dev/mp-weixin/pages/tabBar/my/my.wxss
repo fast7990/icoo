@@ -112,6 +112,18 @@ view.data-v-d168f606 {
   left: 14rpx;
   top: 15rpx;
 }
+.sign-state.data-v-d168f606 {
+  font-size: 26rpx;
+  line-height: 52rpx;
+  padding: 0 40rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid #17393c;
+}
+.sign-state.checkInTure.data-v-d168f606 {
+  background: #CACACA;
+  border: 1rpx solid #CACACA;
+  color: #FFFFFF;
+}
 .box-active.data-v-d168f606 {
   background: #17393c;
   border: 1rpx solid #17393c !important;

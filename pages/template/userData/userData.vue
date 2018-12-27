@@ -19,8 +19,8 @@
 							<text>{{item.name}}</text>
 						</view>
 						<view class="" style="flex: 7;justify-content: flex-end;">
-							<picker @change="bindPickerChange" :value="index" :range="array" v-if="item.target=='sex'" style="width: 100%;text-align: right;">
-								<text class="uni-input">{{array[index]}}</text>
+							<picker @change="bindPickerChange" :value="sex_index" :range="sex_array" v-if="item.target=='sex'" style="width: 100%;text-align: right;">
+								<text class="uni-input">{{sex_array[sex_index]}}</text>
 							</picker>
 							<picker mode="date" @change="bindDateChange" :value="date" :start="startDate" :end="endDate" v-else-if="item.target=='birthday'"
 							 style="width: 100%;text-align: right;">
@@ -45,34 +45,36 @@
 				format: true
 			});
 			return {
-				index: 0,
-				array: ['男', '女'],
+				sex_index: 2,
+				sex_array: ['女', '男', '-'],
 				date: currentDate,
 				user_data: '',
-				headerImageSrc: 'http://img3.imgtn.bdimg.com/it/u=466871861,443615080&fm=26&gp=0.jpg',
+				headerImageSrc: '',
+				baseurl: 'https://www.icoo.tech',
 				util_list: [{
 					name: '昵称',
-					info: '编辑昵称',
-					target: 'nickname',
+					info: '未设置',
+					value: '',
+					target: 'nickName',
 				}, {
 					name: '性别',
 					info: '未设置',
+					value: '',
 					target: 'sex',
 				}, {
 					name: '出生日期',
 					info: '未设置',
+					value: '',
 					target: 'birthday',
 				}, {
 					name: '身高',
 					info: '未设置',
+					value: '',
 					target: 'height',
-				}, {
-					name: '手机号码',
-					info: '未设置',
-					target: 'phone',
 				}, {
 					name: '体重',
 					info: '未设置',
+					value: '',
 					target: 'weight',
 				}]
 			};
@@ -85,29 +87,82 @@
 				return this.getDate('end');
 			}
 		},
-		onUnload() {
-			this.headerImageSrc = '';
-		},
 		onShow: function() {
+			this.initData();
 			let user_data = this.$store.state.userData;
 			if (Array.isArray(user_data)) {
 				this.setListData(user_data[0], user_data[1]);
 			}
 		},
 		methods: {
+			initData() {
+				let that = this;
+				this.$api.userPage({
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token
+				}, function(res) {
+					console.log(res);
+					if (res.data.status == 1) {
+						that.util_list[0].info = res.data.data.nickName?res.data.data.nickName:'-';
+						that.sex_index = res.data.data.sex ? res.data.data.sex : 2;
+						that.headerImageSrc = (res.data.data.headpicUrl.indexOf('http') > -1) ? res.data.data.headpicUrl : that.baseurl +
+							res.data.data.headpicUrl;
+						that.date = res.data.data.birthday ? res.data.data.birthday : '-';
+						that.util_list[3].info = res.data.data.height ? res.data.data.height : '-';
+						that.util_list[4].info = res.data.data.weight ? res.data.data.weight : '-';
+					}
+				}, function(err) {
+					console.log(err);
+				});
+			},
+			updateUserInfo(value, type) {
+				if (type == 'sex') {
+					if (value == '') {
+						uni.showToast({
+							title: '性别不能为空',
+							icon: 'none'
+						});
+						return;
+					}
+				}
+				if (type == 'birthday') {
+					if (value == '') {
+						uni.showToast({
+							title: '生日不能为空',
+							icon: 'none'
+						});
+						return;
+					}
+				}
+				let data = {
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token
+				}
+				data[type] = value;
+				console.log(data)
+				this.$api.userInfo(data, function(res) {
+					console.log(res);
+				}, function(err) {
+					console.log(err);
+				});
+			},
 			setListData(key, value) {
 				this.util_list.forEach(function(item, index) {
 					if (item.target == key) {
 						item.info = value;
+						item.value = value;
 					}
 				});
 			},
 			bindPickerChange(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
-				this.index = e.target.value;
+				this.sex_index = e.target.value;
+				this.util_list[1].value = this.sex_array[this.sex_index];
+				this.updateUserInfo(this.sex_index, 'sex');
 			},
 			bindDateChange(e) {
 				this.date = e.target.value;
+				this.updateUserInfo(this.date, 'birthday');
 			},
 			openTag(item) {
 				if (item.target != 'sex' && item.target != 'birthday') {
@@ -116,7 +171,7 @@
 			},
 			open(type) { //打开
 				switch (type) {
-					case 'nickname':
+					case 'nickName':
 						this.target('datachecker', type, 'template');
 						break;
 					case 'sex':
@@ -163,6 +218,7 @@
 				});
 			},
 			chooseImage: function() {
+				let that = this;
 				uni.chooseImage({
 					count: 1, //图片数量
 					sizeType: ['compressed'], //原图，缩略图['original', 'compressed']
@@ -171,17 +227,24 @@
 						console.log('chooseImage success, temp path is', res.tempFilePaths[0])
 						var imageSrc = res.tempFilePaths[0]
 						uni.uploadFile({
-							url: "https://www.icoo.tech/common/sysFile/testuploadimg",
+							url: "https://www.icoo.tech/app/member/uploadimg",
+							formData: {
+								userCode: that.$store.state.userCode,
+								token: that.$store.state.token,
+							},
 							filePath: imageSrc,
 							name: 'file',
-							success: (res) => {
-								console.log('uploadImage success, res is:', res)
+							success: function(res) {
+								console.log('uploadImage success, res is:', JSON.parse(res.data))
+								let resdata = JSON.parse(res.data);
 								uni.showToast({
 									title: '上传成功',
 									icon: 'success',
 									duration: 1000
-								})
-								this.headerImageSrc = imageSrc
+								});
+								that.headerImageSrc = imageSrc;
+								console.log(resdata.data)
+								that.updateUserInfo(resdata.data, 'headpicUrl')
 							},
 							fail: (err) => {
 								console.log('uploadImage fail', err);

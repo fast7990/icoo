@@ -6,19 +6,17 @@
 					<view class="my-top action-row" @tap="target('userData')">
 						<view class="left align-center" style="flex: 4;justify-content: flex-start;padding-left: 50upx;">
 							<view style="width: 120upx;height: 120upx;border-radius: 120upx;overflow: hidden;">
-								<image :src="my_data.imgsrc" style="width: 100%;height: 100%;"></image>
+								<image :src="my_data.imgsrc?my_data.imgsrc:noheaderimg" style="width: 100%;height: 100%;"></image>
 							</view>
 							<view class="name">
 								<text style="font-size: 30upx;margin-left: 10upx;color: #FFFFFF;">&nbsp;&nbsp;{{my_data.name}}</text>
 							</view>
 						</view>
-						<view class="right align-center" style="flex: 1;justify-content: flex-end;">
-							<!-- <image src="../../../static/img/more1.png" mode="" style="width: 17upx;height: 24upx;"></image> -->
-						</view>
+						<view class="right align-center" style="flex: 1;justify-content: flex-end;"></view>
 					</view>
 					<view class="user-card">
 						<view class="user-card-list">
-							<view class="list" v-for="(item,index) in user_atten_list" :key="index">
+							<view class="list" v-for="(item,index) in user_atten_list" :key="index" @tap="target(item.target,item.index)">
 								<text>{{item.value}}</text>
 								<text>{{item.name}}</text>
 							</view>
@@ -41,10 +39,9 @@
 							<text style="font-size: 36upx;">每日签到</text>
 							<text style="font-size: 24upx;">连续签到一周，可获得9折券</text>
 						</view>
-						<view class="align-center" style="justify-content: flex-end;flex: 1;">
-							<text style="font-size: 26upx;line-height: 52upx;padding: 0 40upx;border-radius: 40upx;border:1upx solid #17393c;"
-							 @tap="target('checkIn')">
-								领取
+						<view class="align-center" style="justify-content: flex-end;flex: 2;">
+							<text class="sign-state" @tap="target('checkIn')" :class="my_data.signState?'checkInTure':'checkInTure'">
+								{{my_data.signState?'已领取':'领取'}}
 							</text>
 						</view>
 					</view>
@@ -90,30 +87,42 @@
 
 <script>
 	import uniIcon from "../../components/uni-icon.vue";
+	import {
+		childMixin
+	} from "../../../common/mixins.js";
 	export default {
 		data() {
 			let get_today = new Date().getDay();
 			return {
 				title: '我的',
 				today: get_today,
+				baseurl: 'https://www.icoo.tech',
+				noheaderimg: '../../../static/img/nopicture.png',
 				my_data: {
-					imgsrc: 'http://img3.imgtn.bdimg.com/it/u=466871861,443615080&fm=26&gp=0.jpg',
-					name: '你的名字',
-					fans: 15,
-					follow: 50,
-					integral: 100
+					imgsrc: '',
+					name: '',
+					fans: 0,
+					follow: 0,
+					integral: 0,
+					signState: false,
 				},
 				user_atten_list: [{
-						value: 10,
-						name: '粉丝'
+						value: 0,
+						name: '粉丝',
+						target: 'fans',
+						index: 1,
 					},
 					{
-						value: 20,
-						name: '关注'
+						value: 0,
+						name: '关注',
+						target: 'fans',
+						index: 2,
 					},
 					{
-						value: 15,
-						name: '我的积分'
+						value: 0,
+						name: '我的积分',
+						target: 'integralDetail',
+						index: 3,
 					}
 				],
 				tabr_list: [{
@@ -127,11 +136,11 @@
 				}, {
 					icon_src: '../../../static/img/huodong.png',
 					name: '我的活动',
-					target: ''
+					target: 'challenge'
 				}, {
 					icon_src: '../../../static/img/bangding.png',
 					name: '我的设备',
-					target: ''
+					target: 'mydevice'
 				}, {
 					icon_src: '../../../static/img/user02.png',
 					name: '个人资料',
@@ -140,7 +149,7 @@
 				sign_list: [{
 						day: 1,
 						integral: '+10',
-						state: true
+						state: false
 					},
 					{
 						day: 2,
@@ -171,23 +180,23 @@
 				util_list: [{
 					imgsrc: '../../../static/img/yaoqingma.png',
 					name: '我的邀请码',
-					info: '邀请好友+500积分',
-					target: '',
+					info: '邀请好友+50积分',
+					target: 'invitedFriend',
 				}, {
 					imgsrc: '../../../static/img/shezhi.png',
 					name: '安全设置',
 					info: '',
-					target: '',
+					target: 'changeMobile',
 				}, {
 					imgsrc: '../../../static/img/bangzhu.png',
 					name: '帮助',
 					info: '',
-					target: '',
+					target: 'help',
 				}, {
 					imgsrc: '../../../static/img/guanyu.png',
 					name: '关于',
 					info: '',
-					target: '',
+					target: 'version',
 				}, {
 					imgsrc: '../../../static/img/guanyu.png',
 					name: '健康挑战',
@@ -196,18 +205,100 @@
 				}]
 			}
 		},
+		mixins: [childMixin],
 		onLoad() {
-
+			this.setStatisTics();
+		},
+		onShow: function() {
+			this.getInitData();
+		},
+		onPullDownRefresh: function() {
+			this.getInitData();
+			console.log('onPullDownRefresh');
 		},
 		methods: {
-			target(tag) {
+			getInitData() {
+				let that = this;
+				this.$api.myInfo({
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token,
+				}, function(res) {
+					if (res.data.status == 1) {
+						that.setMyData(res.data);
+					}
+					console.log(res);
+					if (res.data.status == 99) {
+						that.loginOut(res.data.msg);
+					}
+					uni.stopPullDownRefresh();
+				}, function(err) {
+					console.log(err);
+					uni.stopPullDownRefresh();
+				})
+			},
+			target(tag, index) {
+				console.log(tag, index)
 				if (tag == '') {
 					return;
+				} else if (index) {
+					uni.navigateTo({
+						url: '../../template/' + tag + '/' + tag + '?index=' + index
+					});
+				} else {
+					uni.navigateTo({
+						url: '../../template/' + tag + '/' + tag
+					});
 				}
-				uni.navigateTo({
-					url: '../../template/' + tag + '/' + tag
-				});
+
 			},
+			setMyData(value) {
+				let that = this;
+				value.data.weekList.map(function(item) {
+					that.sign_list[item.weekdayNum - 1].state = true;
+					that.sign_list[item.weekdayNum - 1].integral = "+" + item.score;
+				});
+				that.my_data.follow = value.data.followNum;
+				that.my_data.fansNum = value.data.fans;
+				that.my_data.name = value.data.nickName;
+				that.my_data.imgsrc = (value.data.HeadpicUrl.indexOf('http') > -1) ? value.data.HeadpicUrl : this.baseurl + value.data
+					.HeadpicUrl;
+				that.my_data.signState = value.data.signState;
+				that.my_data.integral = value.data.score;
+				that.user_atten_list[0].value = value.data.fansNum;
+				that.user_atten_list[1].value = value.data.followNum;
+				that.user_atten_list[2].value = value.data.score;
+				that.$store.commit('set_nickName', that.my_data.name);
+				that.$store.commit('set_headpicUrl', that.my_data.imgsrc);
+			},
+			setStatisTics() {
+				let that = this;
+				[1, 2, 3].map(function(type) {
+					that.$api.statisticsUserPuffs({
+						userCode: that.$store.state.userCode,
+						token: that.$store.state.token,
+						type: type
+					}, function(res) {
+						console.log(res);
+						if (res.data.status == 1) {
+							if (type == 1) {
+								that.$store.commit('set_statisTicsData', {
+									day: res.data.data
+								});
+							}
+							if (type == 2) {
+								that.$store.commit('set_statisTicsData', {
+									month: res.data.data
+								});
+							}
+							if (type == 3) {
+								that.$store.commit('set_statisTicsData', {
+									year: res.data.data
+								});
+							}
+						}
+					});
+				});
+			}
 		},
 		components: {
 			uniIcon,
@@ -324,6 +415,20 @@
 		position: absolute;
 		left: 14upx;
 		top: 15upx;
+	}
+
+	.sign-state {
+		font-size: 26upx;
+		line-height: 52upx;
+		padding: 0 40upx;
+		border-radius: 40upx;
+		border: 1upx solid #17393c;
+	}
+
+	.sign-state.checkInTure {
+		background: #CACACA;
+		border: 1upx solid #CACACA;
+		color: #FFFFFF;
 	}
 
 	.box-active {

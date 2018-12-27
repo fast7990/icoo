@@ -11,7 +11,7 @@
 					<view class="content">
 						<view class="left uni-column">
 							<view>烟油消耗量<text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{panel_list[current].tobacco_consume}}</text></view>
-							<view>减少焦油摄入<text>&nbsp;{{panel_list[current].tar_reduce}}</text></view>
+							<view>相当于少抽烟<text>&nbsp;{{panel_list[current].tar_reduce}}</text></view>
 							<view>寿命延长时间<text>&nbsp;{{panel_list[current].life}}</text></view>
 						</view>
 						<view class="right uni-column">
@@ -78,7 +78,7 @@
 		}
 	]
 
-	function getBarOption(xAxisData, DataZoom, seriesData) {
+	function getBarOption(xAxisData, DataZoom, seriesData, max) {
 		return {
 			animation: true,
 			backgroundColor: '#F8F8F8',
@@ -104,7 +104,7 @@
 			yAxis: {
 				type: 'value',
 				min: 0,
-				max: 4000,
+				max: max,
 				axisLine: { //坐标轴轴线相关设置
 					show: false
 				},
@@ -131,13 +131,33 @@
 				},
 				name: '口数',
 				type: 'line',
-				data: [820, 932, 901, 934, 1290, 1330, 1320]
+				data: seriesData
 			}]
+		}
+	}
+
+	function maxNumber(num) {
+		console.log(num)
+		if (num < 10) {
+			return 10;
+		} else if (num < 50) {
+			return 50;
+		} else if (num < 100) {
+			return 100;
+		} else if (num < 200) {
+			return 200;
+		} else if (num < 500) {
+			return 500;
+		} else if (num < 1000) {
+			return 1000;
+		} else {
+			return 4000;
 		}
 	}
 	export default {
 		data() {
 			let that = this;
+			let statisTicsData = this.$store.state.statisTicsData;
 			return {
 				tabitems: [
 					'每日统计',
@@ -149,26 +169,40 @@
 				activeColor: '#17393c',
 				styleType: 'text',
 				panel_list: [{
-					tobacco_consume: '5g',
-					tar_reduce: '32mg',
-					life: '10hr',
-					has_mouth: 10,
-					need_mouth: 2
+					tobacco_consume: '0ml',
+					tar_reduce: '0支',
+					life: '0min',
+					has_mouth: 0,
+					need_mouth: 0
 				}, {
-					tobacco_consume: '50g',
-					tar_reduce: '132mg',
-					life: '20hr',
-					has_mouth: 101,
-					need_mouth: 15
+					tobacco_consume: '0ml',
+					tar_reduce: '0支',
+					life: '0min',
+					has_mouth: 0,
+					need_mouth: 0
 				}, {
-					tobacco_consume: '500g',
-					tar_reduce: '1132mg',
-					life: '101hr',
-					has_mouth: 1000,
-					need_mouth: 22
+					tobacco_consume: '0ml',
+					tar_reduce: '0支',
+					life: '0min',
+					has_mouth: 0,
+					need_mouth: 0
 				}],
 				barInit: {
 					day: function(canvas, width, height) {
+						let max = 100;
+						let arr = [];
+						let init_data = [];
+						console.log(statisTicsData);
+						xAxisValuewWeek.map(function(item) {
+							init_data.push('');
+						});
+						if (Array.isArray(statisTicsData.day)) {
+							statisTicsData.day.map(function(item) {
+								init_data[item.statisticsDate - 1] = item.puffsTime;
+								arr.push(item.puffsTime);
+							});
+							max = maxNumber(Math.max.apply(null, arr));
+						}
 						let barChart = echarts.init(canvas, null, {
 							width: width,
 							height: height
@@ -177,10 +211,23 @@
 						barChart.on('click', function(params) {
 							that.panel_list[0].has_mouth = params.value;
 						});
-						barChart.setOption(getBarOption(xAxisValuewWeek, null))
+						barChart.setOption(getBarOption(xAxisValuewWeek, null, init_data, max))
 						return barChart
 					},
 					month: function(canvas, width, height) {
+						let init_data = [];
+						let max = 100;
+						let arr = [];
+						xAxisValuewWeek.map(function(item) {
+							init_data.push('');
+						});
+						if (Array.isArray(statisTicsData.month)) {
+							statisTicsData.month.map(function(item) {
+								init_data[item.statisticsDate - 1] = item.puffsTime;
+								arr.push(item.puffsTime);
+							});
+							max = maxNumber(Math.max.apply(null, arr));
+						}
 						let barChart = echarts.init(canvas, null, {
 							width: width,
 							height: height
@@ -189,10 +236,23 @@
 						barChart.on('click', function(params) {
 							that.panel_list[1].has_mouth = params.value;
 						});
-						barChart.setOption(getBarOption(xAxisValueDay, monthDataZoom))
+						barChart.setOption(getBarOption(xAxisValueDay, monthDataZoom, init_data, max))
 						return barChart
 					},
 					year: function(canvas, width, height) {
+						let init_data = [];
+						let max = 100;
+						let arr = [];
+						xAxisValuewWeek.map(function(item) {
+							init_data.push('');
+						});
+						if (Array.isArray(statisTicsData.year)) {
+							statisTicsData.year.map(function(item) {
+								init_data[item.statisticsDate - 1] = item.puffsTime;
+								arr.push(item.puffsTime);
+							});
+							max = maxNumber(Math.max.apply(null, arr));
+						}
 						let barChart = echarts.init(canvas, null, {
 							width: width,
 							height: height
@@ -201,10 +261,34 @@
 						barChart.on('click', function(params) {
 							that.panel_list[2].has_mouth = params.value;
 						});
-						barChart.setOption(getBarOption(xAxisValueMonth, monthDataZoom))
+						barChart.setOption(getBarOption(xAxisValueMonth, monthDataZoom, init_data, max))
 						return barChart
 					}
 				}
+			}
+		},
+		onLoad: function() {
+			let dashboardValue = this.$store.state.globalData.dashboardValue;
+			let sysPuffsNum = this.$store.state.sysPuffsNum;
+			for (var i = 0; i < 3; i++) {
+				this.panel_list[i].has_mouth = dashboardValue;
+				if (sysPuffsNum - dashboardValue > 0) {
+					this.panel_list[i].need_mouth = sysPuffsNum - dashboardValue;
+				} else {
+					this.panel_list[i].need_mouth = 0;
+				}
+			}
+		},
+		watch: {
+			newhasMouthValue(newValue, oldValue) {
+				this.panel_list[this.current].tobacco_consume = (newValue * 0.0017).toFixed(4) + 'ml';
+				this.panel_list[this.current].tar_reduce = (newValue * 0.02).toFixed(2) + '支';
+				this.panel_list[this.current].life = (newValue * 0.22).toFixed(2) + 'min';
+			}
+		},
+		computed: {
+			newhasMouthValue() {
+				return this.panel_list[this.current].has_mouth
 			}
 		},
 		methods: {

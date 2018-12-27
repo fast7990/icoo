@@ -1,14 +1,14 @@
 <template name="4d520517">
   <view class="_view data-v-624c2891">
     <view class="_view data-v-624c2891 page-body">
-      <form bindsubmit="handleProxy" bindreset="handleProxy" data-eventid="{{'g6n-1'}}" data-comkey="{{$k}}" class="_form data-v-624c2891">
+      <form bindsubmit="handleProxy" bindreset="handleProxy" data-eventid="{{'F3e-1'}}" data-comkey="{{$k}}" class="_form data-v-624c2891">
         <view class="_view data-v-624c2891 page-section">
           <view class="_view data-v-624c2891 page-section-title">
             <text style="font-size: 26rpx;" class="_text data-v-624c2891">{{name}}</text>
           </view>
           <view class="_view data-v-624c2891 uni-list">
             <view class="_view data-v-624c2891 uni-list-cell">
-              <input class="_input data-v-624c2891 uni-input" name="{{name_type}}" placeholder="{{placeholder}}" value="{{detail_value}}" bindinput="handleProxy" data-eventid="{{'Yjm-0'}}" data-comkey="{{$k}}" />
+              <input class="_input data-v-624c2891 uni-input" name="{{name_type}}" placeholder="{{placeholder}}" value="{{detail_value}}" bindinput="handleProxy" data-eventid="{{'w4s-0'}}" data-comkey="{{$k}}" />
             </view>
           </view>
         </view>

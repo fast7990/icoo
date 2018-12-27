@@ -1,0 +1,14 @@
+<template name="53ade09e">
+  <view class="_view data-v-666e1eab page">
+    <view class="_view data-v-666e1eab page-body uni-column">
+      <view class="_view data-v-666e1eab page-section">   </view>
+      <view class="_view data-v-666e1eab page-section content justify-center">
+        <image src="../../../static/img/login/icoologo.png" mode class="_image data-v-666e1eab"></image>
+        <text style="font-size: 30rpx;line-height: 2em;" class="_text data-v-666e1eab">版本号：1.0.1</text>
+      </view>
+      <view class="_view data-v-666e1eab page-section footer">
+        <text class="_text data-v-666e1eab">© 2018 iCOO Team All rights reserved</text>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,23 @@
+<import src="/components/segmented-control.vue.wxml" />
+<import src="/components/fans-control.vue.wxml" />
+<import src="/components/load-more.vue.wxml" />
+<template name="35bd6bf9">
+  <view class="_view data-v-b8db618e page">
+    <view class="_view data-v-b8db618e page-body">
+      <view class="_view data-v-b8db618e page-section-tab action-row">
+        <template bindclickItem="handleProxy" data-eventid="{{'yUY-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'kTW-0'],$root}}" is="e68b757a"></template>
+      </view>
+      <view class="_view data-v-b8db618e page-section uni-column" style=" {{('display:' + (current === 0 ? 'flex' : 'none') + ';')}}">
+        <template data="{{...$root['0'], ...$root[$kk+'3Sl-1'],$root}}" is="27d1173f"></template>
+      </view>
+      <view class="_view data-v-b8db618e page-section uni-column" style=" {{('display:' + (current === 1 ? 'flex' : 'none') + ';')}}">
+        <template data="{{...$root['0'], ...$root[$kk+'MsH-2'],$root}}" is="27d1173f"></template>
+        <template data="{{...$root['0'], ...$root[$kk+'lOn-3'],$root}}" is="12aeb106"></template>
+      </view>
+      <view class="_view data-v-b8db618e page-section uni-column" style=" {{('display:' + (current === 2 ? 'flex' : 'none') + ';')}}">
+        <template data="{{...$root['0'], ...$root[$kk+'gmw-4'],$root}}" is="27d1173f"></template>
+        <template data="{{...$root['0'], ...$root[$kk+'C4D-5'],$root}}" is="12aeb106"></template>
+      </view>
+    </view>
+  </view>
+</template>

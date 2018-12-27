@@ -1,6 +1,6 @@
 <script>
 	export default {
-		onLaunch: function () {
+		onLaunch: function() {
 			console.log('App Launch');
 			//#ifdef APP-PLUS
 			/* 5+环境锁定屏幕方向 */
@@ -30,13 +30,19 @@
 						})
 					}
 				}
+			});
+			uni.navigateTo({
+				url: './pages/template/login/login'
 			})
 			//#endif
 		},
-		onShow: function () {
+		onLoad: function() {
+			this.keepLive();
+		},
+		onShow: function() {
 			console.log('App Show')
 		},
-		onHide: function () {
+		onHide: function() {
 			console.log('App Hide')
 		}
 	}
@@ -44,9 +50,9 @@
 
 <style>
 	/* 这是页面的公用css */
-	
+
 	@import "./common/uni.css";
-		
+
 	page {
 		background-color: #F7F7F7;
 		height: 100%;
@@ -59,9 +65,11 @@
 	radio {
 		margin-right: 10upx;
 	}
-	text{
+
+	text {
 		color: #17393c;
 	}
+
 	button {
 		margin-top: 20upx;
 		margin-bottom: 20upx;
@@ -70,13 +78,16 @@
 	form {
 		width: 100%;
 	}
+
 	/* page */
-	.align-center{
+	.align-center {
 		align-items: center;
 	}
-	.justify-center{
+
+	.justify-center {
 		justify-content: center;
 	}
+
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -85,6 +96,7 @@
 		font-size: 32upx;
 		font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 	}
+
 	.page-head {
 		padding: 60upx 50upx 80upx;
 		text-align: center;
@@ -202,6 +214,7 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+
 	/* example */
 
 	.index-hd {

@@ -6,6 +6,11 @@ view.data-v-244819c1 {
   display: -webkit-flex;
   display: flex;
 }
+.page.data-v-244819c1,
+.page-body.data-v-244819c1 {
+  height: 100%;
+  overflow: hidden;
+}
 .page-body.data-v-244819c1 {
   padding: 60rpx 30rpx 0;
 }
@@ -38,6 +43,11 @@ text.data-v-244819c1 {
 .top.data-v-244819c1,
 .last.data-v-244819c1 {
   padding: 0 60rpx;
+}
+.last.data-v-244819c1 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 .last text.data-v-244819c1 {
   font-size: 24rpx;

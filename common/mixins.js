@@ -37,9 +37,24 @@ let childMixin = {
 		popupHide: function() {
 			this.popupShowMask = false
 			this.popupShowState[this.activePop] = false
+		},
+		loginOut: function(msg) {
+			uni.showToast({
+				title: msg,
+				mask: false,
+				duration: 1500,
+				icon: 'none',
+				success: function() {
+					setTimeout(function() {
+						uni.navigateTo({
+							url: '../../tabBar/login/login'
+						})
+					}, 1500);
+				}
+			});
 		}
 	}
 }
-export {
+module.exports = {
 	childMixin
 }

@@ -2,7 +2,7 @@
   <view class="_view data-v-3d0b6d59 page">
     <view class="_view data-v-3d0b6d59 page-body uni-column">
       <view class="_view data-v-3d0b6d59 page-section justify-center align-center" style>
-        <view class="_view data-v-3d0b6d59 portrait" bindtap="handleProxy" data-eventid="{{'PiA-0'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-3d0b6d59 portrait" bindtap="handleProxy" data-eventid="{{'fFJ-0'}}" data-comkey="{{$k}}">
           <view class="_view data-v-3d0b6d59">
             <image src="{{headerImageSrc}}" class="_image data-v-3d0b6d59 image" mode="aspectFit"></image>
           </view>
@@ -12,16 +12,16 @@
         </view>
       </view>
       <view class="_view data-v-3d0b6d59 page-section uni-column">
-        <view class="_view data-v-3d0b6d59 util-list justify-center" hover-class="uni-list-cell-hover" wx:key="idx" key="{{idx}}" bindtap="handleProxy" data-eventid="{{'dm7-3-'+idx}}" data-comkey="{{$k}}" wx:for="{{util_list}}" wx:for-index="idx" wx:for-item="item">
+        <view class="_view data-v-3d0b6d59 util-list justify-center" hover-class="uni-list-cell-hover" wx:key="idx" key="{{idx}}" bindtap="handleProxy" data-eventid="{{'ybD-3-'+idx}}" data-comkey="{{$k}}" wx:for="{{util_list}}" wx:for-index="idx" wx:for-item="item">
           <view class="_view data-v-3d0b6d59 list uni-row">
             <view class="_view data-v-3d0b6d59" style="flex: 3;">
               <text class="_text data-v-3d0b6d59">{{item.name}}</text>
             </view>
             <view class="_view data-v-3d0b6d59" style="flex: 7;justify-content: flex-end;">
-              <picker bindchange="handleProxy" value="{{index}}" range="{{array}}" wx:if="{{item.target=='sex'}}" style="width: 100%;text-align: right;" data-eventid="{{'A0A-2-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
-                <text class="_text data-v-3d0b6d59 uni-input">{{array[index]}}</text>
+              <picker bindchange="handleProxy" value="{{sex_index}}" range="{{sex_array}}" wx:if="{{item.target=='sex'}}" style="width: 100%;text-align: right;" data-eventid="{{'EYO-2-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
+                <text class="_text data-v-3d0b6d59 uni-input">{{sex_array[sex_index]}}</text>
               </picker>
-              <picker mode="date" bindchange="handleProxy" value="{{date}}" start="{{startDate}}" end="{{endDate}}" wx:elif="{{item.target=='birthday'}}" style="width: 100%;text-align: right;" data-eventid="{{'7Ug-1-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
+              <picker mode="date" bindchange="handleProxy" value="{{date}}" start="{{startDate}}" end="{{endDate}}" wx:elif="{{item.target=='birthday'}}" style="width: 100%;text-align: right;" data-eventid="{{'h5X-1-'+idx}}" data-comkey="{{$k}}" class="_picker data-v-3d0b6d59">
                 <text class="_text data-v-3d0b6d59 uni-input">{{date}}</text>
               </picker>
               <text wx:else class="_text data-v-3d0b6d59">{{item.info}}</text>

@@ -105,7 +105,7 @@
 	.segmented-control-item {
 		flex: 1;
 		text-align: center;
-		line-height: 70upx;
+		line-height: 80upx;
 		box-sizing: border-box;
 		margin: 0 40upx;
 	}

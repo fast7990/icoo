@@ -3,7 +3,7 @@
 		<view class="page-body uni-column">
 			<view class="page-section" style="margin-bottom: 20upx;">
 				<view class="user-list" style="background: #17393C;">
-					<text style="color: #FFFFFF;font-size: 24upx;padding:10upx 30upx;">挑战金在目标成功后会退还。挑战金设置越高，挑战成功获得的奖励越大。</text>
+					<text style="color: #FFFFFF;padding:10upx 30upx;">挑战金在目标成功后会退还。挑战金设置越高，挑战成功获得的奖励越大。</text>
 				</view>
 			</view>
 			<view class="page-section">
@@ -29,7 +29,7 @@
 					</view>
 					<view class="box-list uni-column align-center" style="margin-bottom: 80upx;">
 						<view style="align-items: flex-end;margin-bottom: 10upx;">
-							<text style="font-size: 88upx;font-weight: bold;line-height: 1em;">{{choose_value}}</text><text style="font-size: 26upx;">积分</text>
+							<text style="font-size: 88upx;font-weight: bold;line-height: 1em;">{{choose_value}}</text><text>积分</text>
 						</view>
 						<text style="font-size: 22upx;">挑战成功可获得{{success_value}}积分</text>
 					</view>
@@ -53,7 +53,8 @@
 				user_set_state: false,
 				user_set_value: '',
 				choose_value: 0,
-				success_value: 0
+				success_value: 0,
+				options: {},
 			};
 		},
 		watch: {
@@ -61,7 +62,14 @@
 				if (this.user_set_state) {
 					this.choose_value = newValue;
 				}
+			},
+			choose_value(newValue, oldValue) {
+				this.success_value = Math.ceil(this.options.rate * newValue);
 			}
+		},
+		onLoad: function(options) {
+			console.log(options);
+			this.options = options;
 		},
 		methods: {
 			chooseValue(i, item) {
@@ -74,6 +82,48 @@
 				this.active_index = -1;
 				this.user_set_value = '';
 				this.user_set_state = !this.user_set_state;
+			},
+			submit() {
+				if (this.choose_value < 10) {
+					uni.showToast({
+						title: '积分设置至少为10',
+						icon: 'none'
+					})
+					return;
+				}
+				let data = {
+					userCode: this.$store.state.userCode,
+					token: this.$store.state.token,
+					pledgeSocre: Number(this.choose_value),
+					targetPuffsTime: Number(this.options.targetPuffsTime),
+					startType: Number(this.options.startType),
+					targetDays: Number(this.options.targetDays),
+				}
+				console.log(data)
+				this.$api.addActive(data, function(res) {
+					console.log(res);
+					if (res.data.status == 1) {
+						uni.showToast({
+							title: '添加挑战成功',
+							mask: false,
+							duration: 1500,
+							success: function() {
+								uni.navigateTo({
+									url: '../challenge/challenge'
+								});
+							}
+						});
+					} else {
+						uni.showToast({
+							title: res.data.msg,
+							mask: false,
+							icon: 'none',
+							duration: 1500
+						});
+					}
+				}, function(err) {
+					console.log(err)
+				});
 			}
 		}
 	}
@@ -87,6 +137,7 @@
 
 	text {
 		color: #17393C;
+		font-size: 24upx;
 	}
 
 	.page-body {

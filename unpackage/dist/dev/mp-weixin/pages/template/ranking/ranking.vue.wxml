@@ -8,7 +8,7 @@
               <view class="_view data-v-a02efd32 touming" style="padding: 15rpx;background: rgba(255, 255, 255, 0.15);">
                 <view class="_view data-v-a02efd32 touming" style="padding: 20rpx;background: rgba(255, 255, 255, 0.18);">
                   <view style="width: 120rpx;height: 120rpx;border-radius: 120rpx;overflow: hidden;" class="_view data-v-a02efd32">
-                    <image src="{{my_data.imgsrc}}" style="width: 100%;height: 100%;" class="_image data-v-a02efd32"></image>
+                    <image src="{{my_data.headpicUrl?my_data.headpicUrl:noheaderimg}}" style="width: 100%;height: 100%;" class="_image data-v-a02efd32"></image>
                   </view>
                 </view>
               </view>
@@ -17,19 +17,19 @@
           <view class="_view data-v-a02efd32 user-list-center action-row" style="flex: 4;">
             <view class="_view data-v-a02efd32 uni-column" style="flex: 7;justify-content: center;padding-left: 15rpx;">
               <view class="_view data-v-a02efd32">
-                <text class="_text data-v-a02efd32 user-list-text-h2" style="font-size: 30rpx;"> {{my_data.name}} </text>
+                <text class="_text data-v-a02efd32 user-list-text-h2" style="font-size: 30rpx;"> {{my_data.nickName}} </text>
               </view>
               <view class="_view data-v-a02efd32">
-                <text class="_text data-v-a02efd32 user-list-text-h4" style="font-size: 24rpx;color: #565656;"> 第{{my_data.mingci}}名 </text>
+                <text class="_text data-v-a02efd32 user-list-text-h4" style="font-size: 24rpx;color: #565656;"> 第{{userPuffsSort}}名 </text>
               </view>
             </view>
             <view class="_view data-v-a02efd32" style="flex: 3;align-items: center;">
-              <text style="font-size: 68rpx;font-weight: bold;" class="_text data-v-a02efd32">{{my_data.koushu}}</text>
+              <text style="font-size: 68rpx;font-weight: bold;" class="_text data-v-a02efd32">{{my_data.puffsSum}}</text>
             </view>
           </view>
           <view class="_view data-v-a02efd32 user-list-right uni-column" style="flex: 1;align-items: center;">
             <image src="../../../static/img/dianzan.png" class="_image data-v-a02efd32"></image>
-            <text class="_text data-v-a02efd32 user-list-text-h4" style="text-align: center;"> {{my_data.like_num}} </text>
+            <text class="_text data-v-a02efd32 user-list-text-h4" style="text-align: center;"> {{my_data.suportNum}} </text>
           </view>
         </view>
       </view>
@@ -37,12 +37,12 @@
         <view class="_view data-v-a02efd32 user-list uni-column">
           <view class="_view data-v-a02efd32 list1 {{(index == ranking_data.length - 1) ? 'noborder' : ''}}" wx:key="index" key="{{index}}" wx:for="{{ranking_data}}" wx:for-index="index" wx:for-item="item">
             <view class="_view data-v-a02efd32 align-center justify-center" style="flex: 1;">
-              <text style="font-size: 28rpx;font-weight: bold;" class="_text data-v-a02efd32">{{item.mingci}}</text>
+              <text style="font-size: 28rpx;font-weight: bold;" class="_text data-v-a02efd32">{{index+1}}</text>
             </view>
             <view class="_view data-v-a02efd32 align-center justify-center" style="flex: 5;">
               <view style="width: 90rpx;height: 90rpx;position: relative;" class="_view data-v-a02efd32">
                 <view style="width: 100%;height: 100%;border-radius:100%;overflow: hidden;position: relative;" class="_view data-v-a02efd32">
-                  <image src="{{item.imgsrc}}" style="width: 100%;height: 100%;position: relative;" class="_image data-v-a02efd32"></image>
+                  <image src="{{item.headpicUrl?item.headpicUrl:noheaderimg}}" style="width: 100%;height: 100%;position: relative;" class="_image data-v-a02efd32"></image>
                 </view>
                 <image src="{{crown[0]}}" class="_image data-v-a02efd32 crown" wx:if="{{index==0}}"></image>
                 <image src="{{crown[1]}}" class="_image data-v-a02efd32 crown" wx:if="{{index==1}}"></image>
@@ -50,14 +50,15 @@
               </view>
             </view>
             <view class="_view data-v-a02efd32 align-center" style="flex: 15;">
-              <text style="font-size: 24rpx;" class="_text data-v-a02efd32">{{item.name}}</text>
+              <text style="font-size: 24rpx;" class="_text data-v-a02efd32">{{item.nickName?item.nickName:''}}</text>
             </view>
             <view class="_view data-v-a02efd32 align-center" style="flex: 5;">
-              <text style="font-size: 32rpx;font-weight: bold;color: #17393c;" class="_text data-v-a02efd32">{{item.koushu}}</text>
+              <text style="font-size: 32rpx;font-weight: bold;color: #17393c;" class="_text data-v-a02efd32">{{item.puffsSum?item.puffsSum:'0'}}</text>
             </view>
-            <view class="_view data-v-a02efd32 user-list-right uni-column" style="flex: 2;align-items: center;">
+            <view class="_view data-v-a02efd32 user-list-right uni-column" style="flex: 2;align-items: center;" bindtap="handleProxy" data-eventid="{{'Y9m-0-'+index}}" data-comkey="{{$k}}">
               <image src="../../../static/img/dianzan.png" class="_image data-v-a02efd32"></image>
-              <text class="_text data-v-a02efd32 user-list-text-h4" style="text-align: center;color: #17393c;"> {{item.like_num}} </text>
+              <text class="_text data-v-a02efd32 user-list-text-h4" style="text-align: center;color: #17393c;" hidden="{{!(item.suportState==0)}}"> {{item.suportNum}} </text>
+              <text class="_text data-v-a02efd32 user-list-text-h4" style="text-align: center;color: #17393c;" hidden="{{!(item.suportState==1)}}"> {{item.suportNum}} </text>
             </view>
           </view>
         </view>

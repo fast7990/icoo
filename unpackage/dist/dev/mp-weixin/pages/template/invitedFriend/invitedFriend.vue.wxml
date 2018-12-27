@@ -1,0 +1,38 @@
+<import src="/components/qrcode/qrcode.vue.wxml" />
+<template name="45dc669a">
+  <view class="_view data-v-02c7926d page">
+    <view class="_view data-v-02c7926d page-body uni-column">
+      <view class="_view data-v-02c7926d page-section justify-center">
+        <text style="font-size:50rpx ;color: #FFFFFF;margin: 70rpx 0;" class="_text data-v-02c7926d">爱氪科技</text>
+      </view>
+      <view class="_view data-v-02c7926d page-section">
+        <view class="_view data-v-02c7926d fix uni-column align-center">
+          <view class="_view data-v-02c7926d uni-column align-center justify-center">
+            <text style="font-size: 24rpx;" class="_text data-v-02c7926d">您的专属邀请码</text>
+            <text style="font-size: 74rpx;" class="_text data-v-02c7926d">{{invitationCode}}</text>
+            <view class="_view data-v-02c7926d">
+              <button class="_button data-v-02c7926d share" type="primary" open-type="share">分享好友</button>
+            </view>
+            <text style="font-size: 26rpx;margin-top:20rpx;" class="_text data-v-02c7926d">邀请好友加入爱氪科技</text>
+          </view>
+          <view class="_view data-v-02c7926d align-center">
+            <view class="_view data-v-02c7926d banjiao" style="left: -12rpx;"></view>
+            <view class="_view data-v-02c7926d xuxian"></view>
+            <view class="_view data-v-02c7926d banjiao" style="right: -12rpx;"></view>
+          </view>
+          <view class="_view data-v-02c7926d justify-center">
+            <view class="_view data-v-02c7926d uni-column align-center">
+              <view class="_view data-v-02c7926d qrcode">
+                <template ref="qrcode" data="{{...$root['0'], ...$root[$kk+'FGc-0'],$root}}" is="97499a86"></template>
+              </view>
+              <text class="_text data-v-02c7926d">扫码下载APP</text>
+            </view>
+          </view>
+          <view class="_view data-v-02c7926d justify-center" style="margin-top: 30rpx;">
+            <navigator url="../../tabBar/login/login" class="_navigator data-v-02c7926d">立即登录小程序</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -15,7 +15,7 @@ module.exports = {
 			//项目的真正接口，通过字符串拼接方式实现
 			url: host + url,
 			header: {
-				"content-type": "application/json;charset=UTF-8"
+				"Content-Type": "application/x-www-form-urlencoded"
 			},
 			data: postData,
 			method: 'POST',
